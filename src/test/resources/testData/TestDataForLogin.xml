@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="DataForRegistration">
+    <test name="registration">
+        <parameter name="email" value="user29@yopmail.com"/>
+        <parameter name="password" value="Test1@34"/>
+        <classes>
+            <class name="tests.client.Login.TestSuccessfulLogin"/>
+        </classes>
+    </test>
+
+</suite>
