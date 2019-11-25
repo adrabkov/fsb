@@ -13,7 +13,7 @@ public class TestSuccessfulLogin extends BaseTest {
     @Test
     @Parameters({"email", "password"})
 
-    public void testLogin(String email, String password){
+    public void testLogin(String email, String password) {
         LoginStep.loginInApp(email, password);
         Assert.assertTrue(driver.findElement(By.id("header__logout")).isDisplayed());
     }
