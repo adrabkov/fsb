@@ -9,7 +9,7 @@ public class StartPage extends BaseForm {
     @FindBy(id = "header__login")
     private WebElement loginButton;
 
-    @FindBy(css = "#personal-info__form__radio--titrle-m")
+    @FindBy(css = "#personal-info__form__label--title-ms")
     private WebElement salutationRadioButton;
 
     @FindBy(xpath = "//input[@name='firstName']")
@@ -48,6 +48,7 @@ public class StartPage extends BaseForm {
 
     public void chooseRadioButton(){
         salutationRadioButton.click();
+
     }
 
     public void fillFirstName(String firstName){

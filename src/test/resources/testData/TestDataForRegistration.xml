@@ -9,9 +9,11 @@
         <parameter name="houseNumber" value="15"/>
         <parameter name="postalCode" value="12345"/>
         <parameter name="city" value="mogilev"/>
+        <parameter name="password" value="Test1@34"/>
         <classes>
             <class name="tests.client.TestOndoarding"/>
         </classes>
     </test>
+
 
 </suite>
