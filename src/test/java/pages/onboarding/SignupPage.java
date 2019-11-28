@@ -2,7 +2,12 @@ package pages.onboarding;
 
 import form.BaseForm;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SignupPage extends BaseForm {
 
@@ -33,6 +38,15 @@ public class SignupPage extends BaseForm {
     @FindBy(xpath = "//div[@class='pass__validation-error-message']/p")
     private WebElement validationMessageForPasswordField;
 
+    @FindBy(xpath = "//p[@class='sc-eNQAEJ jTNZui']")
+    private WebElement validationMessageForAlreadyExistedEmail;
+
+    @FindBy(id = "personal-signup-conditions-error__text")
+    private WebElement validationMessageForCondition1;
+
+    @FindAll(@FindBy(how = How.CSS, using = "#personal-signup-conditions-error__text"))
+    List<WebElement> validationMessagesList;
+
     public void fillEmailField(String email) {
         emailField.sendKeys(email);
     }
@@ -43,6 +57,10 @@ public class SignupPage extends BaseForm {
 
     public void clickShowPasswordButton() {
         showPasswordButton.click();
+    }
+
+    public WebElement getShowPasswordButton() {
+        return showPasswordButton;
     }
 
     public void clickCondition1() {
@@ -71,5 +89,17 @@ public class SignupPage extends BaseForm {
 
     public WebElement getEmailField() {
         return emailField;
+    }
+
+    public String textMessageForAlreadyExistedEmail() {
+        return validationMessageForAlreadyExistedEmail.getText();
+    }
+
+    public List<String> actualConditionTextForCheckBox() {
+        List<String> texts = new ArrayList<>();
+        for (WebElement messagesList : validationMessagesList) {
+            texts.add(messagesList.getText());
+        }
+        return texts;
     }
 }

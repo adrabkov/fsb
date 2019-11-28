@@ -1,6 +1,5 @@
-package tests.client.Login;
+package tests.client.login;
 
-import form.BaseForm;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Parameters;

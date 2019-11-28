@@ -33,4 +33,8 @@ public class BaseTest {
         log.info("Closing browser");
         DriverHolder.clean();
     }
+
+    public static String getStartUrl() {
+        return startUrl;
+    }
 }
