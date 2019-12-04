@@ -5,7 +5,7 @@
         <parameter name="email" value="user29@yopmail.com"/>
         <parameter name="password" value="Test1@34"/>
         <classes>
-            <class name="tests.client.login.TestSuccessfulLogin"/>
+            <class name="de.alectogmbh.friendsurance.automation.tests.fsb.web.TestSuccessfulLogin"/>
         </classes>
     </test>
 

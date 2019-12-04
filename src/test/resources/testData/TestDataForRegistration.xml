@@ -10,7 +10,7 @@
         <parameter name="postalCode" value="12345"/>
         <parameter name="city" value="mogilev"/>
         <classes>
-            <class name="tests.client.TestOndoarding"/>
+            <class name="de.alectogmbh.friendsurance.automation.tests.fsb.web.FsbOnboardingTest"/>
         </classes>
     </test>
 
