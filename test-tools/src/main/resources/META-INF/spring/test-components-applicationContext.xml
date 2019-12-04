@@ -1,0 +1,35 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+    <!--
+            This ugly bean definition for impl implementations of these
+            services is needed because Cucumber does not seem to use
+            Spring profiles properly
+    -->
+    <bean id="emailService" class="de.alectogmbh.friendsurance.mail.test.EmailServiceTestSpyImpl"/>
+
+    <bean id="pdfService" class="de.alectogmbh.friendsurance.common.util.test.PdfServiceTestDummyImpl"/>
+
+    <bean id="inSignClient" class="de.alectogmbh.friendsurance.common.util.test.InSignClientDummyImpl"/>
+
+    <bean id="messageBusTransactionalWrapper" class="de.alectogmbh.friendsurance.eventing.SafetynetMessageBus.TransactionalWrapperImpl"/>
+
+    <bean id="safetynetMessageBus" class="de.alectogmbh.friendsurance.common.util.test.SyncSafetynetMessageBus" />
+
+    <bean id="insuranceCompanyEmailService"
+          class="de.alectogmbh.friendsurance.product.insurance_company.test.DummyInsuranceCompanyEmailService"/>
+
+    <bean id="friendsuranceResources"
+          class="de.alectogmbh.friendsurance.resource.cdn.test.FriendsuranceResourcesDummyImpl"/>
+
+    <bean id="externalContactsProviderFacade"
+          class="de.alectogmbh.friendsurance.api.facade.test.ExternalContactsProviderFacadeStubImpl"/>
+
+    <bean id="socialNetwork" class="de.alectogmbh.friendsurance.social.api.facebook.SocialNetworkFacebookDummyImpl"/>
+
+    <bean id="adminUserService" class="de.alectogmbh.friendsurance.management.service.DummyAdminUserService"/>
+
+    <bean id="otrsService" class="de.alectogmbh.friendsurance.otrs.StubOtrsService"/>
+
+</beans>

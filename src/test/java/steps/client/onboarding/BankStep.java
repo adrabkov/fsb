@@ -7,7 +7,7 @@ public class BankStep {
 
     public void searchingBank(String text) {
         BanksPage banksPage = new BanksPage();
-//        banksPage.clickBanksList();
+        banksPage.clickBanksList();
         banksPage.fillBankField(text);
         Select select = new Select(banksPage.getBanksList());
         select.selectByIndex(0);
