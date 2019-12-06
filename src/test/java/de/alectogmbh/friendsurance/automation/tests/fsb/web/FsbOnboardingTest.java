@@ -1,100 +1,151 @@
 package de.alectogmbh.friendsurance.automation.tests.fsb.web;
 
-import models.CommonFunctions;
-import org.openqa.selenium.WebElement;
-import org.testng.Assert;
-import org.testng.annotations.Test;
-import de.alectogmbh.friendsurance.automation.pages.fsb.web.FsbBankSelectionPage;
-import de.alectogmbh.friendsurance.automation.pages.fsb.web.FsbSignUpPage;
-import de.alectogmbh.friendsurance.automation.requirements.ValidationMessages;
-import de.alectogmbh.friendsurance.automation.steps.fsb.fsb.FsbBankSelectionSteps;
-import de.alectogmbh.friendsurance.automation.steps.fsb.fsb.FsbPersonalDetailsSteps;
-import de.alectogmbh.friendsurance.automation.steps.fsb.fsb.FsbSignUpSteps;
+import de.alectogmbh.friendsurance.automation.steps.fsb.fsb.*;
+import de.alectogmbh.friendsurance.automation.tests.fsb.web.web.utils.db.DBCustomerData;
+import de.alectogmbh.friendsurance.automation.tests.fsb.web.web.utils.db.DBCustomerDataUtils;
+import net.thucydides.core.annotations.Steps;
 import de.alectogmbh.friendsurance.automation.tests.BaseTest;
-import de.alectogmbh.friendsurance.automation.tests.DataProviderClass;
+import org.testng.annotations.Test;
+
 
 public class FsbOnboardingTest extends BaseTest {
 
-//    private static final WebElement BANKS_LIST = new FsbBankSelectionPage().getBanksList();
-    private static final String INCORRECT_EMAIL = new CommonFunctions().getIncorrectEmail();
-    private static final String INCORRECT_PASSWORD = new CommonFunctions().getIncorrectPassword();
-    private static final String EXPECTED_EMAIL_TEXT = new ValidationMessages().getTextForEmailValidation();
-    private static final String EXPECTED_PASS_TEXT = new ValidationMessages().getTextForPasswordValidation();
-    private static final String EXPECTED_EMAIL_ALREADY = new ValidationMessages().getTextForAlreadyExistedEmail();
-    private static final String CORRECT_EMAIL = new CommonFunctions().getEmail();
-    private static final String PASSWORD = "Test1@34";
+    private static DBCustomerData dbCustomerData = DBCustomerDataUtils.createDBCustomerData();
 
-    @Test(dataProvider = "data for registration", dataProviderClass = DataProviderClass.class)
-    public void testRegistrationWithCorrectDate(String firstName, String lastName, String birthDate, String streetName, String houseNumber, String postalCode, String city) {
-//        FsbPersonalDetailsSteps fsbPersonalDetailsSteps = new FsbPersonalDetailsSteps();
-//        fsbPersonalDetailsSteps.selectGender();
-        FsbPersonalDetailsSteps.selectGender();
-//        fsbPersonalDetailsSteps.verify_fifth_step_and_set_onboarding_personal_details(firstName, lastName, birthDate, streetName, houseNumber, postalCode, city);
-//        FsbPersonalDetailsSteps.fillingRequiredFields(firstName, lastName, birthDate, streetName, houseNumber, postalCode, city);
-//        Assert.assertTrue(new FsbSignUpPage().getEmailField().isDisplayed());
-//        FsbSignUpSteps.fillingFieldsForStep2(CORRECT_EMAIL, PASSWORD);
-//        Assert.assertTrue(BANKS_LIST.isDisplayed());
+    @Steps
+    private FsbPersonalDetailsSteps fsbPersonalDetailsSteps = new FsbPersonalDetailsSteps();
+
+    @Steps
+    private FsbSignUpSteps fsbSignUpSteps = new FsbSignUpSteps();
+
+    @Steps
+    private FsbBankSelectionSteps fsbBankSelectionSteps = new FsbBankSelectionSteps();
+
+    @Steps
+    private FsbFinApiWebFormSteps fsbFinApiWebFormSteps = new FsbFinApiWebFormSteps();
+
+    @Steps
+    private FsbDashboardSteps fsbDashboardSteps = new FsbDashboardSteps();
+
+    @Steps
+    private FsbRetrieveBankDataStep fsbRetrieveBankDataStep = new FsbRetrieveBankDataStep();
+
+    @Test()
+    public void testRegistrationWithCorrectData() {
+
+        fsbPersonalDetailsSteps.verify_fifth_step_and_set_onboarding_personal_details(dbCustomerData.getFirstName(), dbCustomerData.getLastName(),
+                dbCustomerData.getBirthDay(), dbCustomerData.getStreetName(), dbCustomerData.getHouseNumber(), dbCustomerData.getPostalCode(),
+                dbCustomerData.getPlace());
+
+        fsbSignUpSteps.verify_second_step_and_go_to_next_step(dbCustomerData.getEmail(), dbCustomerData.getPassword());
+
+        fsbBankSelectionSteps.verify_bank_step_select_bank_and_click_on_next_button();
+
+        fsbFinApiWebFormSteps.enter_bank_login_credential_on_fin_api_web_form_and_retrieve_data(dbCustomerData.getUserId(), dbCustomerData.getPin());
+
+        fsbRetrieveBankDataStep.click_on_retrieve_bank_page_submit_button();
+
     }
 
-//    @Test(dataProvider = "data for registration", dataProviderClass = DataProviderClass.class)
-//    public void testRegistrationWithIncorrectCredentials(String firstName, String lastName, String birthDate, String streetName, String houseNumber, String postalCode, String city) {
-//        FsbPersonalDetailsSteps.fillingRequiredFields(firstName, lastName, birthDate, streetName, houseNumber, postalCode, city);
-//        FsbSignUpSteps.fillingFieldsForStep2(INCORRECT_EMAIL, INCORRECT_PASSWORD);
-//        Assert.assertEquals(new FsbSignUpPage().textForEmailValidation(), EXPECTED_EMAIL_TEXT);
-//        Assert.assertEquals(new FsbSignUpPage().textForPasswordValidation(), EXPECTED_PASS_TEXT);
-//    }
-//
-//    @Test(dataProvider = "data for registration", dataProviderClass = DataProviderClass.class)
-//    public void testRegistrationWithAlreadyExistedUser(String firstName, String lastName, String birthDate, String streetName, String houseNumber, String postalCode, String city) {
-//        String email = new CommonFunctions().getEmail();
-//        FsbPersonalDetailsSteps.fillingRequiredFields(firstName, lastName, birthDate, streetName, houseNumber, postalCode, city);
-//        FsbSignUpSteps.fillingFieldsForStep2(email, PASSWORD);
-//        Assert.assertTrue(BANKS_LIST.isDisplayed());
-//        driver.navigate().to(getStartUrl());
-//        FsbPersonalDetailsSteps.fillingRequiredFields(firstName, lastName, birthDate, streetName, houseNumber, postalCode, city);
-//        FsbSignUpSteps.fillingFieldsForStep2(email, PASSWORD);
-//        Assert.assertEquals(new FsbSignUpPage().textMessageForAlreadyExistedEmail(), EXPECTED_EMAIL_ALREADY);
-//    }
-//
-//    @Test(dataProvider = "data for registration", dataProviderClass = DataProviderClass.class)
-//    public void testShowPasswordButton(String firstName, String lastName, String birthDate, String streetName, String houseNumber, String postalCode, String city) {
-//        FsbPersonalDetailsSteps.fillingRequiredFields(firstName, lastName, birthDate, streetName, houseNumber, postalCode, city);
-//        FsbSignUpPage signupPage = new FsbSignUpPage();
-//        signupPage.fillEmailField(CORRECT_EMAIL);
-//        signupPage.fillPasswordField(PASSWORD);
-//        signupPage.clickShowPasswordButton();
-//        Assert.assertEquals(new FsbSignUpPage().getShowPasswordButton().getAttribute("class"), "active");
-//    }
-//
-//    @Test(dataProvider = "data for registration", dataProviderClass = DataProviderClass.class)
-//    public void testRegistrationWithoutCheckBox(String firstName, String lastName, String birthDate, String streetName, String houseNumber, String postalCode, String city) {
-//        FsbPersonalDetailsSteps.fillingRequiredFields(firstName, lastName, birthDate, streetName, houseNumber, postalCode, city);
-//        FsbSignUpPage signupPage = new FsbSignUpPage();
-//        signupPage.fillEmailField(CORRECT_EMAIL);
-//        signupPage.fillPasswordField(PASSWORD);
-//        signupPage.clickSubmitButton();
-//        Assert.assertEquals(new FsbSignUpPage().actualConditionTextForCheckBox(), new ValidationMessages().getConditionText());
-//        signupPage.clickCondition1();
-//        signupPage.clickCondition2();
-//        signupPage.clickCondition3();
-//        signupPage.clickSubmitButton();
-//        Assert.assertTrue(BANKS_LIST.isDisplayed());
-//    }
-//
-//    @Test(dataProvider = "data for registration", dataProviderClass = DataProviderClass.class)
-//    public void testRegistrationWithEmptyBankField(String firstName, String lastName, String birthDate, String streetName, String houseNumber, String postalCode, String city) {
-//        FsbPersonalDetailsSteps.fillingRequiredFields(firstName, lastName, birthDate, streetName, houseNumber, postalCode, city);
-//        FsbSignUpSteps.fillingFieldsForStep2(CORRECT_EMAIL, PASSWORD);
-//        FsbBankSelectionPage banksPage = new FsbBankSelectionPage();
-//        banksPage.clickNextButton();
-//        Assert.assertEquals(banksPage.getValidationMessageForBankList(), new ValidationMessages().getTextForBankFieldValidation());
-//    }
-//
-//    @Test(dataProvider = "data for registration", dataProviderClass = DataProviderClass.class)
-//    public void testSearchByBankName(String firstName, String lastName, String birthDate, String streetName, String houseNumber, String postalCode, String city) {
-//        FsbPersonalDetailsSteps.fillingRequiredFields(firstName, lastName, birthDate, streetName, houseNumber, postalCode, city);
-//        FsbSignUpSteps.fillingFieldsForStep2(CORRECT_EMAIL, PASSWORD);
-//        FsbBankSelectionSteps bankStep = new FsbBankSelectionSteps();
-//        bankStep.searchingBank("ab");
-//    }
+    @Test()
+    public void testRegistrationWithAlreadyExistedUser() {
+
+        fsbPersonalDetailsSteps.verify_fifth_step_and_set_onboarding_personal_details(dbCustomerData.getFirstName(), dbCustomerData.getLastName(),
+                dbCustomerData.getBirthDay(), dbCustomerData.getStreetName(), dbCustomerData.getHouseNumber(), dbCustomerData.getPostalCode(),
+                dbCustomerData.getPlace());
+
+        fsbSignUpSteps.verify_second_step_and_go_to_next_step(dbCustomerData.getEmail(), dbCustomerData.getPassword());
+
+        driver.navigate().to(getStartUrl());
+
+        fsbPersonalDetailsSteps.verify_fifth_step_and_set_onboarding_personal_details(dbCustomerData.getFirstName(), dbCustomerData.getLastName(),
+                dbCustomerData.getBirthDay(), dbCustomerData.getStreetName(), dbCustomerData.getHouseNumber(), dbCustomerData.getPostalCode(),
+                dbCustomerData.getPlace());
+
+        fsbSignUpSteps.verify_validation_message_for_already_existed_email(dbCustomerData.getEmail(), dbCustomerData.getPassword());
+
+    }
+
+    @Test()
+    public void testRegistrationWithEmptyEmailField() {
+
+        fsbPersonalDetailsSteps.verify_fifth_step_and_set_onboarding_personal_details(dbCustomerData.getFirstName(), dbCustomerData.getLastName(),
+                dbCustomerData.getBirthDay(), dbCustomerData.getStreetName(), dbCustomerData.getHouseNumber(), dbCustomerData.getPostalCode(),
+                dbCustomerData.getPlace());
+
+        fsbSignUpSteps.verify_validation_message_for_empty_email_field(dbCustomerData.getPassword());
+
+    }
+
+    @Test()
+    public void testRegistrationWithEmptyPasswordField() {
+
+        fsbPersonalDetailsSteps.verify_fifth_step_and_set_onboarding_personal_details(dbCustomerData.getFirstName(), dbCustomerData.getLastName(),
+                dbCustomerData.getBirthDay(), dbCustomerData.getStreetName(), dbCustomerData.getHouseNumber(), dbCustomerData.getPostalCode(),
+                dbCustomerData.getPlace());
+
+        fsbSignUpSteps.verify_validation_message_for_empty_password_field(dbCustomerData.getEmail());
+
+    }
+
+    @Test()
+    public void testRegistrationWithIncorrectPasswordField() {
+
+        fsbPersonalDetailsSteps.verify_fifth_step_and_set_onboarding_personal_details(dbCustomerData.getFirstName(), dbCustomerData.getLastName(),
+                dbCustomerData.getBirthDay(), dbCustomerData.getStreetName(), dbCustomerData.getHouseNumber(), dbCustomerData.getPostalCode(),
+                dbCustomerData.getPlace());
+
+        fsbSignUpSteps.verify_validation_message_for_incorrect_password(dbCustomerData.getEmail(), dbCustomerData.getIncorrect_password());
+    }
+
+    @Test()
+    public void testShowPasswordButtonOnTheSignUpPage() {
+
+        fsbPersonalDetailsSteps.verify_fifth_step_and_set_onboarding_personal_details(dbCustomerData.getFirstName(), dbCustomerData.getLastName(),
+                dbCustomerData.getBirthDay(), dbCustomerData.getStreetName(), dbCustomerData.getHouseNumber(), dbCustomerData.getPostalCode(),
+                dbCustomerData.getPlace());
+
+        fsbSignUpSteps.verify_show_password_button(dbCustomerData.getPassword());
+
+    }
+
+    @Test()
+    public void testRegistrationWithoutConditionsCheckBox() {
+
+        fsbPersonalDetailsSteps.verify_fifth_step_and_set_onboarding_personal_details(dbCustomerData.getFirstName(), dbCustomerData.getLastName(),
+                dbCustomerData.getBirthDay(), dbCustomerData.getStreetName(), dbCustomerData.getHouseNumber(), dbCustomerData.getPostalCode(),
+                dbCustomerData.getPlace());
+
+        fsbSignUpSteps.verify_validation_messages_for_conditions_checkbox(dbCustomerData.getEmail(), dbCustomerData.getPassword());
+
+    }
+
+    @Test()
+    public void testOpenDashboardFromSelectionBankPage() {
+
+        fsbPersonalDetailsSteps.verify_fifth_step_and_set_onboarding_personal_details(dbCustomerData.getFirstName(), dbCustomerData.getLastName(),
+                dbCustomerData.getBirthDay(), dbCustomerData.getStreetName(), dbCustomerData.getHouseNumber(), dbCustomerData.getPostalCode(),
+                dbCustomerData.getPlace());
+
+        fsbSignUpSteps.verify_second_step_and_go_to_next_step(dbCustomerData.getEmail(), dbCustomerData.getPassword());
+
+        fsbBankSelectionSteps.verify_ability_to_open_dashboard_from_Bank_selection();
+
+        fsbDashboardSteps.verify_if_home_page_is_loaded_and_dashboard_headline_is_present();
+
+    }
+
+    @Test()
+    public void testRegistrationWithEmptyDropDownOnTheBankSelection() {
+
+        fsbPersonalDetailsSteps.verify_fifth_step_and_set_onboarding_personal_details(dbCustomerData.getFirstName(), dbCustomerData.getLastName(),
+                dbCustomerData.getBirthDay(), dbCustomerData.getStreetName(), dbCustomerData.getHouseNumber(), dbCustomerData.getPostalCode(),
+                dbCustomerData.getPlace());
+
+        fsbSignUpSteps.verify_second_step_and_go_to_next_step(dbCustomerData.getEmail(), dbCustomerData.getPassword());
+
+        fsbBankSelectionSteps.verify_error_text_for_bank_selection();
+
+    }
+
 }

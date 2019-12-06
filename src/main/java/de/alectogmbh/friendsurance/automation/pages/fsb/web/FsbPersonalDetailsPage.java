@@ -1,12 +1,13 @@
 package de.alectogmbh.friendsurance.automation.pages.fsb.web;
 
 import de.alectogmbh.friendsurance.automation.form.BaseForm;
-
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+public class FsbPersonalDetailsPage extends BaseForm{
 
-public class FsbPersonalDetailsPage extends BaseForm {
+    @FindBy(className = "onboarding-headline__text")
+    private WebElement personalDetailsHeadlineText;
 
     @FindBy(id = "header__login")
     private WebElement loginButton;
@@ -43,6 +44,10 @@ public class FsbPersonalDetailsPage extends BaseForm {
 
     @FindBy(id = "personal-info-back__button")
     private WebElement backButton;
+
+    public String getPersonalDetailsHeadlineText() {
+        return personalDetailsHeadlineText.getText();
+    }
 
     public void clickLoginButton(){
         loginButton.click();

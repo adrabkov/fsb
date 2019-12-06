@@ -2,18 +2,23 @@ package de.alectogmbh.friendsurance.automation.pages.fsb.web;
 
 import de.alectogmbh.friendsurance.automation.form.BaseForm;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class FsbSignUpPage extends BaseForm {
 
+    @FindBy(className = "onboarding-headline__text")
+    private WebElement signUpPageHeadlineText;
+
     @FindBy(id = "personal-signup-email")
-    private WebElement emailField;
+    private WebElement userEmailInputField;
 
     @FindBy(id = "personal-signup-password")
-    private WebElement passwordField;
+    private WebElement userPasswordInputField;
 
     @FindBy(xpath = "//div/button[@type='button']")
     private WebElement showPasswordButton;
@@ -28,13 +33,16 @@ public class FsbSignUpPage extends BaseForm {
     private WebElement conditions3;
 
     @FindBy(id = "personal-signup-submit")
-    private WebElement submit;
+    private WebElement signUpButton;
 
     @FindBy(xpath = "//p[@class='sc-eNQAEJ jTNZui']")
     private WebElement validationMessageForEmailField;
 
     @FindBy(xpath = "//div[@class='pass__validation-error-message']/p")
-    private WebElement validationMessageForPasswordField;
+    private WebElement validationMessageForEmptyPasswordField;
+
+    @FindBy(xpath = "//div[@class='pass__validation-error-message']/p")
+    private WebElement validationMessageForIncorrectPasswordField;
 
     @FindBy(xpath = "//p[@class='sc-eNQAEJ jTNZui']")
     private WebElement validationMessageForAlreadyExistedEmail;
@@ -42,15 +50,19 @@ public class FsbSignUpPage extends BaseForm {
     @FindBy(id = "personal-signup-conditions-error__text")
     private WebElement validationMessageForCondition1;
 
-//    @FindAll(@FindBy(how = How.CSS, using = "#personal-signup-conditions-error__text"))
-//    List<WebElementFacade> validationMessagesList;
+    @FindAll(@FindBy(how = How.CSS, using = "#personal-signup-conditions-error__text"))
+    List<WebElement> validationMessagesList;
 
-    public void fillEmailField(String email) {
-        emailField.sendKeys(email);
+    public String getSignUpPageHeadlineText() {
+        return signUpPageHeadlineText.getText();
     }
 
-    public void fillPasswordField(String password) {
-        passwordField.sendKeys(password);
+    public void enterUserEmail(String email) {
+        userEmailInputField.sendKeys(email);
+    }
+
+    public void enterUserPassword(String password) {
+        userPasswordInputField.sendKeys(password);
     }
 
     public void clickShowPasswordButton() {
@@ -73,31 +85,35 @@ public class FsbSignUpPage extends BaseForm {
         conditions3.click();
     }
 
-    public void clickSubmitButton() {
-        submit.click();
+    public void clickOnSignUpButton() {
+        signUpButton.click();
     }
 
     public String textForEmailValidation() {
         return validationMessageForEmailField.getText();
     }
 
-    public String textForPasswordValidation() {
-        return validationMessageForPasswordField.getText();
+    public String textForEmptyPasswordValidation() {
+        return validationMessageForEmptyPasswordField.getText();
     }
 
-    public WebElement getEmailField() {
-        return emailField;
+    public String textForIncorrectPasswordValidation() {
+        return validationMessageForIncorrectPasswordField.getText();
+    }
+
+    public WebElement getUserEmailInputField() {
+        return userEmailInputField;
     }
 
     public String textMessageForAlreadyExistedEmail() {
         return validationMessageForAlreadyExistedEmail.getText();
     }
 
-//    public List<String> actualConditionTextForCheckBox() {
-//        List<String> texts = new ArrayList<>();
-//        for (WebElementFacade messagesList : validationMessagesList) {
-//            texts.add(messagesList.getText());
-//        }
-//        return texts;
-//    }
+    public List<String> actualConditionTextForCheckBox() {
+        List<String> texts = new ArrayList<>();
+        for (WebElement messagesList : validationMessagesList) {
+            texts.add(messagesList.getText());
+        }
+        return texts;
+    }
 }

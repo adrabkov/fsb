@@ -7,14 +7,14 @@ import de.alectogmbh.friendsurance.automation.pages.fsb.web.FsbPersonalDetailsPa
 public class LoginStep extends BaseForm {
 
     public static void loginInApp(String email, String password) {
-        log.info("Clicking to login page");
-        new FsbPersonalDetailsPage().clickLoginButton();
-        Login login = new Login();
-        log.info("filling email field");
-        login.fillEmailField(email);
-        log.info("filling password field");
-        login.fillPasswordField(password);
-        log.info("clicking login button");
-        login.clickLoginButton();
+//        log.info("Clicking to login page");
+//        new FsbPersonalDetailsPage().clickLoginButton();
+//        Login login = new Login();
+//        log.info("filling email field");
+//        login.fillEmailField(email);
+//        log.info("filling password field");
+//        login.fillPasswordField(password);
+//        log.info("clicking login button");
+//        login.clickLoginButton();
     }
 }

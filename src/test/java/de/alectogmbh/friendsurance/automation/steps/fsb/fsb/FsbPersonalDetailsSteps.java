@@ -1,65 +1,85 @@
 package de.alectogmbh.friendsurance.automation.steps.fsb.fsb;
 
+import de.alectogmbh.friendsurance.automation.form.BaseForm;
 import de.alectogmbh.friendsurance.automation.pages.fsb.web.FsbPersonalDetailsPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
 
-public class FsbPersonalDetailsSteps {
+import static org.junit.Assert.assertEquals;
 
-    private FsbPersonalDetailsPage getPageObject;
+public class FsbPersonalDetailsSteps extends BaseForm {
 
+    private static final String EXPECTED_PERSONAL_DETAILS_HEADLINE = "Bitte geben Sie Ihre persönlichen Daten ein.";
 
-    public static void selectGender(){
-        new FsbPersonalDetailsPage().selectGender();
+    private FsbPersonalDetailsPage fsbPersonalDetailsPage = new FsbPersonalDetailsPage();
+
+    private FsbPersonalDetailsPage getPageObject() {
+        return fsbPersonalDetailsPage;
     }
 
-
-    public void enterFirstName(String firstName){
-        getPageObject.fillFirstName(firstName);
+    @Step
+    public String get_personal_details_headline_text() {
+        return getPageObject().getPersonalDetailsHeadlineText();
     }
 
-
-    public void enterLastName(String lastName){
-        getPageObject.fillLastName(lastName);
+    @Step
+    public void selectGender() {
+        getPageObject().selectGender();
     }
 
-
-    public void enterStreetName(String street){
-        getPageObject.fillStreet(street);
+    @Step
+    public void enterFirstName(String firstName) {
+        getPageObject().fillFirstName(firstName);
     }
 
-
-    public void enterBirthDate(String birth){
-        getPageObject.setBirthField(birth);
+    @Step
+    public void enterLastName(String lastName) {
+        getPageObject().fillLastName(lastName);
     }
 
-
-    public void enterHouseNumber(String house){
-        getPageObject.fillHouseNumber(house);
+    @Step
+    public void enterStreetName(String street) {
+        getPageObject().fillStreet(street);
     }
 
-
-    public void enterPostalCode(String postalCode){
-        getPageObject.fillPostalCode(postalCode);
+    @Step
+    public void enterBirthDate(String birth) {
+        getPageObject().setBirthField(birth);
     }
 
-
-    public void enterCity(String city){
-        getPageObject.fillCity(city);
+    @Step
+    public void enterHouseNumber(String house) {
+        getPageObject().fillHouseNumber(house);
     }
 
-
-    public void enterPhoneNumber(String phoneNum){
-        getPageObject.fillPhoneNumber(phoneNum);
+    @Step
+    public void enterPostalCode(String postalCode) {
+        getPageObject().fillPostalCode(postalCode);
     }
 
-
-    public void click_on_personal_details_submit_button(){
-        getPageObject.clickSubmitButton();
+    @Step
+    public void enterCity(String city) {
+        getPageObject().fillCity(city);
     }
 
+    @Step
+    public void enterPhoneNumber(String phoneNum) {
+        getPageObject().fillPhoneNumber(phoneNum);
+    }
 
-    public void verify_fifth_step_and_set_onboarding_personal_details(String firstName, String lastName, String birth, String street, String house, String postalCode, String city){
+    @Step
+    public void click_on_personal_details_submit_button() {
+        getPageObject().clickSubmitButton();
+    }
+
+    @Step
+    public void verify_personal_details_page_is_loaded_and_headline_is_present() {
+        assertEquals(EXPECTED_PERSONAL_DETAILS_HEADLINE, get_personal_details_headline_text());
+    }
+
+    @StepGroup
+    public void verify_fifth_step_and_set_onboarding_personal_details(String firstName, String lastName, String birth, String street, String house, String postalCode, String city) {
+        verify_personal_details_page_is_loaded_and_headline_is_present();
         selectGender();
         enterFirstName(firstName);
         enterLastName(lastName);
@@ -69,23 +89,5 @@ public class FsbPersonalDetailsSteps {
         enterPostalCode(postalCode);
         enterCity(city);
         click_on_personal_details_submit_button();
-
-    }
-
-
-
-    public static void fillingRequiredFields(String firstName, String lastName, String birth, String street, String house, String postalCode, String city) {
-
-        FsbPersonalDetailsPage startPage = new FsbPersonalDetailsPage();
-
-        startPage.selectGender();
-        startPage.fillFirstName(firstName);
-        startPage.fillLastName(lastName);
-        startPage.setBirthField(birth);
-        startPage.fillStreet(street);
-        startPage.fillHouseNumber(house);
-        startPage.fillPostalCode(postalCode);
-        startPage.fillCity(city);
-        startPage.clickSubmitButton();
     }
 }
