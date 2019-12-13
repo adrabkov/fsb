@@ -18,6 +18,11 @@ public class FsbPersonalDetailsSteps extends BaseForm {
     }
 
     @Step
+    public void click_login_button(){
+        new FsbPersonalDetailsPage().clickLoginButton();
+    }
+
+    @Step
     public String get_personal_details_headline_text() {
         return getPageObject().getPersonalDetailsHeadlineText();
     }

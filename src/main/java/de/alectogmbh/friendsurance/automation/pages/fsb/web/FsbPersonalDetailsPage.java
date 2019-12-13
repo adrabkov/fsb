@@ -1,10 +1,18 @@
 package de.alectogmbh.friendsurance.automation.pages.fsb.web;
 
 import de.alectogmbh.friendsurance.automation.form.BaseForm;
+import net.thucydides.core.annotations.At;
+import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import static de.alectogmbh.friendsurance.automation.pages.fsb.web.FsbPersonalDetailsPage.PERSONAL_DETAILS_PAGE_URL;
+
+@At("#HOST" + PERSONAL_DETAILS_PAGE_URL)
+@DefaultUrl(PERSONAL_DETAILS_PAGE_URL)
 public class FsbPersonalDetailsPage extends BaseForm{
+
+    final static String PERSONAL_DETAILS_PAGE_URL = "/onboarding/start";
 
     @FindBy(className = "onboarding-headline__text")
     private WebElement personalDetailsHeadlineText;

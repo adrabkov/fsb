@@ -1,31 +1,40 @@
 package de.alectogmbh.friendsurance.automation.pages.fsb.web;
 
-import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.WebElementFacade;
+import de.alectogmbh.friendsurance.automation.form.BaseForm;
+import net.thucydides.core.annotations.At;
+import net.thucydides.core.annotations.DefaultUrl;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
+import static de.alectogmbh.friendsurance.automation.pages.fsb.web.FsbFinApiWebFormPage.BANKING_PAGE_URL;
 
-public class FsbFinApiWebFormPage {
+@At("#HOST" + BANKING_PAGE_URL)
+@DefaultUrl(BANKING_PAGE_URL)
+public class FsbFinApiWebFormPage extends BaseForm {
+
+    final static String BANKING_PAGE_URL = "/onboarding/accounts/";
 
     @FindBy(id = "userId")
-    private WebElementFacade onlineBankingUserId;
+    private WebElement onlineBankingUserId;
 
     @FindBy(id = "pin")
-    private WebElementFacade onlineBankingPin;
+    private WebElement onlineBankingPin;
 
     @FindBy(id = "storeSecrets")
-    private WebElementFacade savePinCheckbox;
+    private WebElement savePinCheckbox;
 
     @FindBy(id = "btnSubmit")
-    private WebElementFacade bankDataRetrieveButton;
+    private WebElement bankDataRetrieveButton;
+
+    @FindBy(xpath = "//*[@id='twoStepProcedureId']")
+    private WebElement twoStepProcedureId;
 
     public void enterOnlineBankingInputUserId(String userId) {
-        onlineBankingUserId.waitUntilVisible();
         onlineBankingUserId.clear();
         onlineBankingUserId.sendKeys(userId);
     }
 
     public void enterOnlineBankingInputPin(String pin) {
-        onlineBankingPin.waitUntilVisible();
         onlineBankingPin.clear();
         onlineBankingPin.sendKeys(pin);
     }
@@ -39,6 +48,7 @@ public class FsbFinApiWebFormPage {
     public void clickOnBankDataRetrieveButton() {
         bankDataRetrieveButton.click();
     }
+
 }
 
 

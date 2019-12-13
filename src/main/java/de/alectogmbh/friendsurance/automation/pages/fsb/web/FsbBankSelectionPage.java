@@ -1,12 +1,19 @@
 package de.alectogmbh.friendsurance.automation.pages.fsb.web;
 
 import de.alectogmbh.friendsurance.automation.form.BaseForm;
-import de.alectogmbh.friendsurance.automation.pages.AbstractPageObject;
+import net.thucydides.core.annotations.At;
+import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import static de.alectogmbh.friendsurance.automation.pages.fsb.web.FsbBankSelectionPage.BANK_SELECTION_PAGE_URL;
+
+@At("#HOST" + BANK_SELECTION_PAGE_URL)
+@DefaultUrl(BANK_SELECTION_PAGE_URL)
 public class FsbBankSelectionPage extends BaseForm{
+
+    final static String BANK_SELECTION_PAGE_URL = "/onboarding/banks/";
 
     @FindBy(className = "bank-selection__headline_text")
     private WebElement bankSelectionHeadlineText;

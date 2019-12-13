@@ -1,13 +1,15 @@
 package de.alectogmbh.friendsurance.automation.tests.fsb.web;
 
 import de.alectogmbh.friendsurance.automation.steps.fsb.fsb.*;
-import de.alectogmbh.friendsurance.automation.tests.fsb.web.web.utils.db.DBCustomerData;
-import de.alectogmbh.friendsurance.automation.tests.fsb.web.web.utils.db.DBCustomerDataUtils;
+import de.alectogmbh.friendsurance.automation.tests.web.utils.db.DBCustomerData;
+import de.alectogmbh.friendsurance.automation.tests.web.utils.db.DBCustomerDataUtils;
+import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Steps;
 import de.alectogmbh.friendsurance.automation.tests.BaseTest;
+import org.junit.runner.RunWith;
 import org.testng.annotations.Test;
 
-
+@RunWith(SerenityRunner.class)
 public class FsbOnboardingTest extends BaseTest {
 
     private static DBCustomerData dbCustomerData = DBCustomerDataUtils.createDBCustomerData();
@@ -30,8 +32,14 @@ public class FsbOnboardingTest extends BaseTest {
     @Steps
     private FsbRetrieveBankDataStep fsbRetrieveBankDataStep = new FsbRetrieveBankDataStep();
 
+    @Steps
+    private FsbAccountStep fsbAccountStep = new FsbAccountStep();
+
+    @Steps
+    private FsbOrderOverviewSteps fsbOrderOverviewSteps = new FsbOrderOverviewSteps();
+
     @Test()
-    public void testRegistrationWithCorrectData() {
+    public void testRegistrationWithCorrectData() throws InterruptedException {
 
         fsbPersonalDetailsSteps.verify_fifth_step_and_set_onboarding_personal_details(dbCustomerData.getFirstName(), dbCustomerData.getLastName(),
                 dbCustomerData.getBirthDay(), dbCustomerData.getStreetName(), dbCustomerData.getHouseNumber(), dbCustomerData.getPostalCode(),
@@ -43,9 +51,15 @@ public class FsbOnboardingTest extends BaseTest {
 
         fsbFinApiWebFormSteps.enter_bank_login_credential_on_fin_api_web_form_and_retrieve_data(dbCustomerData.getUserId(), dbCustomerData.getPin());
 
-        fsbRetrieveBankDataStep.click_on_retrieve_bank_page_submit_button();
+//        fsbRetrieveBankDataStep.verify_retrieve_bank_page_text_and_click_submit_button();
+
+        fsbAccountStep.choose_Phone_Number_Checkbox_and_click_next_button();
+
+        fsbOrderOverviewSteps.verify_order_overview_page_is_loaded_and_headline_is_present();
 
     }
+
+
 
     @Test()
     public void testRegistrationWithAlreadyExistedUser() {

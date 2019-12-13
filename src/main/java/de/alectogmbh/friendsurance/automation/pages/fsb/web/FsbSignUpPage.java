@@ -1,6 +1,8 @@
 package de.alectogmbh.friendsurance.automation.pages.fsb.web;
 
 import de.alectogmbh.friendsurance.automation.form.BaseForm;
+import net.thucydides.core.annotations.At;
+import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
@@ -9,7 +11,13 @@ import org.openqa.selenium.support.How;
 import java.util.ArrayList;
 import java.util.List;
 
+import static de.alectogmbh.friendsurance.automation.pages.fsb.web.FsbSignUpPage.SIGN_UP_PAGE_URL;
+
+@At("#HOST" + SIGN_UP_PAGE_URL)
+@DefaultUrl(SIGN_UP_PAGE_URL)
 public class FsbSignUpPage extends BaseForm {
+
+    final static String SIGN_UP_PAGE_URL = "/onboarding/signup/";
 
     @FindBy(className = "onboarding-headline__text")
     private WebElement signUpPageHeadlineText;

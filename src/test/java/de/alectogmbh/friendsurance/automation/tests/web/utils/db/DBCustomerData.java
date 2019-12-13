@@ -1,4 +1,4 @@
-package de.alectogmbh.friendsurance.automation.tests.fsb.web.web.utils.db;
+package de.alectogmbh.friendsurance.automation.tests.web.utils.db;
 
 import lombok.Builder;
 import lombok.Getter;
