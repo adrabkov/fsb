@@ -33,7 +33,7 @@ public class FsbOverallNeedAnalysisIntroPage extends BaseForm {
     }
 
     public void clickRememberLaterButton(){
-        scroll_element_into_view(onaIntroPageButton);
+//        scroll_element_into_view(onaIntroPageButton);
 //        onaIntroPageButton.waitUntilClickable();
         rememberLaterButton.click();
     }

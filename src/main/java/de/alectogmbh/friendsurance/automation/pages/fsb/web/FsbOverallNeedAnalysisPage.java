@@ -53,7 +53,7 @@ public class FsbOverallNeedAnalysisPage extends BaseForm {
 
     public void selectMaritalStatusSingleOption() {
         waitForAnimationToFinish(getDriver(), TIME_IN_SECONDS, onaMaritalStatusSingleOption);
-        scrollToElement(onaMaritalStatusSingleOption);
+//        scrollToElement(onaMaritalStatusSingleOption);
 //        onaMaritalStatusSingleOption.waitUntilClickable();
         onaMaritalStatusSingleOption.click();
     }
@@ -71,33 +71,33 @@ public class FsbOverallNeedAnalysisPage extends BaseForm {
     }
 
     public void clickOnaSaveChildrenStatusAndGoNextButton() {
-        scroll_element_into_view(onaSaveChildrenStatusAndGoToNextStep);
+//        scroll_element_into_view(onaSaveChildrenStatusAndGoToNextStep);
 //        onaSaveChildrenStatusAndGoToNextStep.waitUntilClickable();
         onaSaveChildrenStatusAndGoToNextStep.click();
     }
 
     public void selectProfessionStatus() {
         waitForAnimationToFinish(getDriver(), TIME_IN_SECONDS, onaProfessionStatus);
-        scrollToElement(onaProfessionStatus);
+//        scrollToElement(onaProfessionStatus);
 //        onaProfessionStatus.waitUntilClickable();
         onaProfessionStatus.click();
     }
 
     public void clickOnaSaveProfessionStatusAndGoNextButton() {
-        scroll_element_into_view(onaSaveProfessionStatusAndGoToNextStep);
+//        scroll_element_into_view(onaSaveProfessionStatusAndGoToNextStep);
 //        onaSaveProfessionStatusAndGoToNextStep.waitUntilClickable();
         onaSaveProfessionStatusAndGoToNextStep.click();
     }
 
     public void selectInsuranceType() {
         waitForAnimationToFinish(getDriver(), TIME_IN_SECONDS, publicInsurance);
-        scrollToElement(publicInsurance);
+//        scrollToElement(publicInsurance);
 //        publicInsurance.waitUntilClickable();
         publicInsurance.click();
     }
 
     public void clickOnaSaveInsuranceTypeAndGoNextButton() {
-        scroll_element_into_view(onaSaveInsuranceStatusAndGoToNextStep);
+//        scroll_element_into_view(onaSaveInsuranceStatusAndGoToNextStep);
 //        onaSaveInsuranceStatusAndGoToNextStep.waitUntilClickable();
         onaSaveInsuranceStatusAndGoToNextStep.click();
     }
@@ -114,7 +114,7 @@ public class FsbOverallNeedAnalysisPage extends BaseForm {
     }
 
     public void clickOnaSaveLivingConditionsAndGoToSummaryButton() {
-        scroll_element_into_view(onaSaveLivingConditionStatusAndGoToSummary);
+//        scroll_element_into_view(onaSaveLivingConditionStatusAndGoToSummary);
 //        onaSaveLivingConditionStatusAndGoToSummary.waitUntilClickable();
         onaSaveLivingConditionStatusAndGoToSummary.click();
     }

@@ -40,15 +40,28 @@ public class FsbAddContractTest extends BaseTest {
     @Steps
     private FsbAccountStep fsbAccountStep = new FsbAccountStep();
 
+    @Steps
+    private FsbEditOrderSteps fsbEditOrderSteps = new FsbEditOrderSteps();
+
     @Test
     public void addExistingInsuranceContracts() {
         DBCustomerData dbCustomerData = DBCustomerDataUtils.createDBCustomerData();
 
         OnboardUserWithBankCredentials(dbCustomerData);
 
+        fsbOrderOverviewSteps.verify_order_overview_page_and_click_on_missing_info_order_item_one();
+
+        fsbEditOrderSteps.verify_edit_order_page_for_item_one_and_click_on_delete_order_item_link();
+
+        fsbOrderOverviewSteps.verify_order_items_after_deleting_one_item_and_click_on_error_order_two();
+
+        fsbEditOrderSteps.verify_edit_order_page_for_item_two_and_click_on_delete_order_item_link();
+
         fsbOrderOverviewSteps.verify_order_overview_page_and_click_on_contracts_submit_button();
 
         fsbSignOrderStep.verify_sign_authorization_and_submit_order_items();
+
+
 
     }
 

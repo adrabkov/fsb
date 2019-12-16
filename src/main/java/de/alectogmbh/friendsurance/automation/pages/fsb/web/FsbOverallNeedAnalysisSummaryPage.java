@@ -33,14 +33,14 @@ public class FsbOverallNeedAnalysisSummaryPage extends BaseForm {
     public String getOnaSummaryPageHeadlineText() {
         waitForAnimationToFinish(getDriver(), TIME_IN_SECONDS, onaSummaryPageHeadlineText);
 //        onaSummaryPageHeadlineText.waitUntilVisible();
-        scrollToElement(onaSummaryPageHeadlineText);
+//        scrollToElement(onaSummaryPageHeadlineText);
         return onaSummaryPageHeadlineText.getText();
     }
 
     public void clickOnSaveOnaButton() {
         waitForAnimationToFinish(getDriver(), TIME_IN_SECONDS, onaSaveButton);
 //        onaSaveButton.waitUntilVisible();
-        scroll_element_into_view(onaSaveButton);
+//        scroll_element_into_view(onaSaveButton);
 //        onaSaveButton.waitUntilClickable();
         onaSaveButton.click();
     }

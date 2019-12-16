@@ -8,7 +8,6 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 import static de.alectogmbh.friendsurance.automation.pages.fsb.web.FsbOrderOverviewPage.ORDER_OVERVIEW_PAGE;
-import static java.util.concurrent.TimeUnit.SECONDS;
 
 @At("#HOST" + ORDER_OVERVIEW_PAGE)
 @DefaultUrl(ORDER_OVERVIEW_PAGE)
@@ -34,10 +33,16 @@ public class FsbOrderOverviewPage extends BaseForm {
     private WebElement headerLogoutLink;
 
     @FindBy(id = "order-item-card-policynumber-error")
-    private WebElement errorOrderItemCard;
+    private WebElement errorOrderItemOne;
+
+    @FindBy(id = "order-item-card-policynumber-error")
+    private WebElement errorOrderItemTwo;
 
     @FindBy(className = "order-item-card__container")
     private List<WebElement> orderItems;
+
+    @FindBy(className = "order-item-card-policynumber-error")
+    private List<WebElement>orderItemsWithError;
 
 
     public String getOrderOverviewHeadlineText() {
@@ -46,11 +51,16 @@ public class FsbOrderOverviewPage extends BaseForm {
     }
 
     public void clickOnMissingInfoOrderItemFirstLink() {
-        errorOrderItemCard.click();
+        errorOrderItemOne.click();
+    }
+
+    public void clickOnMissingInfoOrderItemSecondLink() {
+//        errorOrderItemTwo.waitUntilClickable();
+        errorOrderItemTwo.click();
     }
 
     public void clickOnAddContractButton() {
-        scroll_element_into_view(addContractButton);
+//        scroll_element_into_view(addContractButton);
 //        addContractButton.waitUntilClickable();
         addContractButton.click();
     }
@@ -59,22 +69,25 @@ public class FsbOrderOverviewPage extends BaseForm {
         return orderItems.size();
     }
 
+    public int getNumberOfErrorOrderItemTwo(){
+        return orderItemsWithError.size();
+    }
+
     public void clickOverviewPageSubmitButton() {
-        scrollToElement(overviewPageSubmitButton);
+//        scrollToElement(overviewPageSubmitButton);
 //        overviewPageSubmitButton.waitUntilClickable();
         overviewPageSubmitButton.click();
     }
 
     public void clickOnHeaderProfileLink() {
 //        headerProfileLink.waitUntilVisible();
-        scrollToElement(headerProfileLink);
+//        scrollToElement(headerProfileLink);
 //        headerProfileLink.waitUntilClickable();
         headerProfileLink.click();
     }
 
     public void clickOnHeaderLogoutLink() {
 //        headerLogoutLink.waitUntilVisible();
-        scrollToElement(headerLogoutLink);
 //        headerLogoutLink.waitUntilClickable();
         headerLogoutLink.click();
     }

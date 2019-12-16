@@ -15,15 +15,5 @@ public abstract class BaseForm {
         PageFactory.initElements(DriverHolder.getInstance(), this);
     }
 
-    public void scroll_element_into_view(WebElement element) {
-        int Y = (element.getLocation().getY() - 300);
-        JavascriptExecutor js = (JavascriptExecutor) getDriver();
-        js.executeScript("javascript:window.scrollTo(0," + Y + ");");
-    }
 
-    public void scrollToElement(WebElement webElement) {
-        Actions actions = new Actions(getDriver());
-        actions.moveToElement(webElement);
-        actions.perform();
-    }
 }

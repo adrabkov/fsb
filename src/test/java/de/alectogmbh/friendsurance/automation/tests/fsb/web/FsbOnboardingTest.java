@@ -39,7 +39,7 @@ public class FsbOnboardingTest extends BaseTest {
     private FsbOrderOverviewSteps fsbOrderOverviewSteps = new FsbOrderOverviewSteps();
 
     @Test()
-    public void testRegistrationWithCorrectData() throws InterruptedException {
+    public void testRegistrationWithCorrectData() {
 
         fsbPersonalDetailsSteps.verify_fifth_step_and_set_onboarding_personal_details(dbCustomerData.getFirstName(), dbCustomerData.getLastName(),
                 dbCustomerData.getBirthDay(), dbCustomerData.getStreetName(), dbCustomerData.getHouseNumber(), dbCustomerData.getPostalCode(),

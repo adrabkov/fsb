@@ -46,14 +46,14 @@ public class FsbAddContractPage extends BaseForm {
 
     public void selectInsuranceCategoryByText(String insuranceCategory) {
 //        inputInsuranceCategory.waitUntilPresent();
-        scrollToElement(inputInsuranceCategory);
+//        scrollToElement(inputInsuranceCategory);
         inputInsuranceCategory.sendKeys(insuranceCategory);
         inputInsuranceCategory.sendKeys(Keys.RETURN);
     }
 
     public void selectInsuranceCompanyByText(String insuranceCompany) {
 //        inputInsuranceCompany.waitUntilPresent();
-        scrollToElement(inputInsuranceCompany);
+//        scrollToElement(inputInsuranceCompany);
         inputInsuranceCompany.sendKeys(insuranceCompany);
         inputInsuranceCompany.sendKeys(Keys.RETURN);
     }
@@ -70,13 +70,13 @@ public class FsbAddContractPage extends BaseForm {
 
     public void selectPaymentIntervalByText(String paymentInterval) {
 //        inputPaymentInterval.waitUntilPresent();
-        scrollToElement(inputPaymentInterval);
+//        scrollToElement(inputPaymentInterval);
         inputPaymentInterval.sendKeys(paymentInterval);
         inputPaymentInterval.sendKeys(Keys.RETURN);
     }
 
     public void clickAddContractGoNextButton() {
-        scrollToElement(addContractNextButton);
+//        scrollToElement(addContractNextButton);
 //        addContractNextButton.waitUntilClickable();
         addContractNextButton.click();
     }

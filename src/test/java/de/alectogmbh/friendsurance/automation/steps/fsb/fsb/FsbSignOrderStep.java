@@ -11,7 +11,7 @@ public class FsbSignOrderStep {
 
     private static final String EXPECTED_SIGN_UP_PAGE_HEADLINE = "E-Mail eingeben, Passwort festlegen und geschafft!";
 
-    private FsbSignOrderPage fsbSignOrderPage;
+    private FsbSignOrderPage fsbSignOrderPage = new FsbSignOrderPage();
 
     public FsbSignOrderPage getPageObject() {
         return fsbSignOrderPage;
