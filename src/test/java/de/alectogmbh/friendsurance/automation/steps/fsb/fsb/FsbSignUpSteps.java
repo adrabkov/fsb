@@ -2,7 +2,7 @@ package de.alectogmbh.friendsurance.automation.steps.fsb.fsb;
 
 import de.alectogmbh.friendsurance.automation.pages.fsb.web.FsbSignUpPage;
 import de.alectogmbh.friendsurance.automation.requirements.ValidationMessages;
-import de.alectogmbh.friendsurance.automation.tests.BaseTest;
+import de.alectogmbh.friendsurance.automation.steps.AbstractScenarioSteps;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
 
@@ -10,7 +10,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class FsbSignUpSteps extends BaseTest {
+public class FsbSignUpSteps extends AbstractScenarioSteps <FsbSignUpPage>{
 
     private static ValidationMessages validationMessages = new ValidationMessages();
     private static final String EXPECTED_SIGN_UP_PAGE_HEADLINE = validationMessages.getText_for_sign_up_page_headline();
@@ -21,9 +21,9 @@ public class FsbSignUpSteps extends BaseTest {
     private static final List<String> EXPECTED_CONDITION_TEXT = validationMessages.getConditionText();
     private static final String EXPECTED_ATTRIBUTE = "active";
 
-    private FsbSignUpPage fsbSignUpPage = new FsbSignUpPage();
+    private FsbSignUpPage fsbSignUpPage;
 
-    private FsbSignUpPage getPageObject() {
+    public FsbSignUpPage getPageObject() {
         return fsbSignUpPage;
     }
 

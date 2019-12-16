@@ -4,13 +4,12 @@ import de.alectogmbh.friendsurance.automation.pages.fsb.web.FsbPersonalDetailsPa
 import de.alectogmbh.friendsurance.automation.steps.fsb.fsb.FsbDashboardSteps;
 import de.alectogmbh.friendsurance.automation.steps.fsb.fsb.FsbEmailLoginSteps;
 import de.alectogmbh.friendsurance.automation.steps.fsb.fsb.FsbForgetPasswordSteps;
-import de.alectogmbh.friendsurance.automation.tests.BaseTest;
 import de.alectogmbh.friendsurance.automation.tests.web.utils.db.DBCustomerData;
 import de.alectogmbh.friendsurance.automation.tests.web.utils.db.DBCustomerDataUtils;
 import net.thucydides.core.annotations.Steps;
 import org.testng.annotations.Test;
 
-public class FsbForgetPasswordTest extends BaseTest {
+public class FsbForgetPasswordTest {
 
     private static final String
             EXPECTED_SUCCESS_BANNER_TEXT =

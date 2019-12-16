@@ -1,6 +1,7 @@
 package de.alectogmbh.friendsurance.automation.pages.fsb.web;
 
 import de.alectogmbh.friendsurance.automation.form.BaseForm;
+import de.alectogmbh.friendsurance.automation.pages.AbstractPageObject;
 import net.thucydides.core.annotations.At;
 import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.WebElement;
@@ -15,7 +16,7 @@ import static de.alectogmbh.friendsurance.automation.pages.fsb.web.FsbSignUpPage
 
 @At("#HOST" + SIGN_UP_PAGE_URL)
 @DefaultUrl(SIGN_UP_PAGE_URL)
-public class FsbSignUpPage extends BaseForm {
+public class FsbSignUpPage extends AbstractPageObject {
 
     final static String SIGN_UP_PAGE_URL = "/onboarding/signup/";
 

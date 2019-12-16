@@ -1,6 +1,7 @@
 package de.alectogmbh.friendsurance.automation.pages.fsb.web;
 
 import de.alectogmbh.friendsurance.automation.form.BaseForm;
+import de.alectogmbh.friendsurance.automation.pages.AbstractPageObject;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.thucydides.core.annotations.At;
 import net.thucydides.core.annotations.DefaultUrl;
@@ -11,7 +12,7 @@ import static de.alectogmbh.friendsurance.automation.pages.fsb.web.FsbAddContrac
 
 @At("#HOST" + ADD_CONTRACT_PAGE_URL)
 @DefaultUrl(ADD_CONTRACT_PAGE_URL)
-public class FsbAddContractPage extends BaseForm {
+public class FsbAddContractPage extends AbstractPageObject {
 
     final static String ADD_CONTRACT_PAGE_URL = "/addcontract/add-order/";
 

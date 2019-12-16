@@ -5,6 +5,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.At;
 import net.thucydides.core.annotations.DefaultUrl;
 
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import static de.alectogmbh.friendsurance.automation.pages.fsb.web.FsbAccountPage.ONBOARDING_ACCOUNT_PAGE_URL;
@@ -20,7 +21,7 @@ public class FsbAccountPage extends BaseForm {
     private WebElementFacade bankAccountNextButton;
 
     @FindBy(id = "$-acceptPhoneNumber-checkbox__span")
-    private WebElementFacade acceptPhoneNumberCheckbox;
+    private WebElement acceptPhoneNumberCheckbox;
 
     public void clickBankAccountNextButton(){
         bankAccountNextButton.click();

@@ -1,5 +1,6 @@
 package de.alectogmbh.friendsurance.automation.tests;
 
+import de.alectogmbh.friendsurance.automation.driver.DriverHolder;
 import de.alectogmbh.friendsurance.automation.steps.AbstractScenarioSteps;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.ManagedPages;
@@ -16,10 +17,12 @@ public abstract class AbstractScenarioTest <T extends AbstractScenarioSteps>{
     @Before
     public void settingTimeout() {
         webdriver.manage().timeouts().pageLoadTimeout(PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
+        webdriver.manage().window().maximize();
+        webdriver.get("https://fsb.fsb1.safeties.de");
     }
 
     @Managed(uniqueSession = true)
-    public WebDriver webdriver;
+    public WebDriver webdriver = DriverHolder.getInstance();
 
     @ManagedPages
     public Pages pages;

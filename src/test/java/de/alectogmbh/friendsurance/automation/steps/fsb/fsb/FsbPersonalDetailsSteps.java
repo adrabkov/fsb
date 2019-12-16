@@ -1,25 +1,30 @@
 package de.alectogmbh.friendsurance.automation.steps.fsb.fsb;
 
-import de.alectogmbh.friendsurance.automation.form.BaseForm;
 import de.alectogmbh.friendsurance.automation.pages.fsb.web.FsbPersonalDetailsPage;
+import de.alectogmbh.friendsurance.automation.steps.AbstractScenarioSteps;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
 
 import static org.junit.Assert.assertEquals;
 
-public class FsbPersonalDetailsSteps extends BaseForm {
+public class FsbPersonalDetailsSteps extends AbstractScenarioSteps<FsbPersonalDetailsPage> {
 
     private static final String EXPECTED_PERSONAL_DETAILS_HEADLINE = "Bitte geben Sie Ihre persönlichen Daten ein.";
 
-    private FsbPersonalDetailsPage fsbPersonalDetailsPage = new FsbPersonalDetailsPage();
+    private FsbPersonalDetailsPage fsbPersonalDetailsPage;
 
-    private FsbPersonalDetailsPage getPageObject() {
+    public FsbPersonalDetailsPage getPageObject() {
         return fsbPersonalDetailsPage;
     }
 
+//    @Step
+//    public void open_onboarding_first_step() {
+//        getPageObject().open();
+//    }
+
     @Step
     public void click_login_button(){
-        new FsbPersonalDetailsPage().clickLoginButton();
+        getPageObject().clickLoginButton();
     }
 
     @Step
@@ -84,6 +89,7 @@ public class FsbPersonalDetailsSteps extends BaseForm {
 
     @StepGroup
     public void verify_fifth_step_and_set_onboarding_personal_details(String firstName, String lastName, String birth, String street, String house, String postalCode, String city) {
+//        open_onboarding_first_step();
         verify_personal_details_page_is_loaded_and_headline_is_present();
         selectGender();
         enterFirstName(firstName);

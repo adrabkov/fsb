@@ -1,12 +1,13 @@
 package de.alectogmbh.friendsurance.automation.steps.fsb.fsb;
 
 import de.alectogmbh.friendsurance.automation.pages.fsb.web.FsbAddContractPage;
+import de.alectogmbh.friendsurance.automation.steps.AbstractScenarioSteps;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
 
 import static org.junit.Assert.assertEquals;
 
-public class FsbAddContractSteps {
+public class FsbAddContractSteps extends AbstractScenarioSteps<FsbAddContractPage> {
 
     private static final String EXPECTED_ADD_CONTRACT_PAGE_HEADLINE = "Ein Stück mehr Sicherheit hinzufügen.";
 

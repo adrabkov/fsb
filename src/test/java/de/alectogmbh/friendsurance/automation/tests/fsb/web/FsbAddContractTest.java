@@ -1,14 +1,14 @@
 package de.alectogmbh.friendsurance.automation.tests.fsb.web;
 
 import de.alectogmbh.friendsurance.automation.steps.fsb.fsb.*;
-import de.alectogmbh.friendsurance.automation.tests.BaseTest;
+import de.alectogmbh.friendsurance.automation.tests.AbstractScenarioTest;
 import de.alectogmbh.friendsurance.automation.tests.web.utils.db.DBCustomerData;
 import de.alectogmbh.friendsurance.automation.tests.web.utils.db.DBCustomerDataUtils;
 import net.thucydides.core.annotations.Steps;
 import org.testng.annotations.Test;
 
 
-public class FsbAddContractTest extends BaseTest {
+public class FsbAddContractTest extends AbstractScenarioTest<FsbAddContractSteps> {
 
     @Steps
     private FsbOrderOverviewSteps fsbOrderOverviewSteps = new FsbOrderOverviewSteps();
@@ -83,4 +83,7 @@ public class FsbAddContractTest extends BaseTest {
         fsbOrderOverviewSteps.verify_order_overview_page_is_loaded_and_headline_is_present();
     }
 
+    protected FsbAddContractSteps getSteps() {
+        return fsbAddContractSteps;
+    }
 }
