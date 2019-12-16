@@ -1,7 +1,6 @@
 package de.alectogmbh.friendsurance.automation.pages.fsb.web;
 
 import de.alectogmbh.friendsurance.automation.form.BaseForm;
-import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.At;
 import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.WebElement;
@@ -25,15 +24,18 @@ public class FsbForgetPasswordPage extends BaseForm {
     private WebElement successToastBanner;
 
     public void enterUserEmail(String email) {
+//        forgetPasswordEmailField.waitUntilVisible();
         forgetPasswordEmailField.clear();
         forgetPasswordEmailField.sendKeys(email);
     }
 
     public void clickOnSendButtonToTriggerEmail() {
+//        forgetPasswordButton.waitUntilClickable();
         forgetPasswordButton.click();
     }
 
     public String getToastBannerText() {
+//        successToastBanner.waitUntilVisible();
         return successToastBanner.getText();
     }
 

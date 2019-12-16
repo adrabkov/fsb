@@ -33,24 +33,30 @@ public class FsbEmailLoginPage extends BaseForm {
     @FindBy(id = "user-login__button")
     private WebElement userLoginButton;
 
-
     public String getLoginPageHeadlineText() {
+//        loginPageHeadlineText.waitUntilVisible();
         return loginPageHeadlineText.getText();
     }
 
     public void clickOnForgetPasswordLink() {
+//        forgotPasswordLink.waitUntilClickable();
         forgotPasswordLink.click();
     }
 
     public void enterUserLoginEmail(String email) {
+//        userLoginEmailInputField.waitUntilVisible();
+        userLoginEmailInputField.clear();
         userLoginEmailInputField.sendKeys(email);
     }
 
     public void enterUserLoginPassword(String password) {
+//        userLoginPasswordInputField.waitUntilVisible();
+        userLoginPasswordInputField.clear();
         userLoginPasswordInputField.sendKeys(password);
     }
 
     public void clickOnUserLoginButton() {
+//        userLoginButton.waitUntilClickable();
         userLoginButton.click();
     }
 

@@ -35,10 +35,15 @@ public class FsbSignOrderPage extends BaseForm {
 
     public void sign() {
         waitUntilAutoScrollStops(getDriver(), SCROLL_WAIT_TIME_IN_SECONDS);
+//        signatureCanvas.waitUntilPresent();
+//        loading.waitUntilNotVisible();
+        scroll_element_into_view(signatureCanvas);
         signWithDummySignature(getDriver(), signatureCanvas, ITERATION_COUNT);
     }
 
     public void clickSignOrderSubmitButton() {
+        scrollToElement(signOrderSubmitButton);
+//        signOrderSubmitButton.waitUntilClickable();
         signOrderSubmitButton.click();
     }
 

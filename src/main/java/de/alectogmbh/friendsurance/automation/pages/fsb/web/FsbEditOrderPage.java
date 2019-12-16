@@ -34,19 +34,27 @@ public class FsbEditOrderPage extends BaseForm {
     private WebElement saveContractDetailsButton;
 
     public String getEditOrderPageHeadlineText(){
+//        editOrderPageHeadlineText.waitUntilVisible();
         return editOrderPageHeadlineText.getText();
     }
 
     public void clickOnDeleteOrderItemLink(){
+//        deleteOrderItemLink.waitUntilVisible();
+        scrollToElement(deleteOrderItemLink);
+//        deleteOrderItemLink.waitUntilClickable();
         deleteOrderItemLink.click();
     }
 
     public void selectInsuranceCategoryByText(String insuranceCategory){
+//        inputInsuranceCategory.waitUntilPresent();
+        scrollToElement(inputInsuranceCategory);
         inputInsuranceCategory.sendKeys(insuranceCategory);
         inputInsuranceCategory.sendKeys(Keys.RETURN);
     }
 
     public void selectInsuranceCompanyByText(String insuranceCompany){
+//        inputInsuranceCompany.waitUntilPresent();
+        scrollToElement(inputInsuranceCompany);
         inputInsuranceCompany.sendKeys(insuranceCompany);
         inputInsuranceCompany.sendKeys(Keys.RETURN);
     }
@@ -57,6 +65,9 @@ public class FsbEditOrderPage extends BaseForm {
     }
 
     public void clickOnSaveContractDetailsButton(){
+//        saveContractDetailsButton.waitUntilVisible();
+        scrollToElement(saveContractDetailsButton);
+//        saveContractDetailsButton.waitUntilClickable();
         saveContractDetailsButton.click();
     }
 

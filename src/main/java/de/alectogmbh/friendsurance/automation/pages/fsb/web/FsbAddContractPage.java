@@ -40,15 +40,20 @@ public class FsbAddContractPage extends BaseForm {
     private WebElement backNavigationLink;
 
     public String getAddContractPageHeadline() {
+//        addContractPageHeadLine.waitUntilVisible();
         return addContractPageHeadLine.getText();
     }
 
     public void selectInsuranceCategoryByText(String insuranceCategory) {
+//        inputInsuranceCategory.waitUntilPresent();
+        scrollToElement(inputInsuranceCategory);
         inputInsuranceCategory.sendKeys(insuranceCategory);
         inputInsuranceCategory.sendKeys(Keys.RETURN);
     }
 
     public void selectInsuranceCompanyByText(String insuranceCompany) {
+//        inputInsuranceCompany.waitUntilPresent();
+        scrollToElement(inputInsuranceCompany);
         inputInsuranceCompany.sendKeys(insuranceCompany);
         inputInsuranceCompany.sendKeys(Keys.RETURN);
     }
@@ -64,11 +69,15 @@ public class FsbAddContractPage extends BaseForm {
     }
 
     public void selectPaymentIntervalByText(String paymentInterval) {
+//        inputPaymentInterval.waitUntilPresent();
+        scrollToElement(inputPaymentInterval);
         inputPaymentInterval.sendKeys(paymentInterval);
         inputPaymentInterval.sendKeys(Keys.RETURN);
     }
 
     public void clickAddContractGoNextButton() {
+        scrollToElement(addContractNextButton);
+//        addContractNextButton.waitUntilClickable();
         addContractNextButton.click();
     }
 

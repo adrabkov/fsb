@@ -36,10 +36,10 @@ public class FsbFinApiWebFormSteps {
 
 
 
-    @Step
-    public void verify_online_banking_user_id_field_is_not_displayed(){
-        assertTrue(getPageObject().getTwoStepProcedureId().isDisplayed());
-    }
+//    @Step
+//    public void verify_online_banking_user_id_field_is_not_displayed(){
+//        assertTrue(getPageObject().getTwoStepProcedureId().isDisplayed());
+//    }
 
     @StepGroup
     public void enter_bank_login_credential_on_fin_api_web_form_and_retrieve_data(String userID, String pin) {
@@ -47,7 +47,7 @@ public class FsbFinApiWebFormSteps {
         enter_online_banking_input_pin(pin);
         check_save_pin_checkbox();
         click_on_bank_data_retrieve_button();
-        verify_online_banking_user_id_field_is_not_displayed();
+//        verify_online_banking_user_id_field_is_not_displayed();
         click_on_bank_data_retrieve_button();
     }
 

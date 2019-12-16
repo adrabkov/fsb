@@ -37,6 +37,7 @@ public class FsbBankSelectionPage extends BaseForm{
     private WebElement dashboardFromBankSelection;
 
     public String getBankSelectionHeadlineText() {
+//        bankSelectionHeadlineText.waitUntilVisible();
         return bankSelectionHeadlineText.getText();
     }
 
@@ -49,6 +50,7 @@ public class FsbBankSelectionPage extends BaseForm{
     }
 
     public void selectBankNameByText(String bankName) {
+//        scrollToElement(bankNameSelector);
         bankNameSelector.click();
         bankNameSelector.sendKeys(bankName);
         bankNameSelector.sendKeys(Keys.RETURN);

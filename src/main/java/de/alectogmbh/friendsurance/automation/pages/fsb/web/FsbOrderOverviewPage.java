@@ -8,12 +8,15 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 import static de.alectogmbh.friendsurance.automation.pages.fsb.web.FsbOrderOverviewPage.ORDER_OVERVIEW_PAGE;
+import static java.util.concurrent.TimeUnit.SECONDS;
 
 @At("#HOST" + ORDER_OVERVIEW_PAGE)
 @DefaultUrl(ORDER_OVERVIEW_PAGE)
 public class FsbOrderOverviewPage extends BaseForm {
 
     final static String ORDER_OVERVIEW_PAGE = "/addcontract/order-overview/";
+
+    private static final int SPINNER_TIMEOUT = 90;
 
     @FindBy(className = "overview-insurance-order__headline_text")
     private WebElement orderOverviewHeadlineText;
@@ -38,6 +41,7 @@ public class FsbOrderOverviewPage extends BaseForm {
 
 
     public String getOrderOverviewHeadlineText() {
+//        orderOverviewHeadlineText.waitUntilVisible();
         return orderOverviewHeadlineText.getText();
     }
 
@@ -46,6 +50,8 @@ public class FsbOrderOverviewPage extends BaseForm {
     }
 
     public void clickOnAddContractButton() {
+        scroll_element_into_view(addContractButton);
+//        addContractButton.waitUntilClickable();
         addContractButton.click();
     }
 
@@ -54,14 +60,22 @@ public class FsbOrderOverviewPage extends BaseForm {
     }
 
     public void clickOverviewPageSubmitButton() {
+        scrollToElement(overviewPageSubmitButton);
+//        overviewPageSubmitButton.waitUntilClickable();
         overviewPageSubmitButton.click();
     }
 
     public void clickOnHeaderProfileLink() {
+//        headerProfileLink.waitUntilVisible();
+        scrollToElement(headerProfileLink);
+//        headerProfileLink.waitUntilClickable();
         headerProfileLink.click();
     }
 
     public void clickOnHeaderLogoutLink() {
+//        headerLogoutLink.waitUntilVisible();
+        scrollToElement(headerLogoutLink);
+//        headerLogoutLink.waitUntilClickable();
         headerLogoutLink.click();
     }
 
