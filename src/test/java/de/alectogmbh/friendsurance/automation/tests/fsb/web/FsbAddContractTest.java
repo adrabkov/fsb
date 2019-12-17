@@ -4,47 +4,56 @@ import de.alectogmbh.friendsurance.automation.steps.fsb.fsb.*;
 import de.alectogmbh.friendsurance.automation.tests.AbstractScenarioTest;
 import de.alectogmbh.friendsurance.automation.tests.web.utils.db.DBCustomerData;
 import de.alectogmbh.friendsurance.automation.tests.web.utils.db.DBCustomerDataUtils;
+import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Steps;
-import org.testng.annotations.Test;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
-
-public class FsbAddContractTest extends AbstractScenarioTest<FsbAddContractSteps> {
-
-    @Steps
-    private FsbOrderOverviewSteps fsbOrderOverviewSteps = new FsbOrderOverviewSteps();
+@RunWith(SerenityRunner.class)
+public class FsbAddContractTest extends AbstractScenarioTest<FsbPersonalDetailsSteps> {
 
     @Steps
-    private FsbAddContractSteps fsbAddContractSteps = new FsbAddContractSteps();
+    private FsbOrderOverviewSteps fsbOrderOverviewSteps;
 
     @Steps
-    private FsbSignOrderStep fsbSignOrderStep = new FsbSignOrderStep();
+    private FsbAddContractSteps fsbAddContractSteps;
 
     @Steps
-    private FsbPersonalDetailsSteps fsbPersonalDetailsSteps = new FsbPersonalDetailsSteps();
+    private FsbSignOrderSteps fsbSignOrderSteps;
 
     @Steps
-    private FsbSignUpSteps fsbSignUpSteps = new FsbSignUpSteps();
+    private FsbPersonalDetailsSteps fsbPersonalDetailsSteps;
 
     @Steps
-    private FsbBankSelectionSteps fsbBankSelectionSteps = new FsbBankSelectionSteps();
+    private FsbSignUpSteps fsbSignUpSteps;
 
     @Steps
-    private FsbFinApiWebFormSteps fsbFinApiWebFormSteps = new FsbFinApiWebFormSteps();
+    private FsbBankSelectionSteps fsbBankSelectionSteps;
 
     @Steps
-    private FsbDashboardSteps fsbDashboardSteps = new FsbDashboardSteps();
+    private FsbFinApiWebFormSteps fsbFinApiWebFormSteps;
 
     @Steps
-    private FsbRetrieveBankDataStep fsbRetrieveBankDataStep = new FsbRetrieveBankDataStep();
+    private FsbDashboardSteps fsbDashboardSteps;
 
     @Steps
-    private FsbAccountStep fsbAccountStep = new FsbAccountStep();
+    private FsbRetrieveBankDataStep fsbRetrieveBankDataStep;
 
     @Steps
-    private FsbEditOrderSteps fsbEditOrderSteps = new FsbEditOrderSteps();
+    private FsbAccountStep fsbAccountStep;
+
+    @Steps
+    private FsbEditOrderSteps fsbEditOrderSteps;
+
+    @Steps
+    private FsbOverallNeedAnalysisIntroSteps fsbOverallNeedAnalysisIntroSteps;
+
+    protected FsbPersonalDetailsSteps getSteps() {
+        return fsbPersonalDetailsSteps;
+    }
 
     @Test
-    public void addExistingInsuranceContracts() {
+    public void addExistingInsuranceContracts() throws InterruptedException {
         DBCustomerData dbCustomerData = DBCustomerDataUtils.createDBCustomerData();
 
         OnboardUserWithBankCredentials(dbCustomerData);
@@ -57,33 +66,33 @@ public class FsbAddContractTest extends AbstractScenarioTest<FsbAddContractSteps
 
         fsbEditOrderSteps.verify_edit_order_page_for_item_two_and_click_on_delete_order_item_link();
 
-        fsbOrderOverviewSteps.verify_order_overview_page_and_click_on_contracts_submit_button();
+        fsbOrderOverviewSteps.verify_order_items_after_deleting_error_items_and_click_on_add_contract_button();
 
-        fsbSignOrderStep.verify_sign_authorization_and_submit_order_items();
+        fsbAddContractSteps.verify_add_contract_page_enter_policy_details_and_go_next();
 
+        fsbOrderOverviewSteps.verify_order_items_after_adding_contract_and_click_on_overview_page_submit_button();
 
+        fsbSignOrderSteps.verify_sign_authorization_and_submit_order_items();
+
+        fsbOverallNeedAnalysisIntroSteps.verify_ona_intro_page_is_loaded_after_addcontract_flow_during_onboarding();
 
     }
 
-    private void OnboardUserWithBankCredentials(DBCustomerData dbCustomerData){
+    private void OnboardUserWithBankCredentials(DBCustomerData dbCustomerData) throws InterruptedException {
         fsbPersonalDetailsSteps.verify_fifth_step_and_set_onboarding_personal_details(dbCustomerData.getFirstName(), dbCustomerData.getLastName(),
                 dbCustomerData.getBirthDay(), dbCustomerData.getStreetName(), dbCustomerData.getHouseNumber(), dbCustomerData.getPostalCode(),
                 dbCustomerData.getPlace());
 
         fsbSignUpSteps.verify_second_step_and_go_to_next_step(dbCustomerData.getEmail(), dbCustomerData.getPassword());
+        Thread.sleep(10000);
 
         fsbBankSelectionSteps.verify_bank_step_select_bank_and_click_on_next_button();
 
         fsbFinApiWebFormSteps.enter_bank_login_credential_on_fin_api_web_form_and_retrieve_data(dbCustomerData.getUserId(), dbCustomerData.getPin());
 
-        fsbRetrieveBankDataStep.click_on_retrieve_bank_page_submit_button();
+        fsbAccountStep.choose_Phone_Number_Checkbox_and_click_next_button();
 
-        fsbAccountStep.click_on_bank_account_next_button();
+        Thread.sleep(10000);
 
-        fsbOrderOverviewSteps.verify_order_overview_page_is_loaded_and_headline_is_present();
-    }
-
-    protected FsbAddContractSteps getSteps() {
-        return fsbAddContractSteps;
     }
 }

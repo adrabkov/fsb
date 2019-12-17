@@ -1,44 +1,32 @@
 package de.alectogmbh.friendsurance.automation.pages.fsb.web;
 
-import de.alectogmbh.friendsurance.automation.form.BaseForm;
+import de.alectogmbh.friendsurance.automation.pages.AbstractPageObject;
+import net.serenitybdd.core.annotations.findby.FindBy;
+import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.At;
 import net.thucydides.core.annotations.DefaultUrl;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 import static de.alectogmbh.friendsurance.automation.pages.fsb.web.FsbOverallNeedAnalysisIntroPage.ONA_INTRO_PAGE_URL;
 
 @At("#HOST" + ONA_INTRO_PAGE_URL)
 @DefaultUrl(ONA_INTRO_PAGE_URL)
-public class FsbOverallNeedAnalysisIntroPage extends BaseForm {
+public class FsbOverallNeedAnalysisIntroPage extends AbstractPageObject {
 
     final static String ONA_INTRO_PAGE_URL = "overallneedanalysis/intro";
 
     @FindBy(xpath = "//h1[@id='undefined_headline']/span")
-    private WebElement onaIntroHeadlineText;
+    private WebElementFacade onaIntroHeadlineText;
 
     @FindBy(id = "overallneedanalysis-intro__gonext-button")
-    private WebElement onaIntroPageButton;
-
-    @FindBy(id = "overallneedanalysis-intro-link")
-    private WebElement rememberLaterButton;
+    private WebElementFacade onaIntroPageButton;
 
     public String getOnaIntroPageHeadlineText() {
+        onaIntroHeadlineText.waitUntilVisible();
         return onaIntroHeadlineText.getText();
     }
 
     public void clickOnaGoNextButton() {
-//        onaIntroHeadlineText.waitUntilVisible();
+        onaIntroHeadlineText.waitUntilVisible();
         onaIntroPageButton.click();
     }
-
-    public void clickRememberLaterButton(){
-//        scroll_element_into_view(onaIntroPageButton);
-//        onaIntroPageButton.waitUntilClickable();
-        rememberLaterButton.click();
-    }
-
-
-
-
 }

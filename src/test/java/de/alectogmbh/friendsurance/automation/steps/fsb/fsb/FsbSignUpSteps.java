@@ -88,10 +88,10 @@ public class FsbSignUpSteps extends AbstractScenarioSteps <FsbSignUpPage>{
         getPageObject().clickCondition3();
     }
 
-    @Step
-    public List<String> get_validation_message_list_for_conditions_checkbox() {
-        return getPageObject().actualConditionTextForCheckBox();
-    }
+//    @Step
+//    public List<String> get_validation_message_list_for_conditions_checkbox() {
+//        return getPageObject().actualConditionTextForCheckBox();
+//    }
 
     @Step
     public void click_on_sign_up_button() {
@@ -155,14 +155,14 @@ public class FsbSignUpSteps extends AbstractScenarioSteps <FsbSignUpPage>{
         assertEquals(EXPECTED_ATTRIBUTE, get_show_button_attribute());
     }
 
-    @StepGroup
-    public void verify_validation_messages_for_conditions_checkbox(String email, String password) {
-        enter_user_email(email);
-        enter_user_password(password);
-        click_on_sign_up_button();
-        assertEquals(EXPECTED_CONDITION_TEXT, get_validation_message_list_for_conditions_checkbox());
-        confirm_all_conditions();
-        click_on_sign_up_button();
-    }
+//    @StepGroup
+//    public void verify_validation_messages_for_conditions_checkbox(String email, String password) {
+//        enter_user_email(email);
+//        enter_user_password(password);
+//        click_on_sign_up_button();
+//        assertEquals(EXPECTED_CONDITION_TEXT, get_validation_message_list_for_conditions_checkbox());
+//        confirm_all_conditions();
+//        click_on_sign_up_button();
+//    }
 
 }

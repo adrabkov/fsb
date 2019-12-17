@@ -1,6 +1,7 @@
 package de.alectogmbh.friendsurance.automation.pages.fsb.web;
 
 import de.alectogmbh.friendsurance.automation.form.BaseForm;
+import de.alectogmbh.friendsurance.automation.pages.AbstractPageObject;
 import net.thucydides.core.annotations.At;
 import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.WebElement;
@@ -12,7 +13,7 @@ import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getDriver
 
 @At("#HOST" + ONA_QUESTIONNAIRE_PAGE_URL)
 @DefaultUrl(ONA_QUESTIONNAIRE_PAGE_URL)
-public class FsbOverallNeedAnalysisPage extends BaseForm {
+public class FsbOverallNeedAnalysisPage extends AbstractPageObject {
 
     final static String ONA_QUESTIONNAIRE_PAGE_URL = "/overallneedanalysis/";
 

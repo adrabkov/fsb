@@ -17,10 +17,10 @@ public class FsbPersonalDetailsSteps extends AbstractScenarioSteps<FsbPersonalDe
         return fsbPersonalDetailsPage;
     }
 
-//    @Step
-//    public void open_onboarding_first_step() {
-//        getPageObject().open();
-//    }
+    @Step
+    public void open_onboarding_first_step() {
+        getPageObject().open();
+    }
 
     @Step
     public void click_login_button(){
@@ -89,7 +89,7 @@ public class FsbPersonalDetailsSteps extends AbstractScenarioSteps<FsbPersonalDe
 
     @StepGroup
     public void verify_fifth_step_and_set_onboarding_personal_details(String firstName, String lastName, String birth, String street, String house, String postalCode, String city) {
-//        open_onboarding_first_step();
+        open_onboarding_first_step();
         verify_personal_details_page_is_loaded_and_headline_is_present();
         selectGender();
         enterFirstName(firstName);

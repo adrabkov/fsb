@@ -1,14 +1,15 @@
 package de.alectogmbh.friendsurance.automation.steps.fsb.fsb;
 
 import de.alectogmbh.friendsurance.automation.pages.fsb.web.FsbAccountPage;
+import de.alectogmbh.friendsurance.automation.steps.AbstractScenarioSteps;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
 
-public class FsbAccountStep {
+public class FsbAccountStep extends AbstractScenarioSteps<FsbAccountPage> {
 
-    private FsbAccountPage fsbAccountPage = new FsbAccountPage();
+    private FsbAccountPage fsbAccountPage;
 
-    private FsbAccountPage getPageObject(){
+    public FsbAccountPage getPageObject(){
         return fsbAccountPage;
     }
 

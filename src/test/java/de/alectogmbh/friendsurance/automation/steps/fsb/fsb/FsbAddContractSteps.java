@@ -11,13 +11,13 @@ public class FsbAddContractSteps extends AbstractScenarioSteps<FsbAddContractPag
 
     private static final String EXPECTED_ADD_CONTRACT_PAGE_HEADLINE = "Ein Stück mehr Sicherheit hinzufügen.";
 
-    private static final String insuranceCategory = "Auslandsreisekrankenversicherung";
-    private static final String insuranceCompany = "ADAC-Versicherung";
+    private static final String insuranceCategory = "Berufsunfähigkeit";
+    private static final String insuranceCompany = "ARAG";
     private static final String policyNumber = "Pio/28776633/HD";
     private static final String premiumAmount = "21,50";
-    private static final String paymentInterval = "Vierteljährlich";
+    private static final String paymentInterval = "monatlich";
 
-    private FsbAddContractPage fsbAddContractPage = new FsbAddContractPage();
+    private FsbAddContractPage fsbAddContractPage;
 
     public FsbAddContractPage getPageObject() {
         return fsbAddContractPage;
@@ -65,7 +65,7 @@ public class FsbAddContractSteps extends AbstractScenarioSteps<FsbAddContractPag
 
     @StepGroup
     public void verify_add_contract_page_enter_policy_details_and_go_next() {
-        verify_add_contract_page_is_loaded_and_headline_is_present();
+//        verify_add_contract_page_is_loaded_and_headline_is_present();
         select_insurance_category_by_text(insuranceCategory);
         select_insurance_company_by_text(insuranceCompany);
         enter_insurance_policy_number(policyNumber);

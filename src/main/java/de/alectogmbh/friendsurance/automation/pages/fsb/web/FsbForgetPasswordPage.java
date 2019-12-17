@@ -1,6 +1,7 @@
 package de.alectogmbh.friendsurance.automation.pages.fsb.web;
 
 import de.alectogmbh.friendsurance.automation.form.BaseForm;
+import de.alectogmbh.friendsurance.automation.pages.AbstractPageObject;
 import net.thucydides.core.annotations.At;
 import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.WebElement;
@@ -10,7 +11,7 @@ import static de.alectogmbh.friendsurance.automation.pages.fsb.web.FsbForgetPass
 
 @At("#HOST" + FORGETPASSWORD_PAGE_URL)
 @DefaultUrl(FORGETPASSWORD_PAGE_URL)
-public class FsbForgetPasswordPage extends BaseForm {
+public class FsbForgetPasswordPage extends AbstractPageObject {
 
     final static String FORGETPASSWORD_PAGE_URL = "/forgetpassword/";
 

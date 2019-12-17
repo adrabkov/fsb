@@ -1,17 +1,20 @@
 package de.alectogmbh.friendsurance.automation.steps.fsb.fsb;
 
-import de.alectogmbh.friendsurance.automation.pages.fsb.web.FsbEditOrderPage;
 import de.alectogmbh.friendsurance.automation.pages.fsb.web.FsbOrderOverviewPage;
+import de.alectogmbh.friendsurance.automation.steps.AbstractScenarioSteps;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
 
 import static org.junit.Assert.assertEquals;
 
-public class FsbOrderOverviewSteps {
+public class FsbOrderOverviewSteps extends AbstractScenarioSteps<FsbOrderOverviewPage> {
 
     private static final String EXPECTED_ORDER_OVERVIEW_HEADLINE = "Verträge überprüfen und hinzufügen";
+    private static final int NUMBER_OF_EXTRACTED_ORDER_ITEMS = 6;
+    private static final int NUMBER_OF_ORDER_ITEMS_AFTER_DELETING_INCOMPLETE_ORDER_ITEMS = 4;
+    private static final int NUMBER_OF_ORDER_ITEMS_AFTER_ADDING_MANUALLY = 5;
 
-    private FsbOrderOverviewPage fsbOrderOverviewPage = new FsbOrderOverviewPage();
+    private FsbOrderOverviewPage fsbOrderOverviewPage;
 
     public FsbOrderOverviewPage getPageObject() {
         return fsbOrderOverviewPage;
@@ -20,6 +23,11 @@ public class FsbOrderOverviewSteps {
     @Step
     public String get_order_overview_headline_text() {
         return getPageObject().getOrderOverviewHeadlineText();
+    }
+
+    @Step
+    public String get_order_overview_headline() {
+        return getPageObject().getOrderOverviewHeadline();
     }
 
     @Step
@@ -48,6 +56,11 @@ public class FsbOrderOverviewSteps {
     }
 
     @Step
+    public void click_on_navigation_item_notifications_link() {
+        getPageObject().clickOnNavigationItemNotificationsLink();
+    }
+
+    @Step
     public void click_on_header_logout_link() {
         getPageObject().clickOnHeaderLogoutLink();
     }
@@ -58,8 +71,23 @@ public class FsbOrderOverviewSteps {
     }
 
     @Step
+    public void verify_order_overview_page_is_loaded_after_user_actions() {
+        assertEquals(EXPECTED_ORDER_OVERVIEW_HEADLINE, get_order_overview_headline());
+    }
+
+    @Step
+    public void verify_extracted_order_items_from_finlytics() {
+        assertEquals(NUMBER_OF_EXTRACTED_ORDER_ITEMS, getPageObject().getNumberOfOrderItems());
+    }
+
+    @Step
     public void verify_order_items_after_deleting_error_items() {
-        assertEquals(expected_count_orders_after_deleting_missing_orders(), getPageObject().getNumberOfOrderItems());
+        assertEquals(NUMBER_OF_ORDER_ITEMS_AFTER_DELETING_INCOMPLETE_ORDER_ITEMS, getPageObject().getNumberOfOrderItems());
+    }
+
+    @Step
+    public void verify_order_items_after_adding_contract_manually() {
+        assertEquals(NUMBER_OF_ORDER_ITEMS_AFTER_ADDING_MANUALLY, getPageObject().getNumberOfOrderItems());
     }
 
     @StepGroup
@@ -75,31 +103,43 @@ public class FsbOrderOverviewSteps {
     }
 
     @StepGroup
-    public void verify_order_overview_page_and_click_on_contracts_submit_button() {
-        verify_order_overview_page_is_loaded_and_headline_is_present();
-        click_overview_page_submit_button();
-    }
-
-    @StepGroup
     public void verify_order_overview_page_and_click_on_missing_info_order_item_one() {
         verify_order_overview_page_is_loaded_and_headline_is_present();
+//        verify_extracted_order_items_from_finlytics();
         click_on_missing_order_info_item_one();
     }
 
     @StepGroup
     public void verify_order_items_after_deleting_one_item_and_click_on_error_order_two() {
+        verify_order_overview_page_is_loaded_after_user_actions();
         click_on_missing_order_info_item_two();
     }
 
     @StepGroup
-    public void verify_order_items_after_adding_contract_and_click_on_overview_page_submit_button() {
+    public void verify_order_items_after_deleting_error_items_and_click_on_add_contract_button() {
+        verify_order_overview_page_is_loaded_after_user_actions();
         verify_order_items_after_deleting_error_items();
+        click_on_add_contract_button();
+    }
+
+    @StepGroup
+    public void verify_order_items_after_adding_contract_and_click_on_overview_page_submit_button() {
+        verify_order_overview_page_is_loaded_after_user_actions();
+        verify_order_items_after_adding_contract_manually();
         click_overview_page_submit_button();
     }
 
-    private int expected_count_orders_after_deleting_missing_orders() {
-        return getPageObject().getNumberOfOrderItems() - getPageObject().getNumberOfErrorOrderItemTwo();
+    @StepGroup
+    public void verify_extracted_data_and_click_on_missing_info_order_item_one() {
+        verify_order_overview_page_is_loaded_after_user_actions();
+        verify_extracted_order_items_from_finlytics();
+        click_on_missing_order_info_item_one();
     }
 
-
+    @StepGroup
+    public void verify_order_overview_page_and_click_on_contracts_submit_button() {
+        verify_order_overview_page_is_loaded_after_user_actions();
+        verify_order_items_after_deleting_error_items();
+        click_overview_page_submit_button();
+    }
 }

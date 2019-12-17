@@ -7,7 +7,7 @@ import de.alectogmbh.friendsurance.automation.steps.fsb.fsb.FsbForgetPasswordSte
 import de.alectogmbh.friendsurance.automation.tests.web.utils.db.DBCustomerData;
 import de.alectogmbh.friendsurance.automation.tests.web.utils.db.DBCustomerDataUtils;
 import net.thucydides.core.annotations.Steps;
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 public class FsbForgetPasswordTest {
 

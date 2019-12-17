@@ -2,18 +2,19 @@ package de.alectogmbh.friendsurance.automation.steps.fsb.fsb;
 
 import de.alectogmbh.friendsurance.automation.pages.fsb.web.FsbEmailLoginPage;
 import de.alectogmbh.friendsurance.automation.pages.fsb.web.FsbPersonalDetailsPage;
+import de.alectogmbh.friendsurance.automation.steps.AbstractScenarioSteps;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
 
 import static org.junit.Assert.assertEquals;
 
-public class FsbEmailLoginSteps {
+public class FsbEmailLoginSteps extends AbstractScenarioSteps<FsbEmailLoginPage> {
 
     private static final String EXPECTED_LOGIN_PAGE_HEADLINE_TEXT = "Willkommen beim Kunden-Login";
 
-    private FsbEmailLoginPage fsbEmailLoginPage = new FsbEmailLoginPage();
+    private FsbEmailLoginPage fsbEmailLoginPage;
 
-    private FsbEmailLoginPage getPageObject() {
+    public FsbEmailLoginPage getPageObject() {
         return fsbEmailLoginPage;
     }
 

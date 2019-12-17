@@ -1,20 +1,22 @@
 package de.alectogmbh.friendsurance.automation.steps.fsb.fsb;
 
+import de.alectogmbh.friendsurance.automation.steps.AbstractScenarioSteps;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
 import de.alectogmbh.friendsurance.automation.pages.fsb.web.FsbBankSelectionPage;
+
 import static org.junit.Assert.assertEquals;
 
-public class FsbBankSelectionSteps {
+public class FsbBankSelectionSteps extends AbstractScenarioSteps<FsbBankSelectionPage> {
 
     private static final String EXPECTED_BANK_SELECTION_HEADLINE = "Bei welcher Bank sind Sie Kunde?";
     private static final String EXPECTED_BANK_MODAL_TEXT = "Ihr Konto schnell und sicher verbinden mit";
     private static final String BANK_NAME = "Leipziger Volksbank";
     private static final String EXPECTED_BANK_SELECTION_ERROR_TEXT = "Bitte wählen Sie eine Bank aus.";
 
-    private FsbBankSelectionPage fsbBankSelectionPage = new FsbBankSelectionPage();
+    private FsbBankSelectionPage fsbBankSelectionPage;
 
-    private FsbBankSelectionPage getPageObject() {
+    public FsbBankSelectionPage getPageObject() {
         return fsbBankSelectionPage;
     }
 
@@ -24,13 +26,8 @@ public class FsbBankSelectionSteps {
     }
 
     @Step
-    public String get_bank_modal_selection_text(){
+    public String get_bank_modal_selection_text() {
         return getPageObject().getBankModalSelectionText();
-    }
-
-    @Step
-    public String get_bank_selection_error(){
-        return getPageObject().getBankSelectionErrorText();
     }
 
     @Step
@@ -48,10 +45,6 @@ public class FsbBankSelectionSteps {
         getPageObject().clickBankModalOkButton();
     }
 
-    @Step
-    public void open_dashboard_from_bank_selection_page(){
-        getPageObject().clickDashboardFromBankSelection();
-    }
 
     @Step
     public void verify_bank_selection_page_is_loaded_and_headline_is_present() {
@@ -70,19 +63,5 @@ public class FsbBankSelectionSteps {
         click_bank_selection_next_button();
         verify_bank_modal_finApi_popUp_is_present();
         click_bank_modal_ok_button();
-    }
-
-    @StepGroup
-    public void verify_error_text_for_bank_selection(){
-        verify_bank_selection_page_is_loaded_and_headline_is_present();
-        click_bank_selection_next_button();
-        assertEquals(EXPECTED_BANK_SELECTION_ERROR_TEXT, get_bank_selection_error());
-    }
-
-    @StepGroup
-    public void verify_ability_to_open_dashboard_from_Bank_selection(){
-        verify_bank_selection_page_is_loaded_and_headline_is_present();
-        open_dashboard_from_bank_selection_page();
-
     }
 }

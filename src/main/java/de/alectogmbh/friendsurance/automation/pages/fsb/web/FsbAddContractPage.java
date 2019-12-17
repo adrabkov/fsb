@@ -1,12 +1,11 @@
 package de.alectogmbh.friendsurance.automation.pages.fsb.web;
 
-import de.alectogmbh.friendsurance.automation.form.BaseForm;
 import de.alectogmbh.friendsurance.automation.pages.AbstractPageObject;
 import net.serenitybdd.core.annotations.findby.FindBy;
+import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.At;
 import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 
 import static de.alectogmbh.friendsurance.automation.pages.fsb.web.FsbAddContractPage.ADD_CONTRACT_PAGE_URL;
 
@@ -17,31 +16,30 @@ public class FsbAddContractPage extends AbstractPageObject {
     final static String ADD_CONTRACT_PAGE_URL = "/addcontract/add-order/";
 
     @FindBy(id = "addorder-addinsurance__headline_text")
-    private WebElement addContractPageHeadLine;
+    private WebElementFacade addContractPageHeadLine;
 
     @FindBy(id = "select-category")
-    private WebElement inputInsuranceCategory;
+    private WebElementFacade inputInsuranceCategory;
 
     @FindBy(id = "select-company")
-    private WebElement inputInsuranceCompany;
+    private WebElementFacade inputInsuranceCompany;
 
     @FindBy(id = "addcontract-addinsurancecontract__input-policy")
-    private WebElement policyNumberInput;
+    private WebElementFacade policyNumberInput;
 
     @FindBy(id = "addcontract-addinsurancecontract__input-price")
-    private WebElement premiumAmountInput;
+    private WebElementFacade premiumAmountInput;
 
     @FindBy(id = "addcontract-addinsurancecontract__select")
-    private WebElement inputPaymentInterval;
+    private WebElementFacade inputPaymentInterval;
 
     @FindBy(id = "addcontract-addinsurancecontract__next")
-    private WebElement addContractNextButton;
+    private WebElementFacade addContractNextButton;
 
     @FindBy(id = "addorder-addinsurance-backnav_link")
-    private WebElement backNavigationLink;
+    private WebElementFacade backNavigationLink;
 
     public String getAddContractPageHeadline() {
-//        addContractPageHeadLine.waitUntilVisible();
         return addContractPageHeadLine.getText();
     }
 
@@ -53,7 +51,7 @@ public class FsbAddContractPage extends AbstractPageObject {
     }
 
     public void selectInsuranceCompanyByText(String insuranceCompany) {
-//        inputInsuranceCompany.waitUntilPresent();
+        inputInsuranceCompany.waitUntilPresent();
 //        scrollToElement(inputInsuranceCompany);
         inputInsuranceCompany.sendKeys(insuranceCompany);
         inputInsuranceCompany.sendKeys(Keys.RETURN);

@@ -2,6 +2,7 @@ package de.alectogmbh.friendsurance.automation.pages.fsb.web;
 
 import de.alectogmbh.friendsurance.automation.form.BaseForm;
 
+import de.alectogmbh.friendsurance.automation.pages.AbstractPageObject;
 import net.thucydides.core.annotations.At;
 import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.WebElement;
@@ -11,7 +12,7 @@ import static de.alectogmbh.friendsurance.automation.pages.fsb.web.FsbEmailLogin
 
 @At("#HOST" + LOGIN_PAGE_URL)
 @DefaultUrl(LOGIN_PAGE_URL)
-public class FsbEmailLoginPage extends BaseForm {
+public class FsbEmailLoginPage extends AbstractPageObject {
 
     final static String LOGIN_PAGE_URL = "/user/login/";
 

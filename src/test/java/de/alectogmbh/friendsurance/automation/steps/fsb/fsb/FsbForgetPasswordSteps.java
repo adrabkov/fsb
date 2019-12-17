@@ -2,16 +2,17 @@ package de.alectogmbh.friendsurance.automation.steps.fsb.fsb;
 
 import de.alectogmbh.friendsurance.automation.pages.fsb.web.FsbEmailLoginPage;
 import de.alectogmbh.friendsurance.automation.pages.fsb.web.FsbForgetPasswordPage;
+import de.alectogmbh.friendsurance.automation.steps.AbstractScenarioSteps;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
 
 import static org.junit.Assert.assertEquals;
 
-public class FsbForgetPasswordSteps {
+public class FsbForgetPasswordSteps extends AbstractScenarioSteps<FsbForgetPasswordPage> {
 
-    private FsbForgetPasswordPage fsbForgetPasswordPage = new FsbForgetPasswordPage();
+    private FsbForgetPasswordPage fsbForgetPasswordPage;
 
-    private FsbEmailLoginPage fsbEmailLoginPage = new FsbEmailLoginPage();
+    private FsbEmailLoginPage fsbEmailLoginPage;
 
     public FsbForgetPasswordPage getPageObject() {
         return fsbForgetPasswordPage;

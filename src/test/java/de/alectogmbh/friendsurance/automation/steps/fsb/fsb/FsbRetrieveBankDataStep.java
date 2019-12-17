@@ -1,19 +1,20 @@
 package de.alectogmbh.friendsurance.automation.steps.fsb.fsb;
 
 import de.alectogmbh.friendsurance.automation.pages.fsb.web.FsbRetrieveBankDataPage;
+import de.alectogmbh.friendsurance.automation.steps.AbstractScenarioSteps;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
 
 import static org.junit.Assert.assertEquals;
 
-public class FsbRetrieveBankDataStep{
+public class FsbRetrieveBankDataStep extends AbstractScenarioSteps<FsbRetrieveBankDataPage> {
 
 
     private static final String EXPECTED_RETRIEVE_BANK_DATA = "TAN medium";
 
-    private FsbRetrieveBankDataPage fsbRetrieveBankDataPage = new FsbRetrieveBankDataPage();
+    private FsbRetrieveBankDataPage fsbRetrieveBankDataPage;
 
-    private FsbRetrieveBankDataPage getPageObject() {
+    public FsbRetrieveBankDataPage getPageObject() {
         return fsbRetrieveBankDataPage;
     }
 

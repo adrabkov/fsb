@@ -1,6 +1,7 @@
 package de.alectogmbh.friendsurance.automation.pages.fsb.web;
 
 import de.alectogmbh.friendsurance.automation.form.BaseForm;
+import de.alectogmbh.friendsurance.automation.pages.AbstractPageObject;
 import net.thucydides.core.annotations.At;
 import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.WebElement;
@@ -9,7 +10,7 @@ import static de.alectogmbh.friendsurance.automation.pages.fsb.web.FsbRetrieveBa
 
 @At("#HOST" + BANKING_PAGE_URL)
 @DefaultUrl(BANKING_PAGE_URL)
-public class FsbRetrieveBankDataPage extends BaseForm {
+public class FsbRetrieveBankDataPage extends AbstractPageObject {
 
     final static String BANKING_PAGE_URL = "/onboarding/banks/";
 

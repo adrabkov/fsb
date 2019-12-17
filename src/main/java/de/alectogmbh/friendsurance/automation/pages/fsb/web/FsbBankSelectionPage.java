@@ -1,48 +1,40 @@
 package de.alectogmbh.friendsurance.automation.pages.fsb.web;
 
-import de.alectogmbh.friendsurance.automation.form.BaseForm;
+import de.alectogmbh.friendsurance.automation.pages.AbstractPageObject;
+import net.serenitybdd.core.annotations.findby.FindBy;
+import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.At;
 import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 import static de.alectogmbh.friendsurance.automation.pages.fsb.web.FsbBankSelectionPage.BANK_SELECTION_PAGE_URL;
+import static java.util.concurrent.TimeUnit.SECONDS;
 
 @At("#HOST" + BANK_SELECTION_PAGE_URL)
 @DefaultUrl(BANK_SELECTION_PAGE_URL)
-public class FsbBankSelectionPage extends BaseForm{
+public class FsbBankSelectionPage extends AbstractPageObject {
 
     final static String BANK_SELECTION_PAGE_URL = "/onboarding/banks/";
 
-    @FindBy(className = "bank-selection__headline_text")
-    private WebElement bankSelectionHeadlineText;
+    private static final int MODAL_POPUP_DISAPPEAR = 10;
 
-    @FindBy(id = "bank-selection-error__text")
-    private WebElement bankSelectionErrorText;
+    @FindBy(className = "bank-selection__headline_text")
+    private WebElementFacade bankSelectionHeadlineText;
 
     @FindBy(xpath = "//div[@class='onboarding-modal-content']/h2")
-    private WebElement bankModalSelectionText;
+    private WebElementFacade bankModalSelectionText;
 
     @FindBy(id = "select-bank")
-    private WebElement bankNameSelector;
+    private WebElementFacade bankNameSelector;
 
     @FindBy(id = "bank-selection-gonext__button")
-    private WebElement bankSelectionNextButton;
+    private WebElementFacade bankSelectionNextButton;
 
     @FindBy(id = "onboarding-modal-ok__button")
-    private WebElement bankModalOkButton;
-
-    @FindBy(xpath = "//a[@href='/home']")
-    private WebElement dashboardFromBankSelection;
+    private WebElementFacade bankModalOkButton;
 
     public String getBankSelectionHeadlineText() {
-//        bankSelectionHeadlineText.waitUntilVisible();
         return bankSelectionHeadlineText.getText();
-    }
-
-    public String getBankSelectionErrorText() {
-        return bankSelectionErrorText.getText();
     }
 
     public String getBankModalSelectionText() {
@@ -50,9 +42,8 @@ public class FsbBankSelectionPage extends BaseForm{
     }
 
     public void selectBankNameByText(String bankName) {
-//        scrollToElement(bankNameSelector);
         bankNameSelector.click();
-        bankNameSelector.sendKeys(bankName);
+        bankNameSelector.type(bankName);
         bankNameSelector.sendKeys(Keys.RETURN);
     }
 
@@ -62,10 +53,6 @@ public class FsbBankSelectionPage extends BaseForm{
 
     public void clickBankModalOkButton() {
         bankModalOkButton.click();
+        bankModalOkButton.withTimeoutOf(MODAL_POPUP_DISAPPEAR, SECONDS).waitUntilNotVisible();
     }
-
-    public void clickDashboardFromBankSelection() {
-        dashboardFromBankSelection.click();
-    }
-
 }

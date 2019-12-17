@@ -1,12 +1,12 @@
 package de.alectogmbh.friendsurance.automation.pages.fsb.web;
 
-import de.alectogmbh.friendsurance.automation.form.BaseForm;
 import de.alectogmbh.friendsurance.automation.pages.AbstractPageObject;
+import net.serenitybdd.core.annotations.findby.FindBy;
+import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.At;
 import net.thucydides.core.annotations.DefaultUrl;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindAll;
-import org.openqa.selenium.support.FindBy;
+
+
 import org.openqa.selenium.support.How;
 
 import java.util.ArrayList;
@@ -21,46 +21,46 @@ public class FsbSignUpPage extends AbstractPageObject {
     final static String SIGN_UP_PAGE_URL = "/onboarding/signup/";
 
     @FindBy(className = "onboarding-headline__text")
-    private WebElement signUpPageHeadlineText;
+    private WebElementFacade signUpPageHeadlineText;
 
     @FindBy(id = "personal-signup-email")
-    private WebElement userEmailInputField;
+    private WebElementFacade userEmailInputField;
 
     @FindBy(id = "personal-signup-password")
-    private WebElement userPasswordInputField;
+    private WebElementFacade userPasswordInputField;
 
     @FindBy(xpath = "//div/button[@type='button']")
-    private WebElement showPasswordButton;
+    private WebElementFacade showPasswordButton;
 
     @FindBy(id = "personal-signup-conditions__checkbox--1__span")
-    private WebElement conditions1;
+    private WebElementFacade conditions1;
 
     @FindBy(id = "personal-signup-conditions__checkbox--2__span")
-    private WebElement conditions2;
+    private WebElementFacade conditions2;
 
     @FindBy(id = "personal-signup-conditions__checkbox--3__span")
-    private WebElement conditions3;
+    private WebElementFacade conditions3;
 
     @FindBy(id = "personal-signup-submit")
-    private WebElement signUpButton;
+    private WebElementFacade signUpButton;
 
     @FindBy(xpath = "//p[@class='sc-eNQAEJ jTNZui']")
-    private WebElement validationMessageForEmailField;
+    private WebElementFacade validationMessageForEmailField;
 
     @FindBy(xpath = "//div[@class='pass__validation-error-message']/p")
-    private WebElement validationMessageForEmptyPasswordField;
+    private WebElementFacade validationMessageForEmptyPasswordField;
 
     @FindBy(xpath = "//div[@class='pass__validation-error-message']/p")
-    private WebElement validationMessageForIncorrectPasswordField;
+    private WebElementFacade validationMessageForIncorrectPasswordField;
 
     @FindBy(xpath = "//p[@class='sc-eNQAEJ jTNZui']")
-    private WebElement validationMessageForAlreadyExistedEmail;
+    private WebElementFacade validationMessageForAlreadyExistedEmail;
 
     @FindBy(id = "personal-signup-conditions-error__text")
-    private WebElement validationMessageForCondition1;
+    private WebElementFacade validationMessageForCondition1;
 
-    @FindAll(@FindBy(how = How.CSS, using = "#personal-signup-conditions-error__text"))
-    List<WebElement> validationMessagesList;
+//    @FindAll(@FindBy(how = How.CSS, using = "#personal-signup-conditions-error__text"))
+//    List<WebElementFacade> validationMessagesList;
 
     public String getSignUpPageHeadlineText() {
         return signUpPageHeadlineText.getText();
@@ -78,7 +78,7 @@ public class FsbSignUpPage extends AbstractPageObject {
         showPasswordButton.click();
     }
 
-    public WebElement getShowPasswordButton() {
+    public WebElementFacade getShowPasswordButton() {
         return showPasswordButton;
     }
 
@@ -110,7 +110,7 @@ public class FsbSignUpPage extends AbstractPageObject {
         return validationMessageForIncorrectPasswordField.getText();
     }
 
-    public WebElement getUserEmailInputField() {
+    public WebElementFacade getUserEmailInputField() {
         return userEmailInputField;
     }
 
@@ -118,11 +118,11 @@ public class FsbSignUpPage extends AbstractPageObject {
         return validationMessageForAlreadyExistedEmail.getText();
     }
 
-    public List<String> actualConditionTextForCheckBox() {
-        List<String> texts = new ArrayList<>();
-        for (WebElement messagesList : validationMessagesList) {
-            texts.add(messagesList.getText());
-        }
-        return texts;
-    }
+//    public List<String> actualConditionTextForCheckBox() {
+//        List<String> texts = new ArrayList<>();
+//        for (WebElementFacade messagesList : validationMessagesList) {
+//            texts.add(messagesList.getText());
+//        }
+//        return texts;
+//    }
 }

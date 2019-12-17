@@ -1,5 +1,6 @@
 package de.alectogmbh.friendsurance.automation.pages.fsb.web;
 
+import de.alectogmbh.friendsurance.automation.pages.AbstractPageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.thucydides.core.annotations.At;
@@ -10,7 +11,7 @@ import static de.alectogmbh.friendsurance.automation.pages.fsb.web.FsbDashboardP
 
 @At("#HOST" + HOME_PAGE_URL)
 @DefaultUrl(HOME_PAGE_URL)
-public class FsbDashboardPage {
+public class FsbDashboardPage extends AbstractPageObject {
 
     final static String HOME_PAGE_URL = "/home/";
 
