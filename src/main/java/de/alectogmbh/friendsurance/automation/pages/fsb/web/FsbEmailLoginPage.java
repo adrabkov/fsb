@@ -1,7 +1,5 @@
 package de.alectogmbh.friendsurance.automation.pages.fsb.web;
 
-import de.alectogmbh.friendsurance.automation.form.BaseForm;
-
 import de.alectogmbh.friendsurance.automation.pages.AbstractPageObject;
 import net.thucydides.core.annotations.At;
 import net.thucydides.core.annotations.DefaultUrl;

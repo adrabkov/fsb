@@ -1,6 +1,5 @@
 package de.alectogmbh.friendsurance.automation.tests;
 
-import de.alectogmbh.friendsurance.automation.driver.DriverHolder;
 import de.alectogmbh.friendsurance.automation.steps.AbstractScenarioSteps;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.ManagedPages;

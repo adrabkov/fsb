@@ -1,13 +1,12 @@
 package de.alectogmbh.friendsurance.automation.requirements;
 
-import de.alectogmbh.friendsurance.automation.form.BaseForm;
 import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-public class ValidationMessages extends BaseForm {
+public class ValidationMessages {
 
     private String text_for_sign_up_page_headline = "E-Mail eingeben, Passwort festlegen und ein paar Häkchen!";
     private String validation_text_for_empty_or_incorrect_email = "Bitte geben Sie eine korrekte E-Mail-Adresse an.";

@@ -118,11 +118,4 @@ public class FsbSignUpPage extends AbstractPageObject {
         return validationMessageForAlreadyExistedEmail.getText();
     }
 
-//    public List<String> actualConditionTextForCheckBox() {
-//        List<String> texts = new ArrayList<>();
-//        for (WebElementFacade messagesList : validationMessagesList) {
-//            texts.add(messagesList.getText());
-//        }
-//        return texts;
-//    }
 }
