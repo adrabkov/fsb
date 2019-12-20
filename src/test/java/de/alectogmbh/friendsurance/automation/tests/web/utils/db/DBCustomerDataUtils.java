@@ -16,6 +16,7 @@ public class DBCustomerDataUtils {
                 .email(UUID.randomUUID() + "@yopmail.com")
                 .incorrect_email(UUID.randomUUID() + "yopmail.com")
                 .firstName(RandomStringUtils.randomAlphabetic(DEFAULT_GENERATED_DATA_LENGTH))
+                .gender(false)
                 .houseNumber("12 a")
                 .lastName(RandomStringUtils.randomAlphabetic(DEFAULT_GENERATED_DATA_LENGTH))
                 .newPassword("Fake2*password")

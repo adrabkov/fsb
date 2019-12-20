@@ -162,7 +162,7 @@
         <serenity.maven.version>1.1.42</serenity.maven.version>
 
         <webdriver.driver>chrome</webdriver.driver>
-        <webdriver.base.url>https://fsb.fsb1.safeties.de</webdriver.base.url>
+        <webdriver.base.url>https://www.hvb1.safeties.de</webdriver.base.url>
 
         <skipTests>true</skipTests>
         <sonar.skip>true</sonar.skip>

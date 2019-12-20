@@ -9,6 +9,7 @@ import lombok.Setter;
 @Setter
 public class DBCustomerData {
 
+    private boolean gender;
     private String firstName;
     private String lastName;
     private String birthDay;
