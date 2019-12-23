@@ -3,7 +3,6 @@ package de.alectogmbh.friendsurance.automation.steps.hvb.hvb;
 import de.alectogmbh.friendsurance.automation.pages.hvb.web.HvbEditOrderPage;
 import de.alectogmbh.friendsurance.automation.pages.hvb.web.HvbOrderOverviewPage;
 import de.alectogmbh.friendsurance.automation.steps.AbstractScenarioSteps;
-import net.serenitybdd.core.annotations.findby.FindBy;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
 
@@ -11,7 +10,7 @@ import static org.junit.Assert.assertEquals;
 
 public class HvbOrderOverviewSteps extends AbstractScenarioSteps<HvbOrderOverviewPage> {
 
-    private static final String EXPECTED_ORDER_OVERVIEW_HEADLINE = "Erkannte Verträge aus Ihrem Bankkonto";
+    private static final String EXPECTED_ORDER_OVERVIEW_HEADLINE = "Verträge überprüfen und hinzufügen";
     private static final String DEFAULT_NEW_COMPANY_NAME = "Bayerische Beamten Unfallversicherung";
     private static final String EXPECTED_NEW_COMPANY_NAME = "test";
     private static final int NUMBER_OF_EXTRACTED_ORDER_ITEMS = 4;

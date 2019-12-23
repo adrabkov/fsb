@@ -1,17 +1,13 @@
 package de.alectogmbh.friendsurance.automation.tests.hvb.web;
 
-import de.alectogmbh.friendsurance.automation.pages.hvb.web.HvbSignUpPage;
 import de.alectogmbh.friendsurance.automation.steps.hvb.hvb.*;
 import de.alectogmbh.friendsurance.automation.tests.AbstractScenarioTest;
 import de.alectogmbh.friendsurance.automation.tests.web.utils.db.DBCustomerData;
 import de.alectogmbh.friendsurance.automation.tests.web.utils.db.DBCustomerDataUtils;
-import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Steps;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
-@RunWith(SerenityRunner.class)
-public class HvbOnboardingTest extends AbstractScenarioTest<HvbBankSelectionSteps> {
+public class HvbOnboardingTest extends AbstractScenarioTest {
 
   @Steps
   private HvbBankSelectionSteps hvbBankSelectionSteps;

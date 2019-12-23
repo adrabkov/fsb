@@ -76,8 +76,8 @@ public class HvbOrderOverviewPage extends AbstractPageObject {
         errorOrderItemOne.click();
     }
 
-    public void clickOnOrderItem(){
-      orderItem.click();
+    public void clickOnOrderItem() {
+        orderItem.click();
     }
 
     public void clickOnAddContractButton() {
@@ -94,8 +94,8 @@ public class HvbOrderOverviewPage extends AbstractPageObject {
         return errorOrderItemsList.size();
     }
 
-    public String getCompanyNewName(){
-      return orderItem.getText();
+    public String getCompanyNewName() {
+        return orderItem.getText();
     }
 
     public void clickOverviewPageSubmitButton() {

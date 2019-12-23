@@ -30,8 +30,11 @@ public class HvbAddContractPage extends AbstractPageObject {
   @FindBy(id = "addcontract-addinsurancecontract__input-price")
   private WebElementFacade premiumAmountInput;
 
-  @FindBy(className = " css-qhlqym-singleValue")
+  @FindBy(id = "dropdown-addcontract-addinsurancecontract__select")
   private WebElementFacade paymentIntervalDropdown;
+
+  @FindBy(id = "addcontract-addinsurancecontract__select")
+  private WebElementFacade inputPaymentInterval;
 
   @FindBy(id = "add-order-save")
   private WebElementFacade addContractNextButton;
@@ -65,10 +68,11 @@ public class HvbAddContractPage extends AbstractPageObject {
     premiumAmountInput.type(premiumAmount);
   }
 
-  public void selectPaymentIntervalByText(String paymentInterval) {
-    paymentIntervalDropdown.click();
-    paymentIntervalDropdown.type(paymentInterval);
-    paymentIntervalDropdown.sendKeys(Keys.RETURN);
+  public void selectPaymentIntervalByText(String paymentInterval) throws InterruptedException {
+    Thread.sleep(5000);
+    scrollToElement(inputPaymentInterval);
+
+    inputPaymentInterval.type(paymentInterval);
   }
 
   public void clickAddContractGoNextButton() {
