@@ -6,7 +6,7 @@ import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.openqa.selenium.TimeoutException;
 
-public abstract class AbstractScenarioSteps <T extends AbstractPageObject> extends ScenarioSteps {
+public abstract class AbstractScenarioSteps<T extends AbstractPageObject> extends ScenarioSteps {
 
     public AbstractScenarioSteps() {
     }

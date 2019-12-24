@@ -28,5 +28,13 @@ public class DBCustomerData {
     private String confirmNewPassword;
     private String userId;
     private String pin;
+    private String insuranceCategory;
+    private String insuranceCompany;
+    private String policyNumber;
+    private String premiumAmount;
+    private String paymentInterval;
+    private String hvbBankName;
+    private String insuranceNewCompany;
+
 
 }

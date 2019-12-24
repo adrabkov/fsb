@@ -9,14 +9,6 @@ import static org.junit.Assert.assertEquals;
 
 public class HvbAddContractSteps extends AbstractScenarioSteps<HvbAddContractPage> {
 
-    private static final String EXPECTED_ADD_CONTRACT_PAGE_HEADLINE = "Ein Stück mehr Sicherheit hinzufügen";
-
-    private static final String insuranceCategory = "Ambulante Zusatzversicherung";
-    private static final String insuranceCompany = "Allianz";
-    private static final String policyNumber = "Pio/28776633/HD";
-    private static final String premiumAmount = "21,50";
-    private static final String paymentInterval = "Vierteljährlich";
-
     private HvbAddContractPage ruvAddContractPage;
 
     public HvbAddContractPage getPageObject() {
@@ -49,7 +41,7 @@ public class HvbAddContractSteps extends AbstractScenarioSteps<HvbAddContractPag
     }
 
     @Step
-    public void select_payment_interval_by_text(String paymentInterval) throws InterruptedException {
+    public void select_payment_interval_by_text(String paymentInterval) {
         getPageObject().selectPaymentIntervalByText(paymentInterval);
     }
 
@@ -59,13 +51,14 @@ public class HvbAddContractSteps extends AbstractScenarioSteps<HvbAddContractPag
     }
 
     @Step
-    public void verify_add_contract_page_is_loaded_and_headline_is_present() {
-        assertEquals(EXPECTED_ADD_CONTRACT_PAGE_HEADLINE, get_add_contract_page_headline());
+    public void verify_add_contract_page_is_loaded_and_headline_is_present(String add_contract_page_headline) {
+        assertEquals(add_contract_page_headline, get_add_contract_page_headline());
     }
 
     @StepGroup
-    public void verify_add_contract_page_enter_policy_details_and_go_next() throws InterruptedException {
-        verify_add_contract_page_is_loaded_and_headline_is_present();
+    public void verify_add_contract_page_enter_policy_details_and_go_next(String insuranceCategory, String insuranceCompany,
+                                                                          String policyNumber, String premiumAmount, String paymentInterval, String add_contract_page_headline) {
+        verify_add_contract_page_is_loaded_and_headline_is_present(add_contract_page_headline);
         select_insurance_category_by_text(insuranceCategory);
         select_insurance_company_by_text(insuranceCompany);
         enter_insurance_policy_number(policyNumber);

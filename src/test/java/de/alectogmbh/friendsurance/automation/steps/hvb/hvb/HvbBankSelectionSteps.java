@@ -9,9 +9,6 @@ import static org.junit.Assert.assertEquals;
 
 public class HvbBankSelectionSteps extends AbstractScenarioSteps<HvbBankSelectionPage> {
 
-    private static final String EXPECTED_BANK_SELECTION_HEADLINE = "Bei welcher Bank sind Sie Kunde?";
-    private static final String BANK_NAME = "Leipzig";
-
     private HvbBankSelectionPage hvbBankSelectionPage;
 
     public HvbBankSelectionPage getPageObject() {
@@ -44,17 +41,17 @@ public class HvbBankSelectionSteps extends AbstractScenarioSteps<HvbBankSelectio
     }
 
     @Step
-    public void verify_bank_selection_page_is_loaded_and_headline_is_present() {
-        assertEquals(EXPECTED_BANK_SELECTION_HEADLINE, get_bank_selection_headline_text());
+    public void verify_bank_selection_page_is_loaded_and_headline_is_present(String bank_selection_headline) {
+        assertEquals(bank_selection_headline, get_bank_selection_headline_text());
     }
 
     @StepGroup
-    public void verify_first_step_select_bank_branch_and_click_on_next_button() {
+    public void verify_first_step_select_bank_branch_and_click_on_next_button(String bank_selection_headline, String bank_name) {
         open_onboarding_first_step();
-        verify_bank_selection_page_is_loaded_and_headline_is_present();
+        verify_bank_selection_page_is_loaded_and_headline_is_present(bank_selection_headline);
         click_on_cookiebar_close_button();
         verify_if_bank_name_selector_is_present_and_field_is_empty();
-        select_bank_name_by_text(BANK_NAME);
+        select_bank_name_by_text(bank_name);
         click_bank_selection_next_button();
     }
 

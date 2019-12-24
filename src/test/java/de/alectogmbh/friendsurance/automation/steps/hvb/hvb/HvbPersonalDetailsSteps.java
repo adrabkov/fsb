@@ -9,8 +9,6 @@ import static org.junit.Assert.assertEquals;
 
 public class HvbPersonalDetailsSteps extends AbstractScenarioSteps<HvbPersonalDetailsPage> {
 
-    private static final String EXPECTED_PERSONAL_DETAILS_HEADLINE = "Kurz vor Schluss wird’s noch persönlich";
-
     private HvbPersonalDetailsPage hvbPersonalDetailsPage;
 
     public HvbPersonalDetailsPage getPageObject() {
@@ -68,14 +66,14 @@ public class HvbPersonalDetailsSteps extends AbstractScenarioSteps<HvbPersonalDe
     }
 
     @Step
-    public void verify_personal_details_page_is_loaded_and_headline_is_present() {
-        assertEquals(EXPECTED_PERSONAL_DETAILS_HEADLINE, get_personal_details_headline_text());
+    public void verify_personal_details_page_is_loaded_and_headline_is_present(String personal_details_headline) {
+        assertEquals(personal_details_headline, get_personal_details_headline_text());
     }
 
     @StepGroup
     public void verify_fifth_step_and_set_onboarding_personal_details(Boolean isMale, String birthDay, String streetName, String houseNumber,
-                                                                      String postalCode, String place, String phoneNum) {
-        verify_personal_details_page_is_loaded_and_headline_is_present();
+                                                                      String postalCode, String place, String phoneNum, String personal_details_headline) {
+        verify_personal_details_page_is_loaded_and_headline_is_present(personal_details_headline);
         select_gender(isMale);
         enter_birth_date(birthDay);
         enter_street_name(streetName);

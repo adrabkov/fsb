@@ -10,7 +10,6 @@ import static org.junit.Assert.assertEquals;
 
 public class HvbOrderOverviewSteps extends AbstractScenarioSteps<HvbOrderOverviewPage> {
 
-    private static final String EXPECTED_ORDER_OVERVIEW_HEADLINE = "Verträge überprüfen und hinzufügen";
     private static final String DEFAULT_NEW_COMPANY_NAME = "Bayerische Beamten Unfallversicherung";
     private static final String EXPECTED_NEW_COMPANY_NAME = "test";
     private static final int NUMBER_OF_EXTRACTED_ORDER_ITEMS = 4;
@@ -41,11 +40,6 @@ public class HvbOrderOverviewSteps extends AbstractScenarioSteps<HvbOrderOvervie
     }
 
     @Step
-    public void click_on_missing_order_info_item_one() {
-        getPageObject().clickOnMissingInfoOrderItem();
-    }
-
-    @Step
     public void click_on_add_contract_button() {
         getPageObject().clickOnAddContractButton();
     }
@@ -56,33 +50,18 @@ public class HvbOrderOverviewSteps extends AbstractScenarioSteps<HvbOrderOvervie
     }
 
     @Step
-    public void click_on_header_profile_link() {
-        getPageObject().clickOnHeaderProfileLink();
-    }
-
-    @Step
-    public void click_on_navigation_item_notifications_link() {
-        getPageObject().clickOnNavigationItemNotificationsLink();
-    }
-
-    @Step
     public void click_on_header_logout_link() {
         getPageObject().clickOnHeaderLogoutLink();
     }
 
     @Step
-    public void verify_order_overview_page_is_loaded_and_headline_is_present() {
-        assertEquals(EXPECTED_ORDER_OVERVIEW_HEADLINE, get_order_overview_headline_text());
+    public void verify_order_overview_page_is_loaded_and_headline_is_present(String order_overview_headline) {
+        assertEquals(order_overview_headline, get_order_overview_headline_text());
     }
 
     @Step
-    public void verify_order_overview_page_is_loaded_after_user_actions() {
-        assertEquals(EXPECTED_ORDER_OVERVIEW_HEADLINE, get_order_overview_headline());
-    }
-
-    @Step
-    public void verify_extracted_order_items_from_finlytics() {
-        assertEquals(NUMBER_OF_EXTRACTED_ORDER_ITEMS, getPageObject().getNumberOfOrderItems());
+    public void verify_order_overview_page_is_loaded_after_user_actions(String order_overview_headline) {
+        assertEquals(order_overview_headline, get_order_overview_headline());
     }
 
     @Step
@@ -103,7 +82,6 @@ public class HvbOrderOverviewSteps extends AbstractScenarioSteps<HvbOrderOvervie
                 hvbEditOrderPage.clickOnDeleteOrderItemLink();
             }
         }
-//        click_overview_page_submit_button();
     }
 
     @Step
@@ -127,21 +105,21 @@ public class HvbOrderOverviewSteps extends AbstractScenarioSteps<HvbOrderOvervie
     }
 
     @StepGroup
-    public void verify_order_overview_page_is_loaded_and_click_on_logout_link() {
-        verify_order_overview_page_is_loaded_and_headline_is_present();
+    public void verify_order_overview_page_is_loaded_and_click_on_logout_link(String order_overview_headline) {
+        verify_order_overview_page_is_loaded_and_headline_is_present(order_overview_headline);
         click_on_header_logout_link();
     }
 
     @StepGroup
-    public void verify_order_overview_page_and_perform_user_actions_and_click_add_button() {
-        verify_order_overview_page_is_loaded_and_headline_is_present();
+    public void verify_order_overview_page_and_perform_user_actions_and_click_add_button(String order_overview_headline) {
+        verify_order_overview_page_is_loaded_and_headline_is_present(order_overview_headline);
         check_company_name_item_after_edit_action();
         click_on_add_contract_button();
     }
 
     @StepGroup
-    public void verify_order_items_after_adding_contract_and_click_on_overview_page_submit_button() {
-        verify_order_overview_page_is_loaded_after_user_actions();
+    public void verify_order_items_after_adding_contract_and_click_on_overview_page_submit_button(String order_overview_headline) {
+        verify_order_overview_page_is_loaded_after_user_actions(order_overview_headline);
         verify_order_items_after_adding_contract_manually();
         click_overview_page_submit_button();
     }

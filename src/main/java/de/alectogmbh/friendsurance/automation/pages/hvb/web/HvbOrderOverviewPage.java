@@ -17,8 +17,6 @@ public class HvbOrderOverviewPage extends AbstractPageObject {
 
     public static final String ORDER_OVERVIEW_PAGE = "/addcontract/order-overview/";
 
-    private HvbEditOrderPage hvbEditOrderPage = new HvbEditOrderPage();
-
     private static final int SPINNER_TIMEOUT = 90;
 
     @FindBy(id = "overview-page-spinner")
@@ -58,7 +56,9 @@ public class HvbOrderOverviewPage extends AbstractPageObject {
     private WebElementFacade navigationItemNotificationsLink;
 
     public String getOrderOverviewHeadlineText() {
-        orderOverviewHeadlineText.waitUntilVisible();
+//        loading.withTimeoutOf(SPINNER_TIMEOUT, SECONDS).waitUntilNotVisible();
+        orderOverviewPageContent.waitUntilVisible();
+        orderOverviewHeadlineText.waitUntilPresent();
         return orderOverviewHeadlineText.getText();
     }
 
@@ -120,7 +120,6 @@ public class HvbOrderOverviewPage extends AbstractPageObject {
     public void clickOnHeaderLogoutLink() {
         headerLogoutLink.waitUntilVisible();
         scrollToElement(headerLogoutLink);
-        headerLogoutLink.waitUntilClickable();
         headerLogoutLink.click();
     }
 

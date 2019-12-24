@@ -1,11 +1,13 @@
 package de.alectogmbh.friendsurance.automation.tests;
+
 import de.alectogmbh.friendsurance.automation.pages.AbstractPageObject;
-import de.alectogmbh.friendsurance.automation.pages.hvb.web.HvbBankSelectionPage;
 import de.alectogmbh.friendsurance.automation.steps.AbstractScenarioSteps;
 import de.alectogmbh.friendsurance.automation.steps.hvb.hvb.*;
+import lombok.Getter;
 import net.thucydides.core.annotations.Steps;
 
-public abstract class Clients extends AbstractScenarioSteps {
+@Getter
+public class Clients extends AbstractScenarioSteps {
 
     @Steps
     private HvbBankSelectionSteps hvbBankSelectionSteps;
@@ -37,8 +39,19 @@ public abstract class Clients extends AbstractScenarioSteps {
     @Steps
     private HvbDashboardSteps hvbDashboardSteps;
 
-    protected HvbBankSelectionSteps getSteps() {
-        return hvbBankSelectionSteps;
-    }
+    @Steps
+    private HvbEditOrderSteps hvbEditOrderSteps;
 
+    @Steps
+    private HvbAddContractSteps hvbAddContractSteps;
+
+    @Steps
+    private HvbSignOrderSteps hvbSignOrderSteps;
+
+    @Steps
+    private HvbOverallNeedAnalysisIntroSteps hvbOverallNeedAnalysisIntroSteps;
+
+    protected AbstractPageObject getPageObject() {
+        return null;
+    }
 }

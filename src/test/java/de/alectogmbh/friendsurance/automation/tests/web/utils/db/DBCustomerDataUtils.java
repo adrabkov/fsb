@@ -30,6 +30,13 @@ public class DBCustomerDataUtils {
                 .repeatPassword("Fake1*password")
                 .streetName("Hohenzollerndamm Platz")
                 .userId("PINTAN")
+                .insuranceCategory("Ambulante Zusatzversicherung")
+                .insuranceCompany("Allianz")
+                .policyNumber("Pio/28776633/HD")
+                .premiumAmount("21,50")
+                .paymentInterval("Monatlich")
+                .hvbBankName("Leipzig")
+                .insuranceNewCompany("test")
                 .build();
 
         return customerData;

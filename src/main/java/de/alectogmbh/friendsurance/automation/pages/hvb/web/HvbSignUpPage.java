@@ -70,9 +70,11 @@ public class HvbSignUpPage extends AbstractPageObject {
   }
 
   public void clickExtractedDataInfoStepTwoContinue() {
-    infoModalSecondWindow.waitUntilVisible();
-    infoModalSecondButton.waitUntilPresent();
-    infoModalSecondButton.waitUntilClickable();
+//    infoModalSecondWindow.waitUntilVisible();
+//    infoModalSecondButton.waitUntilPresent();
+//    infoModalSecondButton.waitUntilClickable();
+//    infoModalSecondButton.
+//    infoModalSecondButton.withTimeoutOf(5, TimeUnit.SECONDS);
     infoModalSecondButton.click();
   }
 
