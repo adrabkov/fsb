@@ -16,11 +16,6 @@ public class HvbPersonalDetailsSteps extends AbstractScenarioSteps<HvbPersonalDe
     }
 
     @Step
-    public void open_onboarding_fifth_step() {
-        getPageObject().open();
-    }
-
-    @Step
     public String get_personal_details_headline_text() {
         return getPageObject().getPersonalDetailsHeadlineText();
     }

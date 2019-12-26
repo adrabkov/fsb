@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class JsonParser {
 
-    public  <T> T mapToObject(String FILE_PATH_JSON, Class<T> targetClass) {
+    public <T> T mapToObject(String FILE_PATH_JSON, Class<T> targetClass) {
         JSONObject jsonObject = readFromFile(FILE_PATH_JSON);
         return new Gson().fromJson(jsonObject.toJSONString(), targetClass);
     }

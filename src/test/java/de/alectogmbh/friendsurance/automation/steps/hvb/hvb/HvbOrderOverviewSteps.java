@@ -10,13 +10,9 @@ import static org.junit.Assert.assertEquals;
 
 public class HvbOrderOverviewSteps extends AbstractScenarioSteps<HvbOrderOverviewPage> {
 
-    private static final String DEFAULT_NEW_COMPANY_NAME = "Bayerische Beamten Unfallversicherung";
-    private static final String EXPECTED_NEW_COMPANY_NAME = "test";
-    private static final int NUMBER_OF_EXTRACTED_ORDER_ITEMS = 4;
-    private static final int NUMBER_OF_ORDER_ITEMS_AFTER_DELETING_INCOMPLETE_ORDER_ITEMS = 2;
-    private static final int NUMBER_OF_ORDER_ITEMS_AFTER_ADDING_MANUALLY = 3;
+    private static final int NUMBER_OF_ORDER_ITEMS_AFTER_DELETING_INCOMPLETE_ORDER_ITEMS = 3;
 
-    private HvbEditOrderPage hvbEditOrderPage = new HvbEditOrderPage();
+    private HvbEditOrderPage hvbEditOrderPage;
 
     private HvbOrderOverviewPage hvbOrderOverviewPage;
 
@@ -65,17 +61,12 @@ public class HvbOrderOverviewSteps extends AbstractScenarioSteps<HvbOrderOvervie
     }
 
     @Step
-    public void verify_order_items_after_deleting_error_items() {
+    public void verify_order_items_after_adding_contract_manually() {
         assertEquals(NUMBER_OF_ORDER_ITEMS_AFTER_DELETING_INCOMPLETE_ORDER_ITEMS, getPageObject().getNumberOfOrderItems());
     }
 
     @Step
-    public void verify_order_items_after_adding_contract_manually() {
-        assertEquals(NUMBER_OF_ORDER_ITEMS_AFTER_ADDING_MANUALLY, getPageObject().getNumberOfOrderItems());
-    }
-
-    @Step
-    public void check_and_delete_missing_orders_items() {
+    public void delete_missing_orders_items() {
         for (int i = 0; i <= getPageObject().getNumberOfErrorItems() + 1; i++) {
             if (check_missing_order_items_is_displayed()) {
                 getPageObject().clickOnMissingInfoOrderItem();
@@ -85,7 +76,12 @@ public class HvbOrderOverviewSteps extends AbstractScenarioSteps<HvbOrderOvervie
     }
 
     @Step
-    public void click_order_item() {
+    public void verify_order_items_after_deleting_error_items() {
+        assertEquals(getPageObject().getNumberOfOrderItems() - getPageObject().getNumberOfErrorItems(), getPageObject().getNumberOfOrderItems());
+    }
+
+    @Step
+    public void click_order_on_any_item() {
         getPageObject().clickOnOrderItem();
     }
 
@@ -95,13 +91,8 @@ public class HvbOrderOverviewSteps extends AbstractScenarioSteps<HvbOrderOvervie
     }
 
     @Step
-    public void check_company_name_item_before_edit_action() {
-        assertEquals(DEFAULT_NEW_COMPANY_NAME, get_company_new_name());
-    }
-
-    @Step
-    public void check_company_name_item_after_edit_action() {
-        assertEquals(EXPECTED_NEW_COMPANY_NAME, get_company_new_name());
+    public void check_company_name_item_after_edit_action(String expected_new_company_name) {
+        assertEquals(expected_new_company_name, get_company_new_name());
     }
 
     @StepGroup
@@ -111,9 +102,9 @@ public class HvbOrderOverviewSteps extends AbstractScenarioSteps<HvbOrderOvervie
     }
 
     @StepGroup
-    public void verify_order_overview_page_and_perform_user_actions_and_click_add_button(String order_overview_headline) {
+    public void verify_order_overview_page_and_perform_user_actions_and_click_add_button(String order_overview_headline, String expected_new_company_name) {
         verify_order_overview_page_is_loaded_and_headline_is_present(order_overview_headline);
-        check_company_name_item_after_edit_action();
+        check_company_name_item_after_edit_action(expected_new_company_name);
         click_on_add_contract_button();
     }
 
@@ -122,11 +113,5 @@ public class HvbOrderOverviewSteps extends AbstractScenarioSteps<HvbOrderOvervie
         verify_order_overview_page_is_loaded_after_user_actions(order_overview_headline);
         verify_order_items_after_adding_contract_manually();
         click_overview_page_submit_button();
-    }
-
-    @StepGroup
-    public void verify_company_name_before_editing_and_click_on_item() {
-        check_company_name_item_before_edit_action();
-        click_order_item();
     }
 }

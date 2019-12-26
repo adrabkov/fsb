@@ -12,45 +12,58 @@ public class HvbAddContractTest extends AbstractScenarioTest<HvbBankSelectionSte
 
         OnboardUserWithBankCredentials(dbCustomerData);
 
-        clients.getHvbOrderOverviewSteps().check_and_delete_missing_orders_items();
+        clients.getHvbOrderOverviewSteps().delete_missing_orders_items();
 
-        clients.getHvbOrderOverviewSteps().verify_company_name_before_editing_and_click_on_item();
+        clients.getHvbOrderOverviewSteps().verify_order_items_after_deleting_error_items();
 
-        clients.getHvbEditOrderSteps().verify_order_page_and_edit_company_name(messages.getEditOrderPageHeadline(), dbCustomerData.getInsuranceNewCompany());
+        clients.getHvbOrderOverviewSteps().click_order_on_any_item();
 
-        clients.getHvbOrderOverviewSteps().check_company_name_item_after_edit_action();
+        clients.getHvbEditOrderSteps()
+                .verify_order_page_and_edit_company_name(messages.getEditOrderPageHeadline(), dbCustomerData.getInsuranceNewCompany());
 
-        clients.getHvbOrderOverviewSteps().verify_order_overview_page_and_perform_user_actions_and_click_add_button(messages.getOrderOverviewHeadline());
+        clients.getHvbOrderOverviewSteps()
+                .check_company_name_item_after_edit_action(dbCustomerData.getInsuranceNewCompany());
 
-        clients.getHvbAddContractSteps().
-                verify_add_contract_page_enter_policy_details_and_go_next(dbCustomerData.getInsuranceCategory(),
+        clients.getHvbOrderOverviewSteps()
+                .verify_order_overview_page_and_perform_user_actions_and_click_add_button(messages.getOrderOverviewHeadline(), dbCustomerData.getInsuranceNewCompany());
+
+        clients.getHvbAddContractSteps()
+                .verify_add_contract_page_enter_policy_details_and_go_next(dbCustomerData.getInsuranceCategory(),
                         dbCustomerData.getInsuranceCompany(), dbCustomerData.getPolicyNumber(), dbCustomerData.getPremiumAmount(),
                         dbCustomerData.getPaymentInterval(), messages.getAddContractPageHeadline());
 
-        clients.getHvbOrderOverviewSteps().verify_order_items_after_adding_contract_and_click_on_overview_page_submit_button(messages.getOrderOverviewHeadline());
+        clients.getHvbOrderOverviewSteps()
+                .verify_order_items_after_adding_contract_and_click_on_overview_page_submit_button(messages.getOrderOverviewHeadline());
 
-        clients.getHvbSignOrderSteps().verify_sign_authorization_and_submit_order_items(messages.getSignOrderPageHeadline());
+        clients.getHvbSignOrderSteps()
+                .verify_sign_authorization_and_submit_order_items(messages.getSignOrderPageHeadline());
 
-        clients.getHvbOverallNeedAnalysisIntroSteps().verify_ona_intro_page_is_loaded_after_addcontract_flow_during_onboarding(messages.getOnaIntroHeadlineTextDuringOnboarding());
+        clients.getHvbOverallNeedAnalysisIntroSteps()
+                .verify_ona_intro_page_is_loaded_after_addcontract_flow_during_onboarding(messages.getOnaIntroHeadlineTextDuringOnboarding());
 
     }
 
     private void OnboardUserWithBankCredentials(DBCustomerData dbCustomerData) throws InterruptedException {
-        clients.getHvbBankSelectionSteps().verify_first_step_select_bank_branch_and_click_on_next_button(messages.getBankSelectionHeadline(), dbCustomerData.getHvbBankName() );
+        clients.getHvbBankSelectionSteps()
+                .verify_first_step_select_bank_branch_and_click_on_next_button(messages.getBankSelectionHeadline(), dbCustomerData.getHvbBankName());
 
-        clients.getHvbInsuranceInformationSteps().verify_second_step_insurance_information_page_and_click_on_next_button(messages.getInsuranceInformationHeadline());
+        clients.getHvbInsuranceInformationSteps()
+                .verify_second_step_insurance_information_page_and_click_on_next_button(messages.getInsuranceInformationHeadline());
 
-        clients.getHvbTermsConditionsSteps().verify_third_step_bank_conditions_page_and_click_next_button(messages.getBankConditionsHeadline());
+        clients.getHvbTermsConditionsSteps()
+                .verify_third_step_bank_conditions_page_and_click_next_button(messages.getBankConditionsHeadline());
 
-        clients.getHvbFinApiWebFormSteps().enter_bank_login_credential_on_fin_api_web_form_and_retrieve_data(dbCustomerData.getUserId(),
-                dbCustomerData.getPin());
+        clients.getHvbFinApiWebFormSteps()
+                .enter_bank_login_credential_on_fin_api_web_form_and_retrieve_data(dbCustomerData.getUserId(),
+                        dbCustomerData.getPin());
 
         clients.getHvbPersonalDetailsSteps()
                 .verify_fifth_step_and_set_onboarding_personal_details(dbCustomerData.isGender(), dbCustomerData.getBirthDay(),
                         dbCustomerData.getStreetName(), dbCustomerData.getHouseNumber(), dbCustomerData.getPostalCode(),
                         dbCustomerData.getPlace(), dbCustomerData.getPhoneNum(), messages.getPersonalDetailsHeadline());
 
-        clients.getHvbSignUpSteps().verify_sixth_step_and_finish_sign_up(dbCustomerData.getEmail(), dbCustomerData.getPassword(), messages.getSignUpPageHeadline());
+        clients.getHvbSignUpSteps()
+                .verify_sixth_step_and_finish_sign_up(dbCustomerData.getEmail(), dbCustomerData.getPassword(), messages.getSignUpPageHeadline());
     }
 
     protected HvbBankSelectionSteps getSteps() {

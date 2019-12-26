@@ -69,6 +69,7 @@ public class HvbOrderOverviewPage extends AbstractPageObject {
     }
 
     public Boolean checkErrorOrderIsDisplayed() {
+        errorOrderItemOne.waitUntilPresent();
         return errorOrderItemOne.isDisplayed();
     }
 
