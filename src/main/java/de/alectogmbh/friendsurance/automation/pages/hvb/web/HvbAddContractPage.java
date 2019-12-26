@@ -6,7 +6,6 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.At;
 import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.support.ui.Select;
 
 import static de.alectogmbh.friendsurance.automation.pages.hvb.web.HvbAddContractPage.ADD_CONTRACT_PAGE_URL;
 
@@ -70,10 +69,6 @@ public class HvbAddContractPage extends AbstractPageObject {
     }
 
     public void selectPaymentIntervalByText(String paymentInterval) {
-//        inputPaymentInterval.waitUntilPresent();
-//        scrollToElement(inputPaymentInterval);
-//        Select interval = new Select(inputPaymentInterval);
-//        interval.selectByVisibleText("Monatlich");
         inputPaymentInterval.sendKeys(paymentInterval);
         inputPaymentInterval.sendKeys(Keys.RETURN);
     }

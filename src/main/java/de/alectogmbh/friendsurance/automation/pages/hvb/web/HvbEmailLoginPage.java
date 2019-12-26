@@ -13,62 +13,62 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 @DefaultUrl(LOGIN_PAGE_URL)
 public class HvbEmailLoginPage extends AbstractPageObject {
 
-  public final static String LOGIN_PAGE_URL = "/auth/";
+    public final static String LOGIN_PAGE_URL = "/auth/";
 
-  @FindBy(className = "user-login-container")
-  private WebElementFacade loginContainer;
+    @FindBy(className = "user-login-container")
+    private WebElementFacade loginContainer;
 
-  @FindBy(className = "user-login-container")
-  private WebElementFacade loginContent;
+    @FindBy(className = "user-login-container")
+    private WebElementFacade loginContent;
 
-  @FindBy(id = "user-login__headline")
-  private WebElementFacade loginPageHeadlineText;
+    @FindBy(id = "user-login__headline")
+    private WebElementFacade loginPageHeadlineText;
 
-  @FindBy(id = "user-login-email__input")
-  private WebElementFacade userLoginEmailInputField;
+    @FindBy(id = "user-login-email__input")
+    private WebElementFacade userLoginEmailInputField;
 
-  @FindBy(id = "user-login-password__input")
-  private WebElementFacade userLoginPasswordInputField;
+    @FindBy(id = "user-login-password__input")
+    private WebElementFacade userLoginPasswordInputField;
 
-  @FindBy(id = "user-login-email-forgot-password__link")
-  private WebElementFacade forgotPasswordLink;
+    @FindBy(id = "user-login-email-forgot-password__link")
+    private WebElementFacade forgotPasswordLink;
 
-  @FindBy(id = "user-login__button")
-  private WebElementFacade userLoginButton;
+    @FindBy(id = "user-login__button")
+    private WebElementFacade userLoginButton;
 
-  private static final int SPINNER_TIMEOUT = 5;
+    private static final int SPINNER_TIMEOUT = 5;
 
-  public void waitForLoginContentToBePresent() {
-    loginContainer.withTimeoutOf(SPINNER_TIMEOUT, SECONDS).waitUntilVisible();
-  }
+    public void waitForLoginContentToBePresent() {
+        loginContainer.withTimeoutOf(SPINNER_TIMEOUT, SECONDS).waitUntilVisible();
+    }
 
-  public String getLoginPageHeadlineText() {
-    loginContainer.waitUntilVisible();
-    loginContent.waitUntilVisible();
-    loginPageHeadlineText.waitUntilVisible();
-    return loginPageHeadlineText.getText();
-  }
+    public String getLoginPageHeadlineText() {
+        loginContainer.waitUntilVisible();
+        loginContent.waitUntilVisible();
+        loginPageHeadlineText.waitUntilVisible();
+        return loginPageHeadlineText.getText();
+    }
 
-  public void clickOnForgetPasswordLink() {
-    forgotPasswordLink.waitUntilClickable();
-    forgotPasswordLink.click();
-  }
+    public void clickOnForgetPasswordLink() {
+        forgotPasswordLink.waitUntilClickable();
+        forgotPasswordLink.click();
+    }
 
-  public void enterUserLoginEmail(String email) {
-    userLoginEmailInputField.waitUntilVisible();
-    userLoginEmailInputField.clear();
-    userLoginEmailInputField.type(email);
-  }
+    public void enterUserLoginEmail(String email) {
+        userLoginEmailInputField.waitUntilVisible();
+        userLoginEmailInputField.clear();
+        userLoginEmailInputField.type(email);
+    }
 
-  public void enterUserLoginPassword(String password) {
-    userLoginPasswordInputField.waitUntilVisible();
-    userLoginPasswordInputField.clear();
-    userLoginPasswordInputField.type(password);
-  }
+    public void enterUserLoginPassword(String password) {
+        userLoginPasswordInputField.waitUntilVisible();
+        userLoginPasswordInputField.clear();
+        userLoginPasswordInputField.type(password);
+    }
 
-  public void clickOnUserLoginButton() {
-    userLoginButton.waitUntilClickable();
-    userLoginButton.click();
-  }
+    public void clickOnUserLoginButton() {
+        userLoginButton.waitUntilClickable();
+        userLoginButton.click();
+    }
 
 }

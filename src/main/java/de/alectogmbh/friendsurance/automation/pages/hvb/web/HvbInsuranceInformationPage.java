@@ -12,26 +12,26 @@ import static de.alectogmbh.friendsurance.automation.pages.hvb.web.HvbInsuranceI
 @DefaultUrl(INSURANCE_INFORMATION_PAGE_URL)
 public class HvbInsuranceInformationPage extends AbstractPageObject {
 
-  final static String INSURANCE_INFORMATION_PAGE_URL = "/onboarding/insurance-information/";
+    final static String INSURANCE_INFORMATION_PAGE_URL = "/onboarding/insurance-information/";
 
-  @FindBy(className = "insurance-information")
-  private WebElementFacade insuranceInformationContent;
+    @FindBy(className = "insurance-information")
+    private WebElementFacade insuranceInformationContent;
 
-  @FindBy(className = "onboarding-headline__headline")
-  private WebElementFacade insuranceInformationHeadlineText;
+    @FindBy(className = "onboarding-headline__headline")
+    private WebElementFacade insuranceInformationHeadlineText;
 
-  @FindBy(id = "insurance-information-gonext__button")
-  private WebElementFacade insuranceInformationGoNextButton;
+    @FindBy(id = "insurance-information-gonext__button")
+    private WebElementFacade insuranceInformationGoNextButton;
 
-  public String getInsuranceInformationHeadlineText() {
-    insuranceInformationContent.waitUntilPresent();
-    insuranceInformationHeadlineText.waitUntilVisible();
-    return insuranceInformationHeadlineText.getText();
-  }
+    public String getInsuranceInformationHeadlineText() {
+        insuranceInformationContent.waitUntilPresent();
+        insuranceInformationHeadlineText.waitUntilVisible();
+        return insuranceInformationHeadlineText.getText();
+    }
 
-  public void clickInsuranceInformationGoNextButton() {
-    insuranceInformationGoNextButton.waitUntilClickable();
-    insuranceInformationGoNextButton.click();
-  }
+    public void clickInsuranceInformationGoNextButton() {
+        insuranceInformationGoNextButton.waitUntilClickable();
+        insuranceInformationGoNextButton.click();
+    }
 
 }

@@ -12,26 +12,26 @@ import static de.alectogmbh.friendsurance.automation.pages.hvb.web.HvbLandingPag
 @DefaultUrl(LANDING_PAGE)
 public class HvbLandingPage extends AbstractPageObject {
 
-  public static final String LANDING_PAGE = "/";
+    public static final String LANDING_PAGE = "/";
 
-  @FindBy(id = "header_login")
-  private WebElementFacade headerLoginLink;
+    @FindBy(id = "header_login")
+    private WebElementFacade headerLoginLink;
 
-  @FindBy(id = "key-visuals__button-secondary")
-  private WebElementFacade keyVisualLoginButton;
+    @FindBy(id = "key-visuals__button-secondary")
+    private WebElementFacade keyVisualLoginButton;
 
-  public void clickOnHeaderLoginLink() {
-    headerLoginLink.waitUntilVisible();
-    scrollToElement(headerLoginLink);
-    headerLoginLink.waitUntilClickable();
-    headerLoginLink.click();
-  }
+    public void clickOnHeaderLoginLink() {
+        headerLoginLink.waitUntilVisible();
+        scrollToElement(headerLoginLink);
+        headerLoginLink.waitUntilClickable();
+        headerLoginLink.click();
+    }
 
-  public void clickOnKeyVisualLoginButton() {
-    keyVisualLoginButton.waitUntilVisible();
-    scrollToElement(keyVisualLoginButton);
-    keyVisualLoginButton.waitUntilClickable();
-    keyVisualLoginButton.click();
-  }
+    public void clickOnKeyVisualLoginButton() {
+        keyVisualLoginButton.waitUntilVisible();
+        scrollToElement(keyVisualLoginButton);
+        keyVisualLoginButton.waitUntilClickable();
+        keyVisualLoginButton.click();
+    }
 
 }

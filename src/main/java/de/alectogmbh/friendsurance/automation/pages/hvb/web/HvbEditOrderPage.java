@@ -36,7 +36,7 @@ public class HvbEditOrderPage extends AbstractPageObject {
     @FindBy(id = "add-order-save")
     private WebElementFacade saveContractDetailsButton;
 
-    @FindBy(id="addcontract-addinsurancecontract-arrowlink")
+    @FindBy(id = "addcontract-addinsurancecontract-arrowlink")
     private WebElementFacade backContractDetailsButton;
 
     public String getEditOrderPageHeadlineText() {
@@ -65,7 +65,7 @@ public class HvbEditOrderPage extends AbstractPageObject {
         inputInsuranceCompany.sendKeys(Keys.RETURN);
     }
 
-    public void selectInsuranceNewCompany(String insuranceNewCompany){
+    public void selectInsuranceNewCompany(String insuranceNewCompany) {
         inputInsuranceNewCompany.waitUntilPresent();
         inputInsuranceNewCompany.clear();
         inputInsuranceNewCompany.type(insuranceNewCompany);
@@ -84,7 +84,7 @@ public class HvbEditOrderPage extends AbstractPageObject {
         saveContractDetailsButton.click();
     }
 
-    public void clickBackContractDetailsButton(){
+    public void clickBackContractDetailsButton() {
         backContractDetailsButton.click();
     }
 

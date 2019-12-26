@@ -12,23 +12,23 @@ import static de.alectogmbh.friendsurance.automation.pages.hvb.web.HvbOverallNee
 @DefaultUrl(ONA_INTRO_PAGE_URL)
 public class HvbOverallNeedAnalysisIntroPage extends AbstractPageObject {
 
-  final static String ONA_INTRO_PAGE_URL = "/home/profile/overallneedanalysis/intro/";
+    final static String ONA_INTRO_PAGE_URL = "/home/profile/overallneedanalysis/intro/";
 
-  @FindBy(className = "onboarding-headline__headline")
-  private WebElementFacade onaIntroHeadlineText;
+    @FindBy(className = "onboarding-headline__headline")
+    private WebElementFacade onaIntroHeadlineText;
 
-  @FindBy(id = "overallneedanalysis-gonext__button")
-  private WebElementFacade onaIntroPageButton;
+    @FindBy(id = "overallneedanalysis-gonext__button")
+    private WebElementFacade onaIntroPageButton;
 
-  public String getOnaIntroPageHeadlineText() {
-    onaIntroHeadlineText.waitUntilVisible();
-    return onaIntroHeadlineText.getText();
-  }
+    public String getOnaIntroPageHeadlineText() {
+        onaIntroHeadlineText.waitUntilVisible();
+        return onaIntroHeadlineText.getText();
+    }
 
-  public void clickOnaGoNextButton() {
-    scroll_element_into_view(onaIntroPageButton);
-    onaIntroPageButton.waitUntilClickable();
-    onaIntroPageButton.click();
-  }
+    public void clickOnaGoNextButton() {
+        scroll_element_into_view(onaIntroPageButton);
+        onaIntroPageButton.waitUntilClickable();
+        onaIntroPageButton.click();
+    }
 
 }

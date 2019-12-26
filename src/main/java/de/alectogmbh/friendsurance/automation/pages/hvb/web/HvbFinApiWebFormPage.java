@@ -13,53 +13,53 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 @DefaultUrl(BANKING_PAGE_URL)
 public class HvbFinApiWebFormPage extends AbstractPageObject {
 
-  final static String BANKING_PAGE_URL = "/onboarding/banking/";
+    final static String BANKING_PAGE_URL = "/onboarding/banking/";
 
-  private static final int FIN_API_PAGE_DISAPPEAR = 10;
+    private static final int FIN_API_PAGE_DISAPPEAR = 10;
 
-  @FindBy(id = "btnSubmit")
-  private WebElementFacade finApiConditionsNextButton;
+    @FindBy(id = "btnSubmit")
+    private WebElementFacade finApiConditionsNextButton;
 
-  @FindBy(id = "userId")
-  private WebElementFacade onlineBankingUserId;
+    @FindBy(id = "userId")
+    private WebElementFacade onlineBankingUserId;
 
-  @FindBy(id = "pin")
-  private WebElementFacade onlineBankingPin;
+    @FindBy(id = "pin")
+    private WebElementFacade onlineBankingPin;
 
-  @FindBy(id = "storeSecrets")
-  private WebElementFacade savePinCheckbox;
+    @FindBy(id = "storeSecrets")
+    private WebElementFacade savePinCheckbox;
 
-  @FindBy(id = "btnSubmit")
-  private WebElementFacade bankDataRetrieveButton;
+    @FindBy(id = "btnSubmit")
+    private WebElementFacade bankDataRetrieveButton;
 
-  public void clickOnFinApiConditionsGoNextButton() {
-    finApiConditionsNextButton.waitUntilClickable();
-    finApiConditionsNextButton.click();
-  }
-
-  public void enterOnlineBankingInputUserId(String userId) {
-    onlineBankingUserId.waitUntilVisible();
-    onlineBankingUserId.clear();
-    onlineBankingUserId.type(userId);
-  }
-
-  public void enterOnlineBankingInputPin(String pin) {
-    onlineBankingPin.waitUntilVisible();
-    onlineBankingPin.clear();
-    onlineBankingPin.type(pin);
-  }
-
-  public void checkSavePinCheckbox() {
-    if (!savePinCheckbox.isSelected()) {
-      savePinCheckbox.waitUntilClickable();
-      savePinCheckbox.click();
+    public void clickOnFinApiConditionsGoNextButton() {
+        finApiConditionsNextButton.waitUntilClickable();
+        finApiConditionsNextButton.click();
     }
-  }
 
-  public void clickOnBankDataRetrieveButton() {
-    bankDataRetrieveButton.waitUntilClickable();
-    bankDataRetrieveButton.click();
-    bankDataRetrieveButton.withTimeoutOf(FIN_API_PAGE_DISAPPEAR, SECONDS).waitUntilNotVisible();
-  }
+    public void enterOnlineBankingInputUserId(String userId) {
+        onlineBankingUserId.waitUntilVisible();
+        onlineBankingUserId.clear();
+        onlineBankingUserId.type(userId);
+    }
+
+    public void enterOnlineBankingInputPin(String pin) {
+        onlineBankingPin.waitUntilVisible();
+        onlineBankingPin.clear();
+        onlineBankingPin.type(pin);
+    }
+
+    public void checkSavePinCheckbox() {
+        if (!savePinCheckbox.isSelected()) {
+            savePinCheckbox.waitUntilClickable();
+            savePinCheckbox.click();
+        }
+    }
+
+    public void clickOnBankDataRetrieveButton() {
+        bankDataRetrieveButton.waitUntilClickable();
+        bankDataRetrieveButton.click();
+        bankDataRetrieveButton.withTimeoutOf(FIN_API_PAGE_DISAPPEAR, SECONDS).waitUntilNotVisible();
+    }
 
 }

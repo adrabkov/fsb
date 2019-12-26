@@ -13,36 +13,36 @@ import static de.alectogmbh.friendsurance.automation.pages.hvb.web.HvbBankSelect
 @DefaultUrl(BANK_SELECTION_PAGE_URL)
 public class HvbBankSelectionPage extends AbstractPageObject {
 
-  final static String BANK_SELECTION_PAGE_URL = "/onboarding/bank-selection/";
+    final static String BANK_SELECTION_PAGE_URL = "/onboarding/bank-selection/";
 
-  @FindBy(className = "onboarding-headline__headline")
-  private WebElementFacade bankSelectionHeadlineText;
+    @FindBy(className = "onboarding-headline__headline")
+    private WebElementFacade bankSelectionHeadlineText;
 
-  @FindBy(id = "select-bank")
-  private WebElementFacade bankNameSelector;
+    @FindBy(id = "select-bank")
+    private WebElementFacade bankNameSelector;
 
-  @FindBy(id = "bank-selection-gonext__button")
-  private WebElementFacade bankSelectionNextButton;
+    @FindBy(id = "bank-selection-gonext__button")
+    private WebElementFacade bankSelectionNextButton;
 
-  public String getBankSelectionHeadlineText() {
-    bankSelectionHeadlineText.waitUntilVisible();
-    return bankSelectionHeadlineText.getText();
-  }
+    public String getBankSelectionHeadlineText() {
+        bankSelectionHeadlineText.waitUntilVisible();
+        return bankSelectionHeadlineText.getText();
+    }
 
-  public void waitUntilBankNameSelectorIsPresent() {
-    bankNameSelector.waitUntilPresent();
-  }
+    public void waitUntilBankNameSelectorIsPresent() {
+        bankNameSelector.waitUntilPresent();
+    }
 
-  public void selectBankNameByText(String bankName) {
-    scrollToElement(bankNameSelector);
-    bankNameSelector.click();
-    bankNameSelector.type(bankName);
-    bankNameSelector.sendKeys(Keys.RETURN);
-  }
+    public void selectBankNameByText(String bankName) {
+        scrollToElement(bankNameSelector);
+        bankNameSelector.click();
+        bankNameSelector.type(bankName);
+        bankNameSelector.sendKeys(Keys.RETURN);
+    }
 
-  public void clickBankSelectionNextButton() {
-    bankSelectionNextButton.waitUntilClickable();
-    bankSelectionNextButton.click();
-  }
+    public void clickBankSelectionNextButton() {
+        bankSelectionNextButton.waitUntilClickable();
+        bankSelectionNextButton.click();
+    }
 
 }
