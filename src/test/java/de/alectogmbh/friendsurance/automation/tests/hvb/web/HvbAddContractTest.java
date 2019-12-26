@@ -16,7 +16,7 @@ public class HvbAddContractTest extends AbstractScenarioTest<HvbBankSelectionSte
 
         clients.getHvbOrderOverviewSteps().verify_company_name_before_editing_and_click_on_item();
 
-        clients.getHvbEditOrderSteps().verify_order_page_and_edit_company_name(dbCustomerData.getInsuranceNewCompany(), messages.getEditOrderPageHeadline());
+        clients.getHvbEditOrderSteps().verify_order_page_and_edit_company_name(messages.getEditOrderPageHeadline(), dbCustomerData.getInsuranceNewCompany());
 
         clients.getHvbOrderOverviewSteps().check_company_name_item_after_edit_action();
 
@@ -36,7 +36,7 @@ public class HvbAddContractTest extends AbstractScenarioTest<HvbBankSelectionSte
     }
 
     private void OnboardUserWithBankCredentials(DBCustomerData dbCustomerData) throws InterruptedException {
-        clients.getHvbBankSelectionSteps().verify_first_step_select_bank_branch_and_click_on_next_button(dbCustomerData.getHvbBankName(), messages.getBankSelectionHeadline());
+        clients.getHvbBankSelectionSteps().verify_first_step_select_bank_branch_and_click_on_next_button(messages.getBankSelectionHeadline(), dbCustomerData.getHvbBankName() );
 
         clients.getHvbInsuranceInformationSteps().verify_second_step_insurance_information_page_and_click_on_next_button(messages.getInsuranceInformationHeadline());
 

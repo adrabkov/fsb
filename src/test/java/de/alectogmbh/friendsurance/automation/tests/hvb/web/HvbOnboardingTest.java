@@ -10,7 +10,7 @@ public class HvbOnboardingTest extends AbstractScenarioTest {
     @Test
     public void userRegistrationWithBankCredentials() throws InterruptedException {
 
-        clients.getHvbBankSelectionSteps().verify_first_step_select_bank_branch_and_click_on_next_button(messages.getBankSelectionHeadline());
+        clients.getHvbBankSelectionSteps().verify_first_step_select_bank_branch_and_click_on_next_button(messages.getBankSelectionHeadline(), dbCustomerData.getHvbBankName());
 
         clients.getHvbInsuranceInformationSteps().verify_second_step_insurance_information_page_and_click_on_next_button(messages.getInsuranceInformationHeadline());
 
