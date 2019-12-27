@@ -43,7 +43,7 @@ public class HvbAddContractTest extends AbstractScenarioTest<HvbBankSelectionSte
 
     }
 
-    private void OnboardUserWithBankCredentials(DBCustomerData dbCustomerData) throws InterruptedException {
+    public void OnboardUserWithBankCredentials(DBCustomerData dbCustomerData) throws InterruptedException {
         clients.getHvbBankSelectionSteps()
                 .verify_first_step_select_bank_branch_and_click_on_next_button(messages.getBankSelectionHeadline(), dbCustomerData.getHvbBankName());
 

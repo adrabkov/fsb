@@ -17,8 +17,8 @@ public class FsbOnboardingTest extends AbstractScenarioTest<FsbPersonalDetailsSt
     @Steps
     private FsbPersonalDetailsSteps fsbPersonalDetailsSteps;
 
-    @Steps
-    private FsbSignUpSteps fsbSignUpSteps;
+//    @Steps
+//    private FsbSignUpSteps fsbSignUpSteps;
 
     @Steps
     private FsbBankSelectionSteps fsbBankSelectionSteps;
@@ -43,7 +43,7 @@ public class FsbOnboardingTest extends AbstractScenarioTest<FsbPersonalDetailsSt
                 dbCustomerData.getBirthDay(), dbCustomerData.getStreetName(), dbCustomerData.getHouseNumber(), dbCustomerData.getPostalCode(),
                 dbCustomerData.getPlace());
 
-        fsbSignUpSteps.verify_second_step_and_go_to_next_step(dbCustomerData.getEmail(), dbCustomerData.getPassword());
+//        fsbSignUpSteps.verify_second_step_and_go_to_next_step(dbCustomerData.getEmail(), dbCustomerData.getPassword());
         Thread.sleep(10000);
 
         fsbBankSelectionSteps.verify_bank_step_select_bank_and_click_on_next_button();

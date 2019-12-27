@@ -31,6 +31,8 @@ public class HvbOnboardingTest extends AbstractScenarioTest {
         clients.getHvbOrderOverviewSteps().verify_order_overview_page_is_loaded_and_click_on_logout_link(messages.getOrderOverviewHeadline());
 
         verifyOnboardedUserLoginFunctionality(dbCustomerData);
+//        preSteps.verifyOnboardingUserLoginFunctionality(dbCustomerData);
+
     }
 
     private void verifyOnboardedUserLoginFunctionality(DBCustomerData dbCustomerData) {

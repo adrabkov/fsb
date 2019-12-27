@@ -56,7 +56,7 @@ public class HvbOrderOverviewPage extends AbstractPageObject {
     private WebElementFacade navigationItemNotificationsLink;
 
     public String getOrderOverviewHeadlineText() {
-//        loading.withTimeoutOf(SPINNER_TIMEOUT, SECONDS).waitUntilNotVisible();
+        loading.withTimeoutOf(SPINNER_TIMEOUT, SECONDS).waitUntilNotVisible();
         orderOverviewPageContent.waitUntilVisible();
         orderOverviewHeadlineText.waitUntilPresent();
         return orderOverviewHeadlineText.getText();

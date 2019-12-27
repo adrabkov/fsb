@@ -1,6 +1,7 @@
 package de.alectogmbh.friendsurance.automation.tests;
 
 import de.alectogmbh.friendsurance.automation.steps.AbstractScenarioSteps;
+import de.alectogmbh.friendsurance.automation.tests.hvb.web.PreSteps;
 import de.alectogmbh.friendsurance.automation.tests.web.utils.JsonParser;
 import de.alectogmbh.friendsurance.automation.tests.web.utils.HvbMessages;
 import de.alectogmbh.friendsurance.automation.tests.web.utils.db.DBCustomerData;
@@ -37,7 +38,7 @@ public abstract class AbstractScenarioTest<T extends AbstractScenarioSteps> {
     public Pages pages;
 
     @Steps
-    public Clients clients;
+    protected Clients clients;
 
     protected abstract T getSteps();
 }
