@@ -20,6 +20,9 @@ public class HvbOverallNeedAnalysisIntroPage extends AbstractPageObject {
     @FindBy(id = "overallneedanalysis-gonext__button")
     private WebElementFacade onaIntroPageButton;
 
+    @FindBy(id = "overallneedanalysis-link")
+    private WebElementFacade rememberLaterButton;
+
     public String getOnaIntroPageHeadlineText() {
         onaIntroHeadlineText.waitUntilVisible();
         return onaIntroHeadlineText.getText();
@@ -29,6 +32,12 @@ public class HvbOverallNeedAnalysisIntroPage extends AbstractPageObject {
         scroll_element_into_view(onaIntroPageButton);
         onaIntroPageButton.waitUntilClickable();
         onaIntroPageButton.click();
+    }
+
+    public void clickOnaSkippButton() {
+        scroll_element_into_view(rememberLaterButton);
+        rememberLaterButton.waitUntilClickable();
+        rememberLaterButton.click();
     }
 
 }

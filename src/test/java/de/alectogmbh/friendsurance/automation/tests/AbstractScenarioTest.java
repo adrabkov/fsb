@@ -26,10 +26,10 @@ public abstract class AbstractScenarioTest<T extends AbstractScenarioSteps> {
     protected HvbMessages messages = new JsonParser().mapToObject(FILE_PATH_JSON, HvbMessages.class);
     protected DBCustomerData dbCustomerData = DBCustomerDataUtils.createDBCustomerData();
 
-    @Before
-    public void settingTimeout() {
-        webdriver.manage().timeouts().pageLoadTimeout(PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
-    }
+//    @Before
+//    public void settingTimeout() {
+//        webdriver.manage().timeouts().pageLoadTimeout(PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
+//    }
 
     @Managed(uniqueSession = true)
     public WebDriver webdriver;

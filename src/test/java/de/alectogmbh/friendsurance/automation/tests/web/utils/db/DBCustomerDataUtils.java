@@ -37,6 +37,7 @@ public class DBCustomerDataUtils {
                 .paymentInterval("Monatlich")
                 .hvbBankName("Leipzig")
                 .insuranceNewCompany("test")
+                .children(RandomStringUtils.randomNumeric(3))
                 .build();
 
         return customerData;

@@ -5,6 +5,7 @@ import de.alectogmbh.friendsurance.automation.steps.AbstractScenarioSteps;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
 
+import static junit.framework.Assert.assertTrue;
 import static junit.framework.TestCase.assertEquals;
 
 public class HvbDashboardSteps extends AbstractScenarioSteps<HvbDashboardPage> {
@@ -18,6 +19,21 @@ public class HvbDashboardSteps extends AbstractScenarioSteps<HvbDashboardPage> {
     @Step
     public String get_dashboard_headline_text() {
         return getPageObject().getDashboardHeadlineText();
+    }
+
+    @Step
+    public void verify_dashboard_profile_remainder_is_displayed(){
+        assertTrue(getPageObject().dashboardRemainderAboutProfile());
+    }
+
+    @Step
+    public void click_dashboard_profile_remainder(){
+        getPageObject().clickRemainderAboutProfile();
+    }
+
+    @Step
+    public void verify_dashboard_profile_remainder_text_displayed(){
+
     }
 
     @StepGroup

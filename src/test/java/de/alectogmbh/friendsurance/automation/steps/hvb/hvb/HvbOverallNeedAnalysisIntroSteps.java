@@ -26,30 +26,13 @@ public class HvbOverallNeedAnalysisIntroSteps extends AbstractScenarioSteps<HvbO
     }
 
     @Step
-    public void verify_ona_intro_page_is_loaded_and_headline_is_present(String ona_intro_headline) {
-        assertEquals(ona_intro_headline, get_ona_intro_page_headline_text());
+    public void click_remember_later_button(){
+        getPageObject().clickOnaSkippButton();
     }
 
     @Step
     public void verify_ona_intro_page_is_loaded_after_addcontract_flow_during_onboarding(String ona_intro_headline_text_during_onboarding) {
         assertEquals(ona_intro_headline_text_during_onboarding, get_ona_intro_page_headline_text());
-    }
-
-    @Step
-    public void verify_ona_intro_page_is_loaded_after_click_on_profile_link(String ona_intro_headline_text_during_onboarding) {
-        assertEquals(ona_intro_headline_text_during_onboarding, get_ona_intro_page_headline_text());
-    }
-
-    @StepGroup
-    public void verify_ona_intro_page_is_loaded_and_click_on_go_next(String ona_intro_headline_text_during_onboarding) {
-        verify_ona_intro_page_is_loaded_after_click_on_profile_link(ona_intro_headline_text_during_onboarding);
-        click_ona_go_next_button();
-    }
-
-    @StepGroup
-    public void verify_ona_intro_page_and_go_next(String ona_intro_headline) {
-        verify_ona_intro_page_is_loaded_and_headline_is_present(ona_intro_headline);
-        click_ona_go_next_button();
     }
 
 }

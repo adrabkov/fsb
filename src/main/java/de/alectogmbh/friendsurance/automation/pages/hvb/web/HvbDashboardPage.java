@@ -27,11 +27,23 @@ public class HvbDashboardPage extends AbstractPageObject {
     @FindBy(id = "dashboard-home_spinner")
     private WebElementFacade loading;
 
+    @FindBy(id = "toast-message--info")
+    private WebElementFacade dashboardRemainderAboutProfile;
+
     private static final int SPINNER_TIMEOUT = 5;
 
     public String getDashboardHeadlineText() {
         dashboardWelcomeText.waitUntilVisible();
         return dashboardWelcomeText.getText();
+    }
+
+    public Boolean dashboardRemainderAboutProfile() {
+        dashboardRemainderAboutProfile.waitUntilVisible();
+        return dashboardRemainderAboutProfile.isDisplayed();
+    }
+
+    public void clickRemainderAboutProfile(){
+        dashboardRemainderAboutProfile.click();
     }
 
     public void clickOnNavigationItemNotificationsLink() {

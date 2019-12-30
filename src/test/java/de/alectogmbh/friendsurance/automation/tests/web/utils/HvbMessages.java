@@ -45,4 +45,13 @@ public class HvbMessages {
     @SerializedName("bank_conditions_headline")
     @Expose
     private String bankConditionsHeadline;
+    @SerializedName("forgot_pass_success_message")
+    @Expose
+    private String forgotPassSuccessMessage;
+    @SerializedName("password_change_headline")
+    @Expose
+    private String passwordChangeHeadline;
+    @SerializedName("password_change_success_text")
+    @Expose
+    private String passwordChangeSuccessText;
 }

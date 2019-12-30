@@ -11,5 +11,8 @@
   "ona_intro_headline_text_during_onboarding": "Noch 6 kleine Fragen, dann sind wir durch!",
   "sign_order_page_headline": "Fehlt nur noch das Auskunftsmandat",
   "sign_up_page_headline": "E-Mail eingeben, Passwort festlegen und geschafft!",
-  "bank_conditions_headline": "Wenn wir um noch zwei Häkchen bitten dürften."
+  "bank_conditions_headline": "Wenn wir um noch zwei Häkchen bitten dürften.",
+  "forgot_pass_success_message": "Wir haben eine E-Mail an die angegebene E-Mail Adresse versendet. Darin finden Sie einen Link, um Ihr Passwort zurück setzen zu können.",
+  "password_change_headline": "Passwort ändern",
+  "password_change_success_text": "Ihr Passwort wurde erfolgreich geändert."
 }

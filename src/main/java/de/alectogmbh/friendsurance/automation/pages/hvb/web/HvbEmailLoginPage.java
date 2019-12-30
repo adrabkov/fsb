@@ -13,7 +13,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 @DefaultUrl(LOGIN_PAGE_URL)
 public class HvbEmailLoginPage extends AbstractPageObject {
 
-    public final static String LOGIN_PAGE_URL = "/auth/";
+    final static String LOGIN_PAGE_URL = "/auth/";
 
     @FindBy(className = "user-login-container")
     private WebElementFacade loginContainer;

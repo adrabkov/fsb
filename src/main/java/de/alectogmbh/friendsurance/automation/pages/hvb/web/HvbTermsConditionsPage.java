@@ -17,7 +17,7 @@ public class HvbTermsConditionsPage extends AbstractPageObject {
 
     private static final int MODAL_DISAPPEAR_TIMEOUT = 10;
 
-    @FindBy(className = "onboarding-headline__headline")
+    @FindBy(id = "undefined_headline")
     private WebElementFacade bankConditionsHeadlineText;
 
     @FindBy(id = "bank-conditions__checkbox--1__span")

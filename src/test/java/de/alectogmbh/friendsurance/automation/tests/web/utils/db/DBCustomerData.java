@@ -35,6 +35,7 @@ public class DBCustomerData {
     private String paymentInterval;
     private String hvbBankName;
     private String insuranceNewCompany;
+    private String children;
 
 
 }
