@@ -51,6 +51,16 @@ public class HvbOrderOverviewSteps extends AbstractScenarioSteps<HvbOrderOvervie
     }
 
     @Step
+    public void click_on_profile_link(){
+        getPageObject().clickOnHeaderProfileLink();
+    }
+
+    @Step
+    public void click_on_navigation_item_notifications_link() {
+        getPageObject().clickOnNavigationItemNotificationsLink();
+    }
+
+    @Step
     public void verify_order_overview_page_is_loaded_and_headline_is_present(String order_overview_headline) {
         assertEquals(order_overview_headline, get_order_overview_headline_text());
     }

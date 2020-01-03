@@ -1,7 +1,6 @@
 package de.alectogmbh.friendsurance.automation.tests;
 
 import de.alectogmbh.friendsurance.automation.steps.AbstractScenarioSteps;
-import de.alectogmbh.friendsurance.automation.tests.hvb.web.PreSteps;
 import de.alectogmbh.friendsurance.automation.tests.web.utils.JsonParser;
 import de.alectogmbh.friendsurance.automation.tests.web.utils.HvbMessages;
 import de.alectogmbh.friendsurance.automation.tests.web.utils.db.DBCustomerData;
@@ -11,11 +10,8 @@ import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.ManagedPages;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.pages.Pages;
-import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
-
-import java.util.concurrent.TimeUnit;
 
 @RunWith(SerenityRunner.class)
 public abstract class AbstractScenarioTest<T extends AbstractScenarioSteps> {

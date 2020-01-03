@@ -29,7 +29,7 @@ public class HvbOnboardingTest extends AbstractScenarioTest {
 
         clients.getHvbOrderOverviewSteps().verify_order_overview_page_is_loaded_and_click_on_logout_link(messages.getOrderOverviewHeadline());
 
-        clients.userLogin(dbCustomerData, messages);
+        clients.userLogin(dbCustomerData.getEmail(), dbCustomerData.getPassword(), messages);
 
         clients.getHvbDashboardSteps().click_on_dashboard_header_logout_link();
 

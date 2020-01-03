@@ -54,4 +54,7 @@ public class HvbMessages {
     @SerializedName("password_change_success_text")
     @Expose
     private String passwordChangeSuccessText;
+    @SerializedName("delete_account_page_headline")
+    @Expose
+    private String deleteAccountPageHeadLine;
 }

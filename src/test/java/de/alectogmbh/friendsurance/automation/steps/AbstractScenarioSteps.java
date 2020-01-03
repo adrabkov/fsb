@@ -1,7 +1,6 @@
 package de.alectogmbh.friendsurance.automation.steps;
 
 import de.alectogmbh.friendsurance.automation.pages.AbstractPageObject;
-import de.alectogmbh.friendsurance.automation.tests.hvb.web.PreSteps;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
