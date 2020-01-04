@@ -4,27 +4,24 @@ import de.alectogmbh.friendsurance.automation.steps.fsb.fsb.*;
 import de.alectogmbh.friendsurance.automation.tests.AbstractScenarioTest;
 import de.alectogmbh.friendsurance.automation.tests.web.utils.db.DBCustomerData;
 import de.alectogmbh.friendsurance.automation.tests.web.utils.db.DBCustomerDataUtils;
-import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Steps;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
-@RunWith(SerenityRunner.class)
-public class FsbOverallNeedAnalysisTest extends AbstractScenarioTest<FsbPersonalDetailsSteps> {
+public class FsbChangePasswordTest extends AbstractScenarioTest<FsbPersonalDetailsSteps> {
 
+    private static final String EXPECTED_LOGIN_PAGE_HEADLINE_TEXT = "Willkommen beim Kunden-Login";
     private static final String EXPECTED_PERSONAL_DETAILS_HEADLINE = "Bitte geben Sie Ihre persönlichen Daten ein.";
-    private static final String EXPECTED_SIGN_UP_PAGE_HEADLINE = "E-Mail eingeben, Passwort festlegen und ein paar Häkchen!";
+    private static final String EXPECTED_SIGN_UP_PAGE_HEADLINE = "E-Mail eingeben, Passwort festlegen und geschafft!";
     private static final String EXPECTED_BANK_SELECTION_HEADLINE = "Bei welcher Bank sind Sie Kunde?";
     private static final String EXPECTED_BANK_MODAL_TEXT = "Ihr Konto schnell und sicher verbinden mit";
     private static final String BANK_NAME = "Leipziger Volksbank";
     private static final String EXPECTED_EDIT_ORDER_PAGE_HEADLINE = "Da müssen Sie noch einmal kurz ran.";
     private static final String EXPECTED_ORDER_OVERVIEW_HEADLINE = "Verträge überprüfen und hinzufügen";
-    private static final String EXPECTED_ONA_INTRO_HEADLINE_TEXT_DURING_ONBOARDING = "Noch 5 kleine Fragen, dann sind wir durch!";
     private static final String EXPECTED_SIGN_UP_ORDER_PAGE_HEADLINE = "Fehlt nur noch das Maklermandat.";
-    private static final String EXPECTED_ONA_SUMMARY_PAGE_HEADLINE = "Noch einmal alles auf einen Blick.";
-    private static final String EXPECTED_ONA_COMPLETED_PAGE_HEADLINE = "Großartig, vielen Dank! Dann kann’s ja losgehen.";
-    private static final String CHILDREN = "2";
+
+    @Steps
+    private FsbPersonalDetailsSteps fsbPersonalDetailsSteps;
 
     @Steps
     private FsbOrderOverviewSteps fsbOrderOverviewSteps;
@@ -34,9 +31,6 @@ public class FsbOverallNeedAnalysisTest extends AbstractScenarioTest<FsbPersonal
 
     @Steps
     private FsbSignOrderSteps fsbSignOrderSteps;
-
-    @Steps
-    private FsbPersonalDetailsSteps fsbPersonalDetailsSteps;
 
     @Steps
     private FsbSignUpSteps fsbSignUpSteps;
@@ -66,39 +60,25 @@ public class FsbOverallNeedAnalysisTest extends AbstractScenarioTest<FsbPersonal
     private FsbOverallNeedAnalysisSummarySteps fsbOverallNeedAnalysisSummarySteps;
 
     @Steps
-    private FsbOverallNeedanalysisSteps fsbOverallNeedanalysisSteps;
+    private FsbEmailLoginSteps fsbEmailLoginSteps;
 
     protected FsbPersonalDetailsSteps getSteps() {
         return fsbPersonalDetailsSteps;
     }
 
-//    @Rule
+    @Rule
 //    public EnvironmentExecutionRule rule = new EnvironmentExecutionRule();
 
     @Test
-//    @EnvironmentExecution(exclude = ALL, include = FS)
-    public void overallNeedAnalysisQuestionnaireAfterRegistration() {
-
+//    @EnvironmentExecution(exclude = ALL, include = RUV)
+    public void profilePasswordChange() {
         DBCustomerData dbCustomerData = DBCustomerDataUtils.createDBCustomerData();
 
         createOnboardUserWithBankCredentials(dbCustomerData);
 
         addContractAndFinishRegistration();
 
-        fsbOverallNeedAnalysisIntroSteps.verify_ona_intro_page_is_loaded_and_click_on_go_next(EXPECTED_ONA_INTRO_HEADLINE_TEXT_DURING_ONBOARDING);
 
-        fsbOverallNeedanalysisSteps.select_marital_status_single_option();
-        fsbOverallNeedanalysisSteps.click_ona_save_family_status_and_go_next_button();
-        fsbOverallNeedanalysisSteps.select_number_of_children_by_text(CHILDREN);
-        fsbOverallNeedanalysisSteps.click_ona_save_children_status_and_go_next_button();
-        fsbOverallNeedanalysisSteps.select_profession_status();
-        fsbOverallNeedanalysisSteps.click_ona_save_profession_status_and_go_next_button();
-        fsbOverallNeedanalysisSteps.select_insurance_type();
-        fsbOverallNeedanalysisSteps.click_ona_save_insurance_type_and_go_next_button();
-        fsbOverallNeedanalysisSteps.select_living_condition_car_checkbox();
-        fsbOverallNeedanalysisSteps.select_living_condition_house_checkbox();
-        fsbOverallNeedanalysisSteps.click_ona_save_living_conditions_and_go_to_summary_button();
-        fsbOverallNeedAnalysisSummarySteps.verify_ona_save_summary_and_completed_pages(EXPECTED_ONA_SUMMARY_PAGE_HEADLINE, EXPECTED_ONA_COMPLETED_PAGE_HEADLINE);
     }
 
     private void createOnboardUserWithBankCredentials(DBCustomerData dbCustomerData) {
@@ -130,4 +110,11 @@ public class FsbOverallNeedAnalysisTest extends AbstractScenarioTest<FsbPersonal
         fsbSignOrderSteps.verify_sign_authorization_and_submit_order_items(EXPECTED_SIGN_UP_ORDER_PAGE_HEADLINE);
 
     }
+
+    private void verifyOnboardedUserLoginFunctionality(DBCustomerData dbCustomerData) {
+        fsbOrderOverviewSteps.click_on_header_logout_link();
+        webdriver.navigate().refresh();
+        fsbEmailLoginSteps.verify_login_page_enter_user_credentials_and_click_on_login_button(dbCustomerData.getEmail(), dbCustomerData.getNewPassword(), EXPECTED_LOGIN_PAGE_HEADLINE_TEXT);
+    }
+
 }

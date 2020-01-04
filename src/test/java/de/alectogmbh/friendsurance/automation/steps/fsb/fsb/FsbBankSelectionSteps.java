@@ -9,11 +9,6 @@ import static org.junit.Assert.assertEquals;
 
 public class FsbBankSelectionSteps extends AbstractScenarioSteps<FsbBankSelectionPage> {
 
-    private static final String EXPECTED_BANK_SELECTION_HEADLINE = "Bei welcher Bank sind Sie Kunde?";
-    private static final String EXPECTED_BANK_MODAL_TEXT = "Ihr Konto schnell und sicher verbinden mit";
-    private static final String BANK_NAME = "Leipziger Volksbank";
-    private static final String EXPECTED_BANK_SELECTION_ERROR_TEXT = "Bitte wählen Sie eine Bank aus.";
-
     private FsbBankSelectionPage fsbBankSelectionPage;
 
     public FsbBankSelectionPage getPageObject() {
@@ -47,21 +42,21 @@ public class FsbBankSelectionSteps extends AbstractScenarioSteps<FsbBankSelectio
 
 
     @Step
-    public void verify_bank_selection_page_is_loaded_and_headline_is_present() {
+    public void verify_bank_selection_page_is_loaded_and_headline_is_present(String EXPECTED_BANK_SELECTION_HEADLINE) {
         assertEquals(EXPECTED_BANK_SELECTION_HEADLINE, get_bank_selection_headline_text());
     }
 
     @Step
-    public void verify_bank_modal_finApi_popUp_is_present() {
+    public void verify_bank_modal_finApi_popUp_is_present(String EXPECTED_BANK_MODAL_TEXT) {
         assertEquals(EXPECTED_BANK_MODAL_TEXT, get_bank_modal_selection_text());
     }
 
     @StepGroup
-    public void verify_bank_step_select_bank_and_click_on_next_button() {
-        verify_bank_selection_page_is_loaded_and_headline_is_present();
+    public void verify_bank_step_select_bank_and_click_on_next_button(String EXPECTED_BANK_SELECTION_HEADLINE, String EXPECTED_BANK_MODAL_TEXT, String BANK_NAME) {
+        verify_bank_selection_page_is_loaded_and_headline_is_present(EXPECTED_BANK_SELECTION_HEADLINE);
         select_bank_name_by_text(BANK_NAME);
         click_bank_selection_next_button();
-        verify_bank_modal_finApi_popUp_is_present();
+        verify_bank_modal_finApi_popUp_is_present(EXPECTED_BANK_MODAL_TEXT);
         click_bank_modal_ok_button();
     }
 }

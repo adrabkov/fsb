@@ -9,7 +9,7 @@ import static org.junit.Assert.assertEquals;
 
 public class FsbPersonalDetailsSteps extends AbstractScenarioSteps<FsbPersonalDetailsPage> {
 
-    private static final String EXPECTED_PERSONAL_DETAILS_HEADLINE = "Bitte geben Sie Ihre persönlichen Daten ein.";
+//    private static final String EXPECTED_PERSONAL_DETAILS_HEADLINE = "Bitte geben Sie Ihre persönlichen Daten ein.";
 
     private FsbPersonalDetailsPage fsbPersonalDetailsPage;
 
@@ -23,7 +23,7 @@ public class FsbPersonalDetailsSteps extends AbstractScenarioSteps<FsbPersonalDe
     }
 
     @Step
-    public void click_login_button(){
+    public void click_login_button() {
         getPageObject().clickLoginButton();
     }
 
@@ -83,14 +83,14 @@ public class FsbPersonalDetailsSteps extends AbstractScenarioSteps<FsbPersonalDe
     }
 
     @Step
-    public void verify_personal_details_page_is_loaded_and_headline_is_present() {
+    public void verify_personal_details_page_is_loaded_and_headline_is_present(String EXPECTED_PERSONAL_DETAILS_HEADLINE) {
         assertEquals(EXPECTED_PERSONAL_DETAILS_HEADLINE, get_personal_details_headline_text());
     }
 
     @StepGroup
-    public void verify_fifth_step_and_set_onboarding_personal_details(String firstName, String lastName, String birth, String street, String house, String postalCode, String city) {
+    public void verify_fifth_step_and_set_onboarding_personal_details(String firstName, String lastName, String birth, String street, String house, String postalCode, String city, String EXPECTED_PERSONAL_DETAILS_HEADLINE) {
         open_onboarding_first_step();
-        verify_personal_details_page_is_loaded_and_headline_is_present();
+        verify_personal_details_page_is_loaded_and_headline_is_present(EXPECTED_PERSONAL_DETAILS_HEADLINE);
         selectGender();
         enterFirstName(firstName);
         enterLastName(lastName);

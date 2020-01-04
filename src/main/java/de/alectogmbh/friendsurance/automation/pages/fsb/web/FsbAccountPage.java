@@ -23,7 +23,7 @@ public class FsbAccountPage extends AbstractPageObject {
     @FindBy(id = "$-acceptPhoneNumber-checkbox__span")
     private WebElementFacade acceptPhoneNumberCheckbox;
 
-    public void clickBankAccountNextButton(){
+    public void clickBankAccountNextButton() {
         bankAccountNextButton.click();
     }
 

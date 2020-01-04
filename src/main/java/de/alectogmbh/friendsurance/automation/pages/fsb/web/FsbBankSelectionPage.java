@@ -7,6 +7,8 @@ import net.thucydides.core.annotations.At;
 import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.Keys;
 
+import java.util.concurrent.TimeUnit;
+
 import static de.alectogmbh.friendsurance.automation.pages.fsb.web.FsbBankSelectionPage.BANK_SELECTION_PAGE_URL;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
@@ -42,6 +44,8 @@ public class FsbBankSelectionPage extends AbstractPageObject {
     }
 
     public void selectBankNameByText(String bankName) {
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(bankNameSelector);
+        scrollToElement(bankNameSelector);
         bankNameSelector.click();
         bankNameSelector.type(bankName);
         bankNameSelector.sendKeys(Keys.RETURN);

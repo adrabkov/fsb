@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 
 public class FsbSignOrderSteps extends AbstractScenarioSteps<FsbSignOrderPage> {
 
-    private static final String EXPECTED_SIGN_UP_PAGE_HEADLINE = "Fehlt nur noch das Maklermandat.";
+//    private static final String EXPECTED_SIGN_UP_PAGE_HEADLINE = "Fehlt nur noch das Maklermandat.";
 
     private FsbSignOrderPage fsbSignOrderPage;
 
@@ -21,12 +21,12 @@ public class FsbSignOrderSteps extends AbstractScenarioSteps<FsbSignOrderPage> {
     }
 
     @Step
-    public String get_sign_order_page_headline(){
+    public String get_sign_order_page_headline() {
         return getPageObject().getSignOrderPageHeadline().replaceAll(LF, SPACE);
     }
 
     @Step
-    public void sign_authorize_component(){
+    public void sign_authorize_component() {
         getPageObject().sign();
     }
 
@@ -36,13 +36,13 @@ public class FsbSignOrderSteps extends AbstractScenarioSteps<FsbSignOrderPage> {
     }
 
     @Step
-    public void verify_sign_order_page_is_loaded_and_headline_is_present() {
+    public void verify_sign_order_page_is_loaded_and_headline_is_present(String EXPECTED_SIGN_UP_PAGE_HEADLINE) {
         assertEquals(EXPECTED_SIGN_UP_PAGE_HEADLINE, get_sign_order_page_headline());
     }
 
     @StepGroup
-    public void verify_sign_authorization_and_submit_order_items(){
-        verify_sign_order_page_is_loaded_and_headline_is_present();
+    public void verify_sign_authorization_and_submit_order_items(String EXPECTED_SIGN_UP_PAGE_HEADLINE) {
+        verify_sign_order_page_is_loaded_and_headline_is_present(EXPECTED_SIGN_UP_PAGE_HEADLINE);
         sign_authorize_component();
         click_sign_order_submit_button();
         click_sign_order_submit_button();

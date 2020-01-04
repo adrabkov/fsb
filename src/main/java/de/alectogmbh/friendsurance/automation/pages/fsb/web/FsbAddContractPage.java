@@ -80,7 +80,7 @@ public class FsbAddContractPage extends AbstractPageObject {
         addContractNextButton.click();
     }
 
-    public void clickBackNavigationClick(){
+    public void clickBackNavigationClick() {
         backNavigationLink.click();
     }
 }

@@ -10,16 +10,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class FsbSignUpSteps extends AbstractScenarioSteps <FsbSignUpPage>{
-
-    private static ValidationMessages validationMessages = new ValidationMessages();
-    private static final String EXPECTED_SIGN_UP_PAGE_HEADLINE = validationMessages.getText_for_sign_up_page_headline();
-    private static final String EXPECTED_TEXT_FOR_EMPTY_OR_INCORRECT_EMAIL = validationMessages.getValidation_text_for_empty_or_incorrect_email();
-    private static final String EXPECTED_TEXT_FOR_INCORRECT_PASSWORD = validationMessages.getValidation_text_for_incorrect_password();
-    private static final String EXPECTED_TEXT_FOR_EMPTY_PASSWORD = validationMessages.getValidation_text_for_empty_password();
-    private static final String EXPECTED_TEXT_FOR_ALREADY_EXISTED_EMAIL = validationMessages.getValidation_text_for_already_existed_email();
-    private static final List<String> EXPECTED_CONDITION_TEXT = validationMessages.getConditionText();
-    private static final String EXPECTED_ATTRIBUTE = "active";
+public class FsbSignUpSteps extends AbstractScenarioSteps<FsbSignUpPage> {
 
     private FsbSignUpPage fsbSignUpPage;
 
@@ -99,7 +90,7 @@ public class FsbSignUpSteps extends AbstractScenarioSteps <FsbSignUpPage>{
     }
 
     @Step
-    public void verify_sign_up_page_is_loaded_and_headline_is_present() {
+    public void verify_sign_up_page_is_loaded_and_headline_is_present(String EXPECTED_SIGN_UP_PAGE_HEADLINE) {
         assertEquals(EXPECTED_SIGN_UP_PAGE_HEADLINE, get_sign_up_page_headline_text());
     }
 
@@ -111,58 +102,11 @@ public class FsbSignUpSteps extends AbstractScenarioSteps <FsbSignUpPage>{
     }
 
     @StepGroup
-    public void verify_second_step_and_go_to_next_step(String email, String password) {
-        verify_sign_up_page_is_loaded_and_headline_is_present();
+    public void verify_second_step_and_go_to_next_step(String email, String password, String EXPECTED_SIGN_UP_PAGE_HEADLINE) {
+        verify_sign_up_page_is_loaded_and_headline_is_present(EXPECTED_SIGN_UP_PAGE_HEADLINE);
         enter_user_email(email);
         enter_user_password(password);
         confirm_all_conditions();
         click_on_sign_up_button();
     }
-
-    @StepGroup
-    public void verify_validation_message_for_empty_email_field(String password) {
-        verify_sign_up_page_is_loaded_and_headline_is_present();
-        enter_user_password(password);
-        confirm_all_conditions();
-        click_on_sign_up_button();
-        assertEquals(EXPECTED_TEXT_FOR_EMPTY_OR_INCORRECT_EMAIL, get_validation_message_for_empty_email_field());
-    }
-
-    @StepGroup
-    public void verify_validation_message_for_empty_password_field(String email) {
-        verify_sign_up_page_is_loaded_and_headline_is_present();
-        enter_user_email(email);
-        confirm_all_conditions();
-        assertEquals(EXPECTED_TEXT_FOR_EMPTY_PASSWORD, get_validation_message_for_empty_password_field());
-    }
-
-    @StepGroup
-    public void verify_validation_message_for_already_existed_email(String email, String password) {
-        verify_second_step_and_go_to_next_step(email, password);
-        assertEquals(EXPECTED_TEXT_FOR_ALREADY_EXISTED_EMAIL, get_validation_message_for_already_existed_email());
-    }
-
-    @StepGroup
-    public void verify_validation_message_for_incorrect_password(String email, String password) {
-        verify_second_step_and_go_to_next_step(email, password);
-        assertEquals(EXPECTED_TEXT_FOR_INCORRECT_PASSWORD, get_validation_message_for_incorrect_password_field());
-    }
-
-    @StepGroup
-    public void verify_show_password_button(String password) {
-        enter_user_password(password);
-        click_on_show_button();
-        assertEquals(EXPECTED_ATTRIBUTE, get_show_button_attribute());
-    }
-
-//    @StepGroup
-//    public void verify_validation_messages_for_conditions_checkbox(String email, String password) {
-//        enter_user_email(email);
-//        enter_user_password(password);
-//        click_on_sign_up_button();
-//        assertEquals(EXPECTED_CONDITION_TEXT, get_validation_message_list_for_conditions_checkbox());
-//        confirm_all_conditions();
-//        click_on_sign_up_button();
-//    }
-
 }

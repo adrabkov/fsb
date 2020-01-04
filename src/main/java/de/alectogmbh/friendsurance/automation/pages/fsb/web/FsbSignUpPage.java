@@ -6,12 +6,6 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.At;
 import net.thucydides.core.annotations.DefaultUrl;
 
-
-import org.openqa.selenium.support.How;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import static de.alectogmbh.friendsurance.automation.pages.fsb.web.FsbSignUpPage.SIGN_UP_PAGE_URL;
 
 @At("#HOST" + SIGN_UP_PAGE_URL)

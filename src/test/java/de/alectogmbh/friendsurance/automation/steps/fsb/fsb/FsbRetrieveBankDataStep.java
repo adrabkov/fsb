@@ -19,22 +19,22 @@ public class FsbRetrieveBankDataStep extends AbstractScenarioSteps<FsbRetrieveBa
     }
 
     @Step
-    public String get_retrieve_bank_page_text(){
+    public String get_retrieve_bank_page_text() {
         return getPageObject().getRetrieveBankDataText();
     }
 
     @Step
-    public void click_on_retrieve_bank_page_submit_button(){
+    public void click_on_retrieve_bank_page_submit_button() {
         getPageObject().click_submit_button_on_Retrieve_Bank_Page();
     }
 
     @Step
-    public void verify_retrieve_bank_page_text(){
+    public void verify_retrieve_bank_page_text() {
 
     }
 
     @StepGroup
-    public void verify_retrieve_bank_page_text_and_click_submit_button(){
+    public void verify_retrieve_bank_page_text_and_click_submit_button() {
         verify_retrieve_bank_page_text();
         click_on_retrieve_bank_page_submit_button();
     }

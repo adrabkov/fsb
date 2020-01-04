@@ -42,5 +42,4 @@ public class FsbFinApiWebFormSteps extends AbstractScenarioSteps<FsbFinApiWebFor
     }
 
 
-
 }

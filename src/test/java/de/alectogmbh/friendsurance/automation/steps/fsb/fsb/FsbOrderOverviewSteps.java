@@ -9,7 +9,7 @@ import static org.junit.Assert.assertEquals;
 
 public class FsbOrderOverviewSteps extends AbstractScenarioSteps<FsbOrderOverviewPage> {
 
-    private static final String EXPECTED_ORDER_OVERVIEW_HEADLINE = "Verträge überprüfen und hinzufügen";
+//    private static final String EXPECTED_ORDER_OVERVIEW_HEADLINE = "Verträge überprüfen und hinzufügen";
     private static final int NUMBER_OF_EXTRACTED_ORDER_ITEMS = 6;
     private static final int NUMBER_OF_ORDER_ITEMS_AFTER_DELETING_INCOMPLETE_ORDER_ITEMS = 4;
     private static final int NUMBER_OF_ORDER_ITEMS_AFTER_ADDING_MANUALLY = 5;
@@ -66,12 +66,12 @@ public class FsbOrderOverviewSteps extends AbstractScenarioSteps<FsbOrderOvervie
     }
 
     @Step
-    public void verify_order_overview_page_is_loaded_and_headline_is_present() {
+    public void verify_order_overview_page_is_loaded_and_headline_is_present(String EXPECTED_ORDER_OVERVIEW_HEADLINE) {
         assertEquals(EXPECTED_ORDER_OVERVIEW_HEADLINE, get_order_overview_headline_text());
     }
 
     @Step
-    public void verify_order_overview_page_is_loaded_after_user_actions() {
+    public void verify_order_overview_page_is_loaded_after_user_actions(String EXPECTED_ORDER_OVERVIEW_HEADLINE) {
         assertEquals(EXPECTED_ORDER_OVERVIEW_HEADLINE, get_order_overview_headline());
     }
 
@@ -91,54 +91,54 @@ public class FsbOrderOverviewSteps extends AbstractScenarioSteps<FsbOrderOvervie
     }
 
     @StepGroup
-    public void verify_order_overview_page_is_loaded_and_click_on_logout_link() {
-        verify_order_overview_page_is_loaded_and_headline_is_present();
+    public void verify_order_overview_page_is_loaded_and_click_on_logout_link(String EXPECTED_ORDER_OVERVIEW_HEADLINE) {
+        verify_order_overview_page_is_loaded_and_headline_is_present(EXPECTED_ORDER_OVERVIEW_HEADLINE);
         click_on_header_logout_link();
     }
 
     @StepGroup
-    public void verify_order_overview_page_is_loaded_and_click_on_profil_link() {
-        verify_order_overview_page_is_loaded_and_headline_is_present();
+    public void verify_order_overview_page_is_loaded_and_click_on_profil_link(String EXPECTED_ORDER_OVERVIEW_HEADLINE) {
+        verify_order_overview_page_is_loaded_and_headline_is_present(EXPECTED_ORDER_OVERVIEW_HEADLINE);
         click_on_header_profile_link();
     }
 
     @StepGroup
-    public void verify_order_overview_page_and_click_on_missing_info_order_item_one() {
-        verify_order_overview_page_is_loaded_and_headline_is_present();
+    public void verify_order_overview_page_and_click_on_missing_info_order_item_one(String EXPECTED_ORDER_OVERVIEW_HEADLINE) {
+        verify_order_overview_page_is_loaded_and_headline_is_present(EXPECTED_ORDER_OVERVIEW_HEADLINE);
 //        verify_extracted_order_items_from_finlytics();
         click_on_missing_order_info_item_one();
     }
 
     @StepGroup
-    public void verify_order_items_after_deleting_one_item_and_click_on_error_order_two() {
-        verify_order_overview_page_is_loaded_after_user_actions();
+    public void verify_order_items_after_deleting_one_item_and_click_on_error_order_two(String EXPECTED_ORDER_OVERVIEW_HEADLINE) {
+        verify_order_overview_page_is_loaded_after_user_actions(EXPECTED_ORDER_OVERVIEW_HEADLINE);
         click_on_missing_order_info_item_two();
     }
 
     @StepGroup
-    public void verify_order_items_after_deleting_error_items_and_click_on_add_contract_button() {
-        verify_order_overview_page_is_loaded_after_user_actions();
+    public void verify_order_items_after_deleting_error_items_and_click_on_add_contract_button(String EXPECTED_ORDER_OVERVIEW_HEADLINE) {
+        verify_order_overview_page_is_loaded_after_user_actions(EXPECTED_ORDER_OVERVIEW_HEADLINE);
         verify_order_items_after_deleting_error_items();
         click_on_add_contract_button();
     }
 
     @StepGroup
-    public void verify_order_items_after_adding_contract_and_click_on_overview_page_submit_button() {
-        verify_order_overview_page_is_loaded_after_user_actions();
+    public void verify_order_items_after_adding_contract_and_click_on_overview_page_submit_button(String EXPECTED_ORDER_OVERVIEW_HEADLINE) {
+        verify_order_overview_page_is_loaded_after_user_actions(EXPECTED_ORDER_OVERVIEW_HEADLINE);
         verify_order_items_after_adding_contract_manually();
         click_overview_page_submit_button();
     }
 
     @StepGroup
-    public void verify_extracted_data_and_click_on_missing_info_order_item_one() {
-        verify_order_overview_page_is_loaded_after_user_actions();
+    public void verify_extracted_data_and_click_on_missing_info_order_item_one(String EXPECTED_ORDER_OVERVIEW_HEADLINE) {
+        verify_order_overview_page_is_loaded_after_user_actions(EXPECTED_ORDER_OVERVIEW_HEADLINE);
         verify_extracted_order_items_from_finlytics();
         click_on_missing_order_info_item_one();
     }
 
     @StepGroup
-    public void verify_order_overview_page_and_click_on_contracts_submit_button() {
-        verify_order_overview_page_is_loaded_after_user_actions();
+    public void verify_order_overview_page_and_click_on_contracts_submit_button(String EXPECTED_ORDER_OVERVIEW_HEADLINE) {
+        verify_order_overview_page_is_loaded_after_user_actions(EXPECTED_ORDER_OVERVIEW_HEADLINE);
         verify_order_items_after_deleting_error_items();
         click_overview_page_submit_button();
     }

@@ -6,6 +6,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.At;
 import net.thucydides.core.annotations.DefaultUrl;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import static de.alectogmbh.friendsurance.automation.pages.fsb.web.FsbOrderOverviewPage.ORDER_OVERVIEW_PAGE;
 import static java.util.concurrent.TimeUnit.SECONDS;
@@ -55,6 +56,7 @@ public class FsbOrderOverviewPage extends AbstractPageObject {
     private WebElementFacade navigationItemNotificationsLink;
 
     public String getOrderOverviewHeadlineText() {
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(orderOverviewHeadlineText);
         return orderOverviewHeadlineText.getText();
     }
 

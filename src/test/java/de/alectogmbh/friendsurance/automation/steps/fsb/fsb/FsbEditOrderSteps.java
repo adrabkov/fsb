@@ -11,8 +11,6 @@ import static org.junit.Assert.assertEquals;
 
 public class FsbEditOrderSteps extends AbstractScenarioSteps<FsbEditOrderPage> {
 
-    private static final String EXPECTED_EDIT_ORDER_PAGE_HEADLINE = "Da müssen Sie noch einmal kurz ran.";
-
     private FsbEditOrderPage fsbEditOrderPage;
 
     public FsbEditOrderPage getPageObject() {
@@ -50,28 +48,19 @@ public class FsbEditOrderSteps extends AbstractScenarioSteps<FsbEditOrderPage> {
     }
 
     @Step
-    public void verify_edit_order_page_is_loaded_and_headline_is_present() {
+    public void verify_edit_order_page_is_loaded_and_headline_is_present(String EXPECTED_EDIT_ORDER_PAGE_HEADLINE) {
         assertEquals(EXPECTED_EDIT_ORDER_PAGE_HEADLINE, get_edit_order_page_headline_text());
     }
 
     @StepGroup
-    public void verify_edit_order_page_for_item_one_and_click_on_delete_order_item_link() {
-        verify_edit_order_page_is_loaded_and_headline_is_present();
+    public void verify_edit_order_page_for_item_one_and_click_on_delete_order_item_link(String EXPECTED_EDIT_ORDER_PAGE_HEADLINE) {
+        verify_edit_order_page_is_loaded_and_headline_is_present(EXPECTED_EDIT_ORDER_PAGE_HEADLINE);
         click_on_delete_order_item_link();
     }
 
     @StepGroup
-    public void verify_edit_order_page_for_item_two_and_click_on_delete_order_item_link() {
-        verify_edit_order_page_is_loaded_and_headline_is_present();
+    public void verify_edit_order_page_for_item_two_and_click_on_delete_order_item_link(String EXPECTED_EDIT_ORDER_PAGE_HEADLINE) {
+        verify_edit_order_page_is_loaded_and_headline_is_present(EXPECTED_EDIT_ORDER_PAGE_HEADLINE);
         click_on_delete_order_item_link();
     }
-
-//    @StepGroup
-//    public void verify_edit_order_page_for_item_two_add_missing_data_and_click_on_save_button() {
-//        verify_edit_order_page_is_loaded_and_headline_is_present();
-//        select_insurance_category_by_text(insuranceCategory);
-//        select_insurance_company_by_text(insuranceCompany);
-//        enter_insurance_policy_number(policyNumber);
-//        click_on_save_contract_details_button();
-//    }
 }
