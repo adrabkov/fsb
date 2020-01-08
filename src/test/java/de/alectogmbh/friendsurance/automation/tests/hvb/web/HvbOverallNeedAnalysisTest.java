@@ -7,7 +7,7 @@ import org.junit.Test;
 public class HvbOverallNeedAnalysisTest extends AbstractScenarioTest {
 
     @Test
-    public void overallNeedAnalysisQuestionnaireAfterCreatingUser() throws InterruptedException {
+    public void overallNeedAnalysisQuestionnaireAfterCreatingUser() {
 
         clients.finishRegistrationWithBankCredentialsAndContract(dbCustomerData, messages);
 
@@ -18,7 +18,7 @@ public class HvbOverallNeedAnalysisTest extends AbstractScenarioTest {
     }
 
     @Test
-    public void overallNeedAnalysisQuestionnaireAfterSkippingONA() throws InterruptedException {
+    public void overallNeedAnalysisQuestionnaireAfterSkippingONA() {
 
         clients.finishRegistrationWithBankCredentialsAndContract(dbCustomerData, messages);
 

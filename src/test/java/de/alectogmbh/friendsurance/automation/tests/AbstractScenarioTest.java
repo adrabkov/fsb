@@ -10,8 +10,11 @@ import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.ManagedPages;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.pages.Pages;
+import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
+
+import java.util.concurrent.TimeUnit;
 
 @RunWith(SerenityRunner.class)
 public abstract class AbstractScenarioTest<T extends AbstractScenarioSteps> {
@@ -22,10 +25,10 @@ public abstract class AbstractScenarioTest<T extends AbstractScenarioSteps> {
     protected HvbMessages messages = new JsonParser().mapToObject(FILE_PATH_JSON, HvbMessages.class);
     protected DBCustomerData dbCustomerData = DBCustomerDataUtils.createDBCustomerData();
 
-//    @Before
-//    public void settingTimeout() {
-//        webdriver.manage().timeouts().pageLoadTimeout(PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
-//    }
+    @Before
+    public void settingTimeout() {
+        webdriver.manage().timeouts().pageLoadTimeout(PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
+    }
 
     @Managed(uniqueSession = true)
     public WebDriver webdriver;

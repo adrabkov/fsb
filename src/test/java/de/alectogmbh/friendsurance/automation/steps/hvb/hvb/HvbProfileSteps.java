@@ -6,25 +6,25 @@ import net.thucydides.core.annotations.Step;
 
 public class HvbProfileSteps extends AbstractScenarioSteps<HvbProfilePage> {
 
-  private HvbProfilePage hvbProfilePage;
+    private HvbProfilePage hvbProfilePage;
 
-  public HvbProfilePage getPageObject() {
-    return hvbProfilePage;
-  }
+    public HvbProfilePage getPageObject() {
+        return hvbProfilePage;
+    }
 
-  @Step
-  public void click_ona_personal_details_link() {
-    getPageObject().clickOnaPersonalDetailsLink();
-  }
+    @Step
+    public void click_ona_personal_details_link() {
+        getPageObject().clickOnaPersonalDetailsLink();
+    }
 
-  @Step
-  public void click_on_change_password_link() {
-    getPageObject().clickOnChangePasswordLink();
-  }
+    @Step
+    public void click_on_change_password_link() {
+        getPageObject().clickOnChangePasswordLink();
+    }
 
-  @Step
-  public void click_on_delete_account_link() {
-    getPageObject().clickOnDeleteAccountLink();
-  }
+    @Step
+    public void click_on_delete_account_link() {
+        getPageObject().clickOnDeleteAccountLink();
+    }
 
 }

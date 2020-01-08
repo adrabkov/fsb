@@ -83,7 +83,7 @@ public class Clients extends AbstractScenarioSteps {
     }
 
     @Step
-    public void registerUserWithBankCredentials(DBCustomerData dbCustomerData, HvbMessages messages) throws InterruptedException {
+    public void registerUserWithBankCredentials(DBCustomerData dbCustomerData, HvbMessages messages) {
 
         hvbBankSelectionSteps.verify_first_step_select_bank_branch_and_click_on_next_button(messages.getBankSelectionHeadline(), dbCustomerData.getHvbBankName());
 
@@ -101,7 +101,7 @@ public class Clients extends AbstractScenarioSteps {
     }
 
     @Step
-    public void finishRegistrationWithBankCredentialsAndContract(DBCustomerData dbCustomerData, HvbMessages messages) throws InterruptedException {
+    public void finishRegistrationWithBankCredentialsAndContract(DBCustomerData dbCustomerData, HvbMessages messages) {
         registerUserWithBankCredentials(dbCustomerData, messages);
 
         hvbOrderOverviewSteps.delete_missing_orders_items();
@@ -114,7 +114,7 @@ public class Clients extends AbstractScenarioSteps {
     }
 
     @Step
-    public void fillingOna(String children){
+    public void fillingOna(String children) {
         hvbOverallNeedАnalysisSteps.select_marital_status_single_option();
         hvbOverallNeedАnalysisSteps.click_ona_save_family_status_and_go_next_button();
         hvbOverallNeedАnalysisSteps.select_number_of_children_by_text(children);

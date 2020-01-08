@@ -20,6 +20,9 @@ public class HvbLandingPage extends AbstractPageObject {
     @FindBy(id = "key-visuals__button-secondary")
     private WebElementFacade keyVisualLoginButton;
 
+    @FindBy(id = "uc-btn-accept-banner")
+    private WebElementFacade acceptBannerButton;
+
     public void clickOnHeaderLoginLink() {
         headerLoginLink.waitUntilVisible();
         scrollToElement(headerLoginLink);
@@ -32,6 +35,10 @@ public class HvbLandingPage extends AbstractPageObject {
         scrollToElement(keyVisualLoginButton);
         keyVisualLoginButton.waitUntilClickable();
         keyVisualLoginButton.click();
+    }
+
+    public void acceptBanner(){
+        acceptBannerButton.click();
     }
 
 }

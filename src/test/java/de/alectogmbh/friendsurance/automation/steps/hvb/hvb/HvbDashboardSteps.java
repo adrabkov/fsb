@@ -22,17 +22,17 @@ public class HvbDashboardSteps extends AbstractScenarioSteps<HvbDashboardPage> {
     }
 
     @Step
-    public void verify_dashboard_profile_remainder_is_displayed(){
+    public void verify_dashboard_profile_remainder_is_displayed() {
         assertTrue(getPageObject().dashboardRemainderAboutProfile());
     }
 
     @Step
-    public void click_dashboard_profile_remainder(){
+    public void click_dashboard_profile_remainder() {
         getPageObject().clickRemainderAboutProfile();
     }
 
     @Step
-    public void verify_dashboard_profile_remainder_text_displayed(){
+    public void verify_dashboard_profile_remainder_text_displayed() {
 
     }
 

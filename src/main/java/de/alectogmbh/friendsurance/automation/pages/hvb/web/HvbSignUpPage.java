@@ -4,6 +4,7 @@ import de.alectogmbh.friendsurance.automation.pages.AbstractPageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.At;
 import net.thucydides.core.annotations.DefaultUrl;
+import org.omg.CORBA.TIMEOUT;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.concurrent.TimeUnit;
@@ -69,6 +70,7 @@ public class HvbSignUpPage extends AbstractPageObject {
     }
 
     public void clickExtractedDataInfoStepTwoContinue() {
+        withTimeoutOf(10, TimeUnit.SECONDS);
         infoModalSecondButton.click();
     }
 

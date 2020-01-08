@@ -26,7 +26,7 @@ public class HvbOverallNeedAnalysisIntroSteps extends AbstractScenarioSteps<HvbO
     }
 
     @Step
-    public void click_remember_later_button(){
+    public void click_remember_later_button() {
         getPageObject().clickOnaSkippButton();
     }
 

@@ -12,30 +12,30 @@ import static de.alectogmbh.friendsurance.automation.pages.hvb.web.HvbProfilePag
 @DefaultUrl(PROFILE_PAGE_URL)
 public class HvbProfilePage extends AbstractPageObject {
 
-  public static final String PROFILE_PAGE_URL = "/home/profile/";
+    public static final String PROFILE_PAGE_URL = "/home/profile/";
 
-  @FindBy(id = "profile-ona-link")
-  private WebElementFacade onaPersonalDetailsLink;
+    @FindBy(id = "profile-ona-link")
+    private WebElementFacade onaPersonalDetailsLink;
 
-  @FindBy(id = "profile-changepassword-link")
-  private WebElementFacade changePassword;
+    @FindBy(id = "profile-changepassword-link")
+    private WebElementFacade changePassword;
 
-  @FindBy(id = "profile-delete-account-link")
-  private WebElementFacade deleteAccountLink;
+    @FindBy(id = "profile-delete-account-link")
+    private WebElementFacade deleteAccountLink;
 
-  public void clickOnaPersonalDetailsLink() {
-    onaPersonalDetailsLink.waitUntilClickable();
-    onaPersonalDetailsLink.click();
-  }
+    public void clickOnaPersonalDetailsLink() {
+        onaPersonalDetailsLink.waitUntilClickable();
+        onaPersonalDetailsLink.click();
+    }
 
-  public void clickOnChangePasswordLink() {
-    changePassword.waitUntilClickable();
-    changePassword.click();
-  }
+    public void clickOnChangePasswordLink() {
+        changePassword.waitUntilClickable();
+        changePassword.click();
+    }
 
-  public void clickOnDeleteAccountLink() {
-    deleteAccountLink.waitUntilClickable();
-    deleteAccountLink.click();
-  }
+    public void clickOnDeleteAccountLink() {
+        deleteAccountLink.waitUntilClickable();
+        deleteAccountLink.click();
+    }
 
 }

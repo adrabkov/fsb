@@ -6,12 +6,6 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.At;
 import net.thucydides.core.annotations.DefaultUrl;
 
-
-import org.openqa.selenium.support.How;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import static de.alectogmbh.friendsurance.automation.pages.fsb.web.FsbSignUpPage.SIGN_UP_PAGE_URL;
 
 @At("#HOST" + SIGN_UP_PAGE_URL)
@@ -59,8 +53,6 @@ public class FsbSignUpPage extends AbstractPageObject {
     @FindBy(id = "personal-signup-conditions-error__text")
     private WebElementFacade validationMessageForCondition1;
 
-//    @FindAll(@FindBy(how = How.CSS, using = "#personal-signup-conditions-error__text"))
-//    List<WebElementFacade> validationMessagesList;
 
     public String getSignUpPageHeadlineText() {
         return signUpPageHeadlineText.getText();
@@ -76,10 +68,6 @@ public class FsbSignUpPage extends AbstractPageObject {
 
     public void clickShowPasswordButton() {
         showPasswordButton.click();
-    }
-
-    public WebElementFacade getShowPasswordButton() {
-        return showPasswordButton;
     }
 
     public void clickCondition1() {
@@ -112,10 +100,6 @@ public class FsbSignUpPage extends AbstractPageObject {
 
     public WebElementFacade getUserEmailInputField() {
         return userEmailInputField;
-    }
-
-    public String textMessageForAlreadyExistedEmail() {
-        return validationMessageForAlreadyExistedEmail.getText();
     }
 
 }

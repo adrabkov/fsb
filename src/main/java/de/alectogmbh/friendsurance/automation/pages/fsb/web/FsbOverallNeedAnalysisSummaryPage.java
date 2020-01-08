@@ -31,22 +31,16 @@ public class FsbOverallNeedAnalysisSummaryPage extends AbstractPageObject {
 
     public String getOnaSummaryPageHeadlineText() {
         waitForAnimationToFinish(getDriver(), TIME_IN_SECONDS, onaSummaryPageHeadlineText);
-//        onaSummaryPageHeadlineText.waitUntilVisible();
-//        scrollToElement(onaSummaryPageHeadlineText);
         return onaSummaryPageHeadlineText.getText();
     }
 
     public void clickOnSaveOnaButton() {
         waitForAnimationToFinish(getDriver(), TIME_IN_SECONDS, onaSaveButton);
-//        onaSaveButton.waitUntilVisible();
-//        scroll_element_into_view(onaSaveButton);
-//        onaSaveButton.waitUntilClickable();
         onaSaveButton.click();
     }
 
     public String getOnaCompletedPageHeadlineText() {
         waitForAnimationToFinish(getDriver(), TIME_IN_SECONDS, onaCompletedHeadlineText);
-//        onaCompletedHeadlineText.waitUntilVisible();
         return onaCompletedHeadlineText.getText();
     }
 

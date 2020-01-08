@@ -51,7 +51,7 @@ public class HvbOrderOverviewSteps extends AbstractScenarioSteps<HvbOrderOvervie
     }
 
     @Step
-    public void click_on_profile_link(){
+    public void click_on_profile_link() {
         getPageObject().clickOnHeaderProfileLink();
     }
 

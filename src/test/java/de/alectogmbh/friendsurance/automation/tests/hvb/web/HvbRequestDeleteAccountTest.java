@@ -7,7 +7,7 @@ import org.junit.Test;
 public class HvbRequestDeleteAccountTest extends AbstractScenarioTest {
 
     @Test
-    public void testDeleteAccountRequestFromProfile() throws InterruptedException {
+    public void testDeleteAccountRequestFromProfile() {
 
         clients.registerUserWithBankCredentials(dbCustomerData, messages);
 

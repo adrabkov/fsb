@@ -8,7 +8,7 @@ public class HvbNotificationTest extends AbstractScenarioTest {
 
 
     @Test
-    public void testDataNotification() throws InterruptedException {
+    public void testDataNotification() {
 
         clients.registerUserWithBankCredentials(dbCustomerData, messages);
 

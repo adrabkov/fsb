@@ -7,7 +7,7 @@ import org.junit.Test;
 public class HvbAddContractTest extends AbstractScenarioTest<HvbBankSelectionSteps> {
 
     @Test
-    public void addExtractedAndExistingInsuranceContracts() throws InterruptedException {
+    public void addExtractedAndExistingInsuranceContracts() {
 
         clients.registerUserWithBankCredentials(dbCustomerData, messages);
 

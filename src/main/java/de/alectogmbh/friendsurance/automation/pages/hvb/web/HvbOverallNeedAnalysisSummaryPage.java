@@ -13,49 +13,49 @@ import static de.alectogmbh.friendsurance.automation.utils.SeleniumWaitUtils.wai
 @DefaultUrl(ONA_SUMMARY_PAGE_URL)
 public class HvbOverallNeedAnalysisSummaryPage extends AbstractPageObject {
 
-  final static String ONA_SUMMARY_PAGE_URL = "/home/profile/overallneedanalysis/summary/";
+    final static String ONA_SUMMARY_PAGE_URL = "/home/profile/overallneedanalysis/summary/";
 
-  @FindBy(id = "intro")
-  private WebElementFacade onaSummaryPageHeadlineText;
+    @FindBy(id = "intro")
+    private WebElementFacade onaSummaryPageHeadlineText;
 
-  @FindBy(id = "overallneedanalysis-gonext__button")
-  private WebElementFacade onaSaveButton;
+    @FindBy(id = "overallneedanalysis-gonext__button")
+    private WebElementFacade onaSaveButton;
 
-  @FindBy(id = "overallneedanalysis-completed-intro-header")
-  private WebElementFacade onaCompletedHeadlineText;
+    @FindBy(id = "overallneedanalysis-completed-intro-header")
+    private WebElementFacade onaCompletedHeadlineText;
 
-  @FindBy(id = "header-navigation__link-notifications")
-  private WebElementFacade navigationItemNotificationsLink;
+    @FindBy(id = "header-navigation__link-notifications")
+    private WebElementFacade navigationItemNotificationsLink;
 
-  private static final int TIME_IN_SECONDS = 5;
+    private static final int TIME_IN_SECONDS = 5;
 
-  public String getOnaSummaryPageHeadlineText() {
-    waitForAnimationToFinish(getDriver(), TIME_IN_SECONDS, onaSummaryPageHeadlineText);
-    onaSummaryPageHeadlineText.waitUntilVisible();
-    scrollToElement(onaSummaryPageHeadlineText);
-    return onaSummaryPageHeadlineText.getText();
-  }
+    public String getOnaSummaryPageHeadlineText() {
+        waitForAnimationToFinish(getDriver(), TIME_IN_SECONDS, onaSummaryPageHeadlineText);
+        onaSummaryPageHeadlineText.waitUntilVisible();
+        scrollToElement(onaSummaryPageHeadlineText);
+        return onaSummaryPageHeadlineText.getText();
+    }
 
-  public void clickOnSaveOnaButton() {
-    waitForAnimationToFinish(getDriver(), TIME_IN_SECONDS, onaSaveButton);
-    onaSaveButton.waitUntilVisible();
-    scroll_element_into_view(onaSaveButton);
-    onaSaveButton.waitUntilClickable();
-    onaSaveButton.click();
-  }
+    public void clickOnSaveOnaButton() {
+        waitForAnimationToFinish(getDriver(), TIME_IN_SECONDS, onaSaveButton);
+        onaSaveButton.waitUntilVisible();
+        scroll_element_into_view(onaSaveButton);
+        onaSaveButton.waitUntilClickable();
+        onaSaveButton.click();
+    }
 
-  public void clickOnNavigationItemNotificationsLink() {
-    waitForAnimationToFinish(getDriver(), TIME_IN_SECONDS, navigationItemNotificationsLink);
-    scrollToElement(navigationItemNotificationsLink);
-    navigationItemNotificationsLink.waitUntilClickable();
-    navigationItemNotificationsLink.click();
-  }
+    public void clickOnNavigationItemNotificationsLink() {
+        waitForAnimationToFinish(getDriver(), TIME_IN_SECONDS, navigationItemNotificationsLink);
+        scrollToElement(navigationItemNotificationsLink);
+        navigationItemNotificationsLink.waitUntilClickable();
+        navigationItemNotificationsLink.click();
+    }
 
-  public String getOnaCompletedPageHeadlineText() {
-    waitForAnimationToFinish(getDriver(), TIME_IN_SECONDS, onaCompletedHeadlineText);
-    onaCompletedHeadlineText.waitUntilVisible();
-    return onaCompletedHeadlineText.getText();
-  }
+    public String getOnaCompletedPageHeadlineText() {
+        waitForAnimationToFinish(getDriver(), TIME_IN_SECONDS, onaCompletedHeadlineText);
+        onaCompletedHeadlineText.waitUntilVisible();
+        return onaCompletedHeadlineText.getText();
+    }
 
 }
 

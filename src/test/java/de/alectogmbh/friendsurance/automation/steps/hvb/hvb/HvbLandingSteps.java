@@ -13,7 +13,7 @@ public class HvbLandingSteps extends AbstractScenarioSteps<HvbLandingPage> {
     }
 
     @Step
-    public void open_landing_page(){
+    public void open_landing_page() {
         getPageObject().open();
     }
 
@@ -25,6 +25,11 @@ public class HvbLandingSteps extends AbstractScenarioSteps<HvbLandingPage> {
     @Step
     public void click_on_key_visual_login_button() {
         getPageObject().clickOnKeyVisualLoginButton();
+    }
+
+    @Step
+    public void click_accept_button() {
+        getPageObject().acceptBanner();
     }
 
 }

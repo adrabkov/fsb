@@ -89,21 +89,18 @@ public class FsbOrderOverviewPage extends AbstractPageObject {
 
     public void clickOnHeaderProfileLink() {
         headerProfileLink.waitUntilVisible();
-//        scrollToElement(headerProfileLink);
         headerProfileLink.waitUntilClickable();
         headerProfileLink.click();
     }
 
     public void clickOnNavigationItemNotificationsLink() {
         navigationItemNotificationsLink.waitUntilVisible();
-//        scrollToElement(navigationItemNotificationsLink);
         navigationItemNotificationsLink.waitUntilClickable();
         navigationItemNotificationsLink.click();
     }
 
     public void clickOnHeaderLogoutLink() {
         headerLogoutLink.waitUntilVisible();
-//        scrollToElement(headerLogoutLink);
         headerLogoutLink.waitUntilClickable();
         headerLogoutLink.click();
     }

@@ -7,7 +7,7 @@ import org.junit.Test;
 public class HvbChangePasswordTest extends AbstractScenarioTest {
 
     @Test
-    public void profilePasswordChange() throws InterruptedException {
+    public void profilePasswordChange() {
 
         clients.registerUserWithBankCredentials(dbCustomerData, messages);
 

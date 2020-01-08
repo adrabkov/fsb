@@ -54,8 +54,6 @@ public class HvbPersonalDetailsPage extends AbstractPageObject {
 
     public String getPersonalDetailsHeadlineText() {
         loading.waitUntilNotVisible();
-//    modalAnimation.waitUntilVisible();
-//    modalAnimation.withTimeoutOf(SPINNER_TIMEOUT, SECONDS).waitUntilNotVisible();
         personalDetailsHeadlineText.waitUntilVisible();
         return personalDetailsHeadlineText.getText();
     }
