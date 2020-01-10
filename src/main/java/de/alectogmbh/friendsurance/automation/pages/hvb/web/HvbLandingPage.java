@@ -37,8 +37,4 @@ public class HvbLandingPage extends AbstractPageObject {
         keyVisualLoginButton.click();
     }
 
-    public void acceptBanner(){
-        acceptBannerButton.click();
-    }
-
 }

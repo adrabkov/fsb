@@ -9,9 +9,6 @@ import static org.junit.Assert.assertEquals;
 
 public class HvbOverallNeedAnalysisSummarySteps extends AbstractScenarioSteps<HvbOverallNeedAnalysisSummaryPage> {
 
-    private static final String EXPECTED_ONA_SUMMARY_PAGE_HEADLINE = "Noch einmal alles auf einen Blick.";
-    private static final String EXPECTED_ONA_COMPLETED_PAGE_HEADLINE = "Großartig, vielen Dank! Dann kann’s ja losgehen ...";
-
     private HvbOverallNeedAnalysisSummaryPage hvbOverallNeedAnalysisSummaryPage;
 
     public HvbOverallNeedAnalysisSummaryPage getPageObject() {
@@ -24,7 +21,7 @@ public class HvbOverallNeedAnalysisSummarySteps extends AbstractScenarioSteps<Hv
     }
 
     @Step
-    public void verify_if_ona_summary_page_is_loaded() {
+    public void verify_if_ona_summary_page_is_loaded(String EXPECTED_ONA_SUMMARY_PAGE_HEADLINE) {
         assertEquals(EXPECTED_ONA_SUMMARY_PAGE_HEADLINE, get_ona_summary_page_headline_text());
     }
 
@@ -39,7 +36,7 @@ public class HvbOverallNeedAnalysisSummarySteps extends AbstractScenarioSteps<Hv
     }
 
     @Step
-    public void verify_if_ona_completed_page_is_loaded() {
+    public void verify_if_ona_completed_page_is_loaded(String EXPECTED_ONA_COMPLETED_PAGE_HEADLINE) {
         assertEquals(EXPECTED_ONA_COMPLETED_PAGE_HEADLINE, get_ona_completed_page_headline_text());
     }
 
@@ -49,15 +46,15 @@ public class HvbOverallNeedAnalysisSummarySteps extends AbstractScenarioSteps<Hv
     }
 
     @StepGroup
-    public void verify_ona_save_summary_and_completed_pages() {
-        verify_if_ona_summary_page_is_loaded();
+    public void verify_ona_save_summary_and_completed_pages(String EXPECTED_ONA_SUMMARY_PAGE_HEADLINE) {
+        verify_if_ona_summary_page_is_loaded(EXPECTED_ONA_SUMMARY_PAGE_HEADLINE);
         click_on_save_ona_button();
-        verify_if_ona_completed_page_is_loaded();
+        verify_if_ona_completed_page_is_loaded(EXPECTED_ONA_SUMMARY_PAGE_HEADLINE);
     }
 
     @StepGroup
-    public void verify_ona_summary_page_and_click_on_navigation_item_notifications_link() {
-        verify_if_ona_summary_page_is_loaded();
+    public void verify_ona_summary_page_and_click_on_navigation_item_notifications_link(String EXPECTED_ONA_SUMMARY_PAGE_HEADLINE) {
+        verify_if_ona_summary_page_is_loaded(EXPECTED_ONA_SUMMARY_PAGE_HEADLINE);
         click_on_navigation_item_notifications_link();
     }
 

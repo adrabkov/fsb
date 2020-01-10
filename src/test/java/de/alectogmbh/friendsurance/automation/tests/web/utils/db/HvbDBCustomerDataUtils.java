@@ -4,7 +4,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 
 import java.util.UUID;
 
-public class DBCustomerDataUtils {
+public class HvbDBCustomerDataUtils {
 
     private static final int DEFAULT_GENERATED_DATA_LENGTH = 10;
 
@@ -30,16 +30,17 @@ public class DBCustomerDataUtils {
                 .repeatPassword("Fake1*password")
                 .streetName("Hohenzollerndamm Platz")
                 .userId("PINTAN")
-                .insuranceCategory("Ambulante Zusatzversicherung")
-                .insuranceCompany("Allianz")
-                .policyNumber("Pio/28776633/HD")
-                .premiumAmount("21,50")
-                .paymentInterval("Monatlich")
+//                .insuranceCategory("Ambulante Zusatzversicherung")
+//                .insuranceCompany("Allianz")
+//                .policyNumber("Pio/28776633/HD")
+//                .premiumAmount("21,50")
+//                .paymentInterval("Monatlich")
                 .hvbBankName("Leipzig")
-                .insuranceNewCompany("test")
+//                .insuranceNewCompany("test")
                 .children("2")
                 .build();
 
         return customerData;
     }
+
 }

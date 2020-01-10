@@ -7,8 +7,6 @@ import net.thucydides.core.annotations.StepGroup;
 
 public class HvbOverallNeedАnalysisSteps extends AbstractScenarioSteps<HvbOverallNeedAnalysisPage> {
 
-    private static final String CHILDREN = "2";
-
     private HvbOverallNeedAnalysisPage hvbOverallNeedAnalysisPage;
 
     public HvbOverallNeedAnalysisPage getPageObject() {
@@ -71,7 +69,7 @@ public class HvbOverallNeedАnalysisSteps extends AbstractScenarioSteps<HvbOvera
     }
 
     @StepGroup
-    public void complete_ona_questionnaire() {
+    public void complete_ona_questionnaire(String CHILDREN) {
         select_marital_status_single_option();
         click_ona_save_family_status_and_go_next_button();
         select_number_of_children_by_text(CHILDREN);

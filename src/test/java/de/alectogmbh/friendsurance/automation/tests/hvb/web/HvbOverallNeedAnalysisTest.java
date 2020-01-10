@@ -1,42 +1,60 @@
 package de.alectogmbh.friendsurance.automation.tests.hvb.web;
 
-import de.alectogmbh.friendsurance.automation.steps.AbstractScenarioSteps;
+import de.alectogmbh.friendsurance.automation.steps.hvb.hvb.HvbStepCollection;
 import de.alectogmbh.friendsurance.automation.tests.AbstractScenarioTest;
+import de.alectogmbh.friendsurance.automation.tests.web.utils.db.DBCustomerData;
+import de.alectogmbh.friendsurance.automation.tests.web.utils.db.HvbDBCustomerDataUtils;
+import net.serenitybdd.junit.runners.SerenityRunner;
+import net.thucydides.core.annotations.Steps;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
-public class HvbOverallNeedAnalysisTest extends AbstractScenarioTest {
+@RunWith(SerenityRunner.class)
+public class HvbOverallNeedAnalysisTest extends AbstractScenarioTest<HvbStepCollection> {
+
+    @Steps
+    private HvbStepCollection hvbStepCollection;
+
+    protected HvbStepCollection getSteps() {
+        return hvbStepCollection;
+    }
+
+//    @Rule
+//    public EnvironmentExecutionRule rule = new EnvironmentExecutionRule();
 
     @Test
-    public void overallNeedAnalysisQuestionnaireAfterCreatingUser() {
+//    @EnvironmentExecution(exclude = ALL, include = HVB)
+    public void overallNeedAnalysisQuestionnaireAfterCreatingUser() throws InterruptedException {
 
-        clients.finishRegistrationWithBankCredentialsAndContract(dbCustomerData, messages);
+        DBCustomerData dbCustomerData = HvbDBCustomerDataUtils.createDBCustomerData();
 
-        clients.getHvbOverallNeedAnalysisIntroSteps().click_ona_go_next_button();
-        clients.fillingOna(dbCustomerData.getChildren());
-        clients.getHvbOverallNeedAnalysisSummarySteps().verify_ona_save_summary_and_completed_pages();
+        hvbStepCollection.finishRegistrationWithBankCredentialsAndContract(dbCustomerData);
+
+        hvbStepCollection.getHvbOverallNeedAnalysisIntroSteps().click_ona_go_next_button();
+        hvbStepCollection.fillingOna(dbCustomerData.getChildren());
+        hvbStepCollection.getHvbOverallNeedAnalysisSummarySteps().verify_ona_save_summary_and_completed_pages();
 
     }
 
     @Test
-    public void overallNeedAnalysisQuestionnaireAfterSkippingONA() {
+    public void overallNeedAnalysisQuestionnaireAfterSkippingONA() throws InterruptedException {
 
-        clients.finishRegistrationWithBankCredentialsAndContract(dbCustomerData, messages);
+        DBCustomerData dbCustomerData = HvbDBCustomerDataUtils.createDBCustomerData();
 
-        clients.getHvbOverallNeedAnalysisIntroSteps().click_remember_later_button();
+        hvbStepCollection.finishRegistrationWithBankCredentialsAndContract(dbCustomerData);
 
-        clients.getHvbDashboardSteps().verify_dashboard_profile_remainder_is_displayed();
+        hvbStepCollection.getHvbOverallNeedAnalysisIntroSteps().click_remember_later_button();
 
-        clients.getHvbDashboardSteps().click_dashboard_profile_remainder();
+        hvbStepCollection.getHvbDashboardSteps().verify_dashboard_profile_remainder_is_displayed();
 
-        clients.getHvbOverallNeedAnalysisIntroSteps().click_ona_go_next_button();
+        hvbStepCollection.getHvbDashboardSteps().click_dashboard_profile_remainder();
 
-        clients.fillingOna(dbCustomerData.getChildren());
+        hvbStepCollection.getHvbOverallNeedAnalysisIntroSteps().click_ona_go_next_button();
 
-        clients.getHvbOverallNeedAnalysisSummarySteps().verify_ona_save_summary_and_completed_pages();
+        hvbStepCollection.fillingOna(dbCustomerData.getChildren());
+
+        hvbStepCollection.getHvbOverallNeedAnalysisSummarySteps().verify_ona_save_summary_and_completed_pages();
 
     }
 
-    protected AbstractScenarioSteps getSteps() {
-        return null;
-    }
 }

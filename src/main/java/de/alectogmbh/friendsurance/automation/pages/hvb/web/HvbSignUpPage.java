@@ -70,7 +70,6 @@ public class HvbSignUpPage extends AbstractPageObject {
     }
 
     public void clickExtractedDataInfoStepTwoContinue() {
-        withTimeoutOf(10, TimeUnit.SECONDS);
         infoModalSecondButton.click();
     }
 

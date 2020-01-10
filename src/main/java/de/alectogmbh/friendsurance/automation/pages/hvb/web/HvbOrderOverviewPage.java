@@ -82,7 +82,7 @@ public class HvbOrderOverviewPage extends AbstractPageObject {
     }
 
     public void clickOnAddContractButton() {
-        scroll_element_into_view(addContractButton);
+//        scroll_element_into_view(addContractButton);
         addContractButton.waitUntilClickable();
         addContractButton.click();
     }

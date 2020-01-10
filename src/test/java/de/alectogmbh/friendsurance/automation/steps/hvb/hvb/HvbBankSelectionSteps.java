@@ -51,7 +51,6 @@ public class HvbBankSelectionSteps extends AbstractScenarioSteps<HvbBankSelectio
     @StepGroup
     public void verify_first_step_select_bank_branch_and_click_on_next_button(String bank_selection_headline, String bank_name) {
         open_onboarding_first_step();
-        hvbLandingPage.acceptBanner();
         verify_bank_selection_page_is_loaded_and_headline_is_present(bank_selection_headline);
         click_on_cookiebar_close_button();
         verify_if_bank_name_selector_is_present_and_field_is_empty();

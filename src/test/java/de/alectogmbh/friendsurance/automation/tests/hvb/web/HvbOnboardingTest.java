@@ -2,41 +2,58 @@ package de.alectogmbh.friendsurance.automation.tests.hvb.web;
 
 import de.alectogmbh.friendsurance.automation.steps.hvb.hvb.*;
 import de.alectogmbh.friendsurance.automation.tests.AbstractScenarioTest;
+import de.alectogmbh.friendsurance.automation.tests.web.utils.db.DBCustomerData;
+import de.alectogmbh.friendsurance.automation.tests.web.utils.db.HvbDBCustomerDataUtils;
+import net.serenitybdd.junit.runners.SerenityRunner;
+import net.thucydides.core.annotations.Steps;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
-public class HvbOnboardingTest extends AbstractScenarioTest {
+import static de.alectogmbh.friendsurance.automation.tests.web.utils.hvb.HvbPageHeadline.*;
+
+@RunWith(SerenityRunner.class)
+public class HvbOnboardingTest extends AbstractScenarioTest<HvbStepCollection> {
+
+    @Steps
+    private HvbStepCollection hvbStepCollection;
+
+    protected HvbStepCollection getSteps() {
+        return hvbStepCollection;
+    }
+
+//    @Rule
+//    public EnvironmentExecutionRule rule = new EnvironmentExecutionRule();
 
     @Test
-    public void userRegistrationWithBankCredentials() {
+//    @EnvironmentExecution(exclude = ALL, include = HVB)
+    public void userRegistrationWithBankCredentials() throws InterruptedException {
 
-        clients.getHvbBankSelectionSteps().verify_first_step_select_bank_branch_and_click_on_next_button(messages.getBankSelectionHeadline(), dbCustomerData.getHvbBankName());
+        DBCustomerData dbCustomerData = HvbDBCustomerDataUtils.createDBCustomerData();
 
-        clients.getHvbInsuranceInformationSteps().verify_second_step_insurance_information_page_and_click_on_next_button(messages.getInsuranceInformationHeadline());
+        hvbStepCollection.getHvbBankSelectionSteps().verify_first_step_select_bank_branch_and_click_on_next_button(EXPECTED_BANK_SELECTION_PAGE_HEADLINE, dbCustomerData.getHvbBankName());
 
-        clients.getHvbTermsConditionsSteps().verify_third_step_bank_conditions_page_and_click_next_button(messages.getBankConditionsHeadline());
+        hvbStepCollection.getHvbInsuranceInformationSteps().verify_second_step_insurance_information_page_and_click_on_next_button(EXPECTED_INSURANCE_INFORMATION_HEADLINE);
 
-        clients.getHvbFinApiWebFormSteps()
+        hvbStepCollection.getHvbTermsConditionsSteps().verify_third_step_bank_conditions_page_and_click_next_button(EXPECTED_BANK_CONDITIONS_HEADLINE);
+
+        hvbStepCollection.getHvbFinApiWebFormSteps()
                 .enter_bank_login_credential_on_fin_api_web_form_and_retrieve_data(dbCustomerData.getUserId(),
                         dbCustomerData.getPin());
 
-        clients.getHvbPersonalDetailsSteps()
+        hvbStepCollection.getHvbPersonalDetailsSteps()
                 .verify_fifth_step_and_set_onboarding_personal_details(dbCustomerData.isGender(), dbCustomerData.getBirthDay(),
                         dbCustomerData.getStreetName(), dbCustomerData.getHouseNumber(), dbCustomerData.getPostalCode(),
-                        dbCustomerData.getPlace(), dbCustomerData.getPhoneNum(), messages.getPersonalDetailsHeadline());
+                        dbCustomerData.getPlace(), dbCustomerData.getPhoneNum(), EXPECTED_PERSONAL_DETAILS_HEADLINE);
 
-        clients.getHvbSignUpSteps()
-                .verify_sixth_step_and_finish_sign_up(dbCustomerData.getEmail(), dbCustomerData.getPassword(), messages.getSignUpPageHeadline());
+        hvbStepCollection.getHvbSignUpSteps()
+                .verify_sixth_step_and_finish_sign_up(dbCustomerData.getEmail(), dbCustomerData.getPassword(), EXPECTED_SIGN_UP_PAGE_HEADLINE);
 
-        clients.getHvbOrderOverviewSteps().verify_order_overview_page_is_loaded_and_click_on_logout_link(messages.getOrderOverviewHeadline());
+        hvbStepCollection.getHvbOrderOverviewSteps().verify_order_overview_page_is_loaded_and_click_on_logout_link(EXPECTED_ORDER_OVERVIEW_HEADLINE);
 
-        clients.userLogin(dbCustomerData.getEmail(), dbCustomerData.getPassword(), messages);
+        hvbStepCollection.userLogin(dbCustomerData.getEmail(), dbCustomerData.getPassword());
 
-        clients.getHvbDashboardSteps().click_on_dashboard_header_logout_link();
+        hvbStepCollection.getHvbDashboardSteps().click_on_dashboard_header_logout_link();
 
-    }
-
-    protected HvbBankSelectionSteps getSteps() {
-        return clients.getHvbBankSelectionSteps();
     }
 
 }

@@ -1,28 +1,42 @@
 package de.alectogmbh.friendsurance.automation.tests.hvb.web;
 
-import de.alectogmbh.friendsurance.automation.steps.AbstractScenarioSteps;
+import de.alectogmbh.friendsurance.automation.steps.hvb.hvb.HvbStepCollection;
 import de.alectogmbh.friendsurance.automation.tests.AbstractScenarioTest;
+import de.alectogmbh.friendsurance.automation.tests.web.utils.db.DBCustomerData;
+import de.alectogmbh.friendsurance.automation.tests.web.utils.db.HvbDBCustomerDataUtils;
+import net.thucydides.core.annotations.Steps;
 import org.junit.Test;
 
-public class HvbRequestDeleteAccountTest extends AbstractScenarioTest {
+import static de.alectogmbh.friendsurance.automation.tests.web.utils.hvb.HvbPageHeadline.*;
+
+public class HvbRequestDeleteAccountTest extends AbstractScenarioTest<HvbStepCollection> {
+
+    @Steps
+    private HvbStepCollection hvbStepCollection;
+
+    protected HvbStepCollection getSteps() {
+        return hvbStepCollection;
+    }
+
+//    @Rule
+//    public EnvironmentExecutionRule rule = new EnvironmentExecutionRule();
 
     @Test
-    public void testDeleteAccountRequestFromProfile() {
+//    @EnvironmentExecution(exclude = ALL, include = HVB)
+    public void testDeleteAccountRequestFromProfile() throws InterruptedException {
 
-        clients.registerUserWithBankCredentials(dbCustomerData, messages);
+        DBCustomerData dbCustomerData = HvbDBCustomerDataUtils.createDBCustomerData();
 
-        clients.getHvbOrderOverviewSteps().click_on_profile_link();
+        hvbStepCollection.registerUserWithBankCredentials(dbCustomerData);
 
-        clients.getHvbProfileSteps().click_on_delete_account_link();
+        hvbStepCollection.getHvbOrderOverviewSteps().click_on_profile_link();
 
-        clients.getHvbDeleteAccountSteps().verify_delete_account_page_is_loaded(messages.getDeleteAccountPageHeadLine());
-        clients.getHvbDeleteAccountSteps().click_on_delete_account_request_button();
-        clients.getHvbDeleteAccountSteps().switch_to_delete_account_modal_window_and_click_on_confirm_button();
+        hvbStepCollection.getHvbProfileSteps().click_on_delete_account_link();
+
+        hvbStepCollection.getHvbDeleteAccountSteps().verify_delete_account_page_is_loaded(EXPECTED_DELETE_ACCOUNT_PAGE_HEADLINE);
+        hvbStepCollection.getHvbDeleteAccountSteps().click_on_delete_account_request_button();
+        hvbStepCollection.getHvbDeleteAccountSteps().switch_to_delete_account_modal_window_and_click_on_confirm_button();
 
     }
 
-
-    protected AbstractScenarioSteps getSteps() {
-        return null;
-    }
 }

@@ -51,14 +51,14 @@ public class HvbSignUpSteps extends AbstractScenarioSteps<HvbSignUpPage> {
     }
 
     @StepGroup
-    public void confirm_extract_data_info_confirmation_modal() {
+    public void confirm_extract_data_info_confirmation_modal() throws InterruptedException {
         confirm_extracted_data_info_confirmation_modal_step_one();
-//        Thread.sleep(1000);
+        Thread.sleep(1000);
         confirm_extracted_data_info_confirmation_modal_step_two();
     }
 
     @StepGroup
-    public void verify_sixth_step_and_finish_sign_up(String email, String password, String sign_up_page_headline) {
+    public void verify_sixth_step_and_finish_sign_up(String email, String password, String sign_up_page_headline) throws InterruptedException {
         verify_sign_up_page_is_loaded_and_headline_is_present(sign_up_page_headline);
         enter_user_email(email);
         enter_user_password(password);

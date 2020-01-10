@@ -1,33 +1,51 @@
 package de.alectogmbh.friendsurance.automation.tests.hvb.web;
 
-import de.alectogmbh.friendsurance.automation.steps.AbstractScenarioSteps;
+import de.alectogmbh.friendsurance.automation.steps.hvb.hvb.HvbStepCollection;
 import de.alectogmbh.friendsurance.automation.tests.AbstractScenarioTest;
+import de.alectogmbh.friendsurance.automation.tests.web.utils.db.DBCustomerData;
+import de.alectogmbh.friendsurance.automation.tests.web.utils.db.HvbDBCustomerDataUtils;
+import net.serenitybdd.junit.runners.SerenityRunner;
+import net.thucydides.core.annotations.Steps;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
-public class HvbChangePasswordTest extends AbstractScenarioTest {
+import static de.alectogmbh.friendsurance.automation.tests.web.utils.hvb.HvbPageHeadline.*;
+
+@RunWith(SerenityRunner.class)
+public class HvbChangePasswordTest extends AbstractScenarioTest<HvbStepCollection> {
+
+    @Steps
+    private HvbStepCollection hvbStepCollection;
+
+    protected HvbStepCollection getSteps() {
+        return hvbStepCollection;
+    }
+
+//    @Rule
+//    public EnvironmentExecutionRule rule = new EnvironmentExecutionRule();
 
     @Test
-    public void profilePasswordChange() {
+    //    @EnvironmentExecution(exclude = ALL, include = HVB)
+    public void profilePasswordChange() throws InterruptedException {
 
-        clients.registerUserWithBankCredentials(dbCustomerData, messages);
+        DBCustomerData dbCustomerData = HvbDBCustomerDataUtils.createDBCustomerData();
 
-        clients.getHvbOrderOverviewSteps().click_on_profile_link();
+        hvbStepCollection.registerUserWithBankCredentials(dbCustomerData);
 
-        clients.getHvbProfileSteps().click_on_delete_account_link();
+        hvbStepCollection.getHvbOrderOverviewSteps().click_on_profile_link();
 
-        clients.getHvbProfileChangePasswordSteps().verify_password_change_page_is_loaded_and_headline_is_present(messages.getPasswordChangeHeadline());
-        clients.getHvbProfileChangePasswordSteps().
+        hvbStepCollection.getHvbProfileSteps().click_on_change_password_link();
+
+        hvbStepCollection.getHvbProfileChangePasswordSteps().verify_password_change_page_is_loaded_and_headline_is_present(EXPECTED_PASSWORD_CHANGE_HEADLINE);
+        hvbStepCollection.getHvbProfileChangePasswordSteps().
                 enter_old_and_new_password_and_click_on_save_button(dbCustomerData.getPassword(),
                         dbCustomerData.getNewPassword());
-        clients.getHvbProfileChangePasswordSteps().verify_if_success_toast_banner_is_displayed(messages.getPasswordChangeSuccessText());
+        hvbStepCollection.getHvbProfileChangePasswordSteps().verify_if_success_toast_banner_is_displayed(EXPECTED_PASSWORD_CHANGE_SUCCESS_TEXT);
 
-        clients.getHvbOrderOverviewSteps().click_on_header_logout_link();
+        hvbStepCollection.getHvbOrderOverviewSteps().click_on_header_logout_link();
 
-        clients.userLogin(dbCustomerData.getEmail(), dbCustomerData.getNewPassword(), messages);
+        hvbStepCollection.userLogin(dbCustomerData.getEmail(), dbCustomerData.getNewPassword());
 
     }
 
-    protected AbstractScenarioSteps getSteps() {
-        return null;
-    }
 }

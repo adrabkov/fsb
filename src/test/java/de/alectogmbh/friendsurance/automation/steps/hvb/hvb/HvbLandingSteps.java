@@ -27,9 +27,4 @@ public class HvbLandingSteps extends AbstractScenarioSteps<HvbLandingPage> {
         getPageObject().clickOnKeyVisualLoginButton();
     }
 
-    @Step
-    public void click_accept_button() {
-        getPageObject().acceptBanner();
-    }
-
 }

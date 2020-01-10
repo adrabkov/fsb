@@ -1,6 +1,6 @@
 package de.alectogmbh.friendsurance.automation.steps.hvb.hvb;
 
-import de.alectogmbh.friendsurance.automation.pages.hvb.web.HvbEditOrderPage;
+import de.alectogmbh.friendsurance.automation.pages.hvb.web.HvbAddEditOrderPage;
 import de.alectogmbh.friendsurance.automation.pages.hvb.web.HvbOrderOverviewPage;
 import de.alectogmbh.friendsurance.automation.steps.AbstractScenarioSteps;
 import net.thucydides.core.annotations.Step;
@@ -10,9 +10,7 @@ import static org.junit.Assert.assertEquals;
 
 public class HvbOrderOverviewSteps extends AbstractScenarioSteps<HvbOrderOverviewPage> {
 
-    private static final int NUMBER_OF_ORDER_ITEMS_AFTER_DELETING_INCOMPLETE_ORDER_ITEMS = 3;
-
-    private HvbEditOrderPage hvbEditOrderPage;
+    private HvbAddEditOrderPage hvbAddEditOrderPage;
 
     private HvbOrderOverviewPage hvbOrderOverviewPage;
 
@@ -71,16 +69,11 @@ public class HvbOrderOverviewSteps extends AbstractScenarioSteps<HvbOrderOvervie
     }
 
     @Step
-    public void verify_order_items_after_adding_contract_manually() {
-        assertEquals(NUMBER_OF_ORDER_ITEMS_AFTER_DELETING_INCOMPLETE_ORDER_ITEMS, getPageObject().getNumberOfOrderItems());
-    }
-
-    @Step
     public void delete_missing_orders_items() {
         for (int i = 0; i <= getPageObject().getNumberOfErrorItems() + 1; i++) {
             if (check_missing_order_items_is_displayed()) {
                 getPageObject().clickOnMissingInfoOrderItem();
-                hvbEditOrderPage.clickOnDeleteOrderItemLink();
+                hvbAddEditOrderPage.clickOnDeleteOrderItemLink();
             }
         }
     }
@@ -118,10 +111,4 @@ public class HvbOrderOverviewSteps extends AbstractScenarioSteps<HvbOrderOvervie
         click_on_add_contract_button();
     }
 
-    @StepGroup
-    public void verify_order_items_after_adding_contract_and_click_on_overview_page_submit_button(String order_overview_headline) {
-        verify_order_overview_page_is_loaded_after_user_actions(order_overview_headline);
-        verify_order_items_after_adding_contract_manually();
-        click_overview_page_submit_button();
-    }
 }
